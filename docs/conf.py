@@ -210,7 +210,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
   ('index', 'Photon-HDF5.tex', u'Photon-HDF5 Documentation',
-   u'Antonino Ingargiola, Xavier Michalet', 'manual'),
+   u'Antonino Ingargiola, Xavier Michalet, Ted Laurence', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -240,7 +240,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'photon-hdf5', u'Photon-HDF5 Documentation',
-     [u'Antonino Ingargiola, Xavier Michalet'], 1)
+     [u'Antonino Ingargiola, Xavier Michalet, Ted Laurence'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -254,7 +254,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'Photon-HDF5', u'Photon-HDF5 Documentation',
-   u'Antonino Ingargiola, Xavier Michalet', 'Photon-HDF5', 'One line description of project.',
+   u'Antonino Ingargiola, Xavier Michalet, Ted Laurence', 'Photon-HDF5', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -275,9 +275,9 @@ texinfo_documents = [
 
 # Bibliographic Dublin Core info.
 epub_title = u'Photon-HDF5'
-epub_author = u'Antonino Ingargiola, Xavier Michalet'
-epub_publisher = u'Antonino Ingargiola, Xavier Michalet'
-epub_copyright = u'2014, Antonino Ingargiola, Xavier Michalet'
+epub_author = u'Antonino Ingargiola, Xavier Michalet, Ted Laurence'
+epub_publisher = u'Antonino Ingargiola, Xavier Michalet, Ted Laurence'
+epub_copyright = u'2014, Antonino Ingargiola, Xavier Michalet, Ted Laurence'
 
 # The basename for the epub file. It defaults to the project name.
 #epub_basename = u'Photon-HDF5'
