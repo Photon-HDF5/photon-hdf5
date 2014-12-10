@@ -57,7 +57,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Photon-HDF5'
-copyright = u'2014, Antonino Ingargiola, Xavier Michalet'
+copyright = u'2014, Antonino Ingargiola, Xavier Michalet, Ted Laurence'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
