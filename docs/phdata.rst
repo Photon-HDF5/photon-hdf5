@@ -4,7 +4,7 @@
 1.1 Overview
 ------------
 
-This document contains the specifications for the HDF5-Ph-Data format.
+This document contains the specifications for the Photon-HDF5 format.
 This format allows saving single-molecule spectroscopy experiments when
 there is at least a stream of photon timestamps. It has been envisioned
 as a standard container format for a broad range of experiments
@@ -32,7 +32,7 @@ measurements.
    limit in data size. Support for a variety of numeric and non-numeric
    data types.
 
-1.4 HDF5-Ph-Data: Design principles
+1.4 Photon-HDF5: Design principles
 -----------------------------------
 
 The main design principles we follow are
@@ -55,8 +55,8 @@ outside the specs of this document. To assure that a future version of
 this format will not clash with some user-defined fields, we require
 that all the user-defined field be contained in groups named ``user``.
 
-2. HDF5-Ph-Data format definition
-=================================
+2. Photon-HDF5 format definition
+================================
 
 An overview of the data format is show in the following figure
 
@@ -371,7 +371,7 @@ has a suffix indicating the spot number (starting from 0).
 2.4 Optional sample group
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The HDF5-Ph-Data defines an optional "sample" group where information
+The Photon-HDF5 defines an optional "sample" group where information
 about the measured sample can be stored. This data is stored in the
 group ``/sample_specs``.
 
@@ -434,7 +434,7 @@ data stored. As an example, user-data can be stored in ``'/user'``,
 
 The root node needs to include the following attributes:
 
--  ``format_name = 'HDF5-Ph-Data'``
+-  ``format_name = 'Photon-HDF5'``
 -  ``format_title = 'HDF5-based format for time-series of photon data.'``
 -  ``format_version = '0.2'``
 
