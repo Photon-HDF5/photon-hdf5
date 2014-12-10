@@ -414,8 +414,8 @@ measurement setup:
 
 .. note::
 
-    At the moment, there is no standard way to distinguish
-    between linear and elliptically/circularly polarized excitation.\*
+   At the moment, there is no standard way to distinguish
+   between linear and elliptically/circularly polarized excitation.
 
 2.6 Optional User Data group
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
