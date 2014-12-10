@@ -6,8 +6,12 @@
 HDF5-Ph-Data file format documentation
 ======================================
 
-This documents describes the version "0.2-Draft" of the `HDF5-Ph-Data
-file format <http://fretbursts.readthedocs.org/en/latest/HDF5_format.html>`__.
+:Authors: Antonino Ingargiola, Xavier Michalet
+:Contact: tritemio@gmail.com
+:Version: 0.2
+
+This documents describes the version "0.2-Draft" of the
+**HDF5-Ph-Data file format**.
 
 For a brief introduction what the HDF5 format is and why it is
 important for single-molecule data see

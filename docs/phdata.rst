@@ -479,8 +479,8 @@ python dictionary syntax:
         tau_accept_only = 'Intrinsic Acceptor lifetime (seconds).',
         tau_donor_only = 'Intrinsic Donor lifetime (seconds).',
         tau_fret_donor = 'Donor lifetime in presence of Acceptor (seconds).',
-        tau_fret_trans = ('FRET energy transfer lifetime (seconds). Inverse of '
-                          'the rate of D*A -> DA*.'),
+        inverse_fret_rate = ('FRET energy transfer lifetime (seconds). '
+                             'Inverse of the rate of D*A -> DA*.'),
     )
 
 Additional attributes are allowed in any node but they should not
