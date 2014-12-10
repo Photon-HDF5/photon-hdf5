@@ -16,15 +16,15 @@ measurements.
 1.2 What problems are we trying to solve?
 -----------------------------------------
 
--  Assuring long term persistence of the data
--  A space and speed efficient format for daily use
--  Easing dataset sharing and interoperability between analysis programs
+-  Ensuring long term persistence of the data 
+-  A space- and speed-efficient file format for repeated use (by opposition to archiving)
+-  Facilitating data sharing and interoperability between analysis programs
 
 1.3 Features of HDF5
 --------------------
 
--  Open, standard and wide-spread used format with opensource
-   implementations (HDF5)
+-  Open, standard and wide-spread used format with open source
+   implementations
 -  Efficient: the HDF5 format is a binary format that allows compression
    and is fast to read and write
 -  Flexible: data arrays can be stored in "groups" (hierarchical
@@ -41,13 +41,14 @@ The main design principles we follow are
 -  Flexibility
 -  Compatibility
 
-We aim at defining a format that is "small", easy to implement,
-efficient and expandable while maintaining compatibility.
+We aim to define a format that has a minimal set of specifications and therefore
+is easy to implement. At the same time, it is important that format can be 
+expanded to accomodate new use cases while maintaining backward compatibility.
 
-To achieve "simplicity" we only require the general file layout and the
-presence of a few basic attributes and parameters. The remaining (small
-set of) fields here defined will be present only when they will be
-needed by a particular measurement.
+To achieve simplicity, the only required file characteristics are a 
+general file layout and the presence of a few basic attributes and parameters. 
+The remaining (small set of) fields here defined will be present only when 
+they will be needed by a particular measurement.
 
 We retain flexibility by allowing the user to save any arbitrary data
 outside the specs of this document. To assure that a future version of
