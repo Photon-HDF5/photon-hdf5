@@ -1,9 +1,9 @@
-.. HDF5-Ph-Data documentation master file, created by
+.. Photon-HDF5 documentation master file, created by
    sphinx-quickstart on Tue Dec 09 10:48:26 2014.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-HDF5-Ph-Data file format documentation
+Photon-HDF5 file format documentation
 ======================================
 
 :Authors: Antonino Ingargiola, Xavier Michalet
@@ -11,7 +11,7 @@ HDF5-Ph-Data file format documentation
 :Version: 0.2
 
 This documents describes the version "0.2-Draft" of the
-**HDF5-Ph-Data file format**.
+**Photon-HDF5 file format**.
 
 For a brief introduction what the HDF5 format is and why it is
 important for single-molecule data see
