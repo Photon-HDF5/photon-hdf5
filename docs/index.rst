@@ -6,7 +6,7 @@
 Photon-HDF5 file format documentation
 ======================================
 
-:Authors: Antonino Ingargiola, Xavier Michalet
+:Authors: Antonino Ingargiola, Xavier Michalet, Ted Laurence
 :Contact: tritemio@gmail.com
 :Version: 0.2
 
