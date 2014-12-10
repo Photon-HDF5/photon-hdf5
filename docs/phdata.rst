@@ -437,6 +437,7 @@ The root node needs to include the following attributes:
 -  ``format_name = 'Photon-HDF5'``
 -  ``format_title = 'HDF5-based format for time-series of photon data.'``
 -  ``format_version = '0.2'``
+-  ``format_url = 'http://photon-hdf5.readthedocs.org/'``
 
 Each group or array needs to have a description attribute named
 ``TITLE`` (following the same convention as
