@@ -10,8 +10,16 @@ Photon-HDF5 file format documentation
 :Contact: tritemio@gmail.com
 :Version: 0.2
 
-This documents describes the version "0.2-Draft" of the
-**Photon-HDF5 file format**.
+.. note ::
+   This document describes the version "0.2-Draft" of the
+   **Photon-HDF5 file format**. The latest version of this document
+   can be found at 
+   `http://phdata.readthedocs.org <http://phdata.readthedocs.org>`__.
+
+Photon-HDF5 is a file format for a class of single-molecule spectroscopy 
+experiments that requires storing "photon streams" (a list of per-photon data). 
+A noteworthy example is represented by confocal single-molecule FRET (smFRET) 
+experiments.
 
 For a brief introduction what the HDF5 format is and why it is
 important for single-molecule data see
