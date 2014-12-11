@@ -445,7 +445,7 @@ Each group or array needs to have a description attribute named
 The description attributes for each field are listed in the following table:
 
 =========================   ==================================================================
-Field names                 Description used as TITLE attribute
+Field names                 Description used in the TITLE attribute
 =========================   ==================================================================
 num_spots                   | Number of excitation or detection spots.
 num_spectral_ch             | Number of different spectral bands in the detection
