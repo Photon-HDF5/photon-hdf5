@@ -171,7 +171,7 @@ period) are obtained by applying one of these two conditions:
     internal and external range.*
 
 2.2 Photon Data Group(s)
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
 A file can contain one or more photon data groups. For instance, a
 typical single-spot experiment will contain a single photon-data group,
@@ -342,7 +342,7 @@ c. Additional specs can be saved in ``nanotimes_specs/user/``.
 .. _sec_multispot:
 
 2.3 Multispot layout for photon data
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------
 
 Multi-spot measurements can be saved using the basic layout described in
 previous sections. In this case, the ``timestamps`` array contains all
@@ -368,7 +368,7 @@ data. The only difference is that, instead of having a single group
 has a suffix indicating the spot number (starting from 0).
 
 2.4 Optional sample group
-~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------
 
 The Photon-HDF5 defines an optional "sample" group where information
 about the measured sample can be stored. This data is stored in the
@@ -387,7 +387,7 @@ Within ``/sample_specs`` the following fields are defined:
    example ``'40-bp dsDNA, D-A distance: 7-bp'``.
 
 2.5 Optional measurement setup group
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------
 
 The optional group **``/setup_specs``** contains fields describing the
 measurement setup:
@@ -417,7 +417,7 @@ measurement setup:
    between linear and elliptically/circularly polarized excitation.
 
 2.6 Optional User Data group
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------
 
 An unlimited number of user-defined fields are allowed. To make sure
 that future versions of this format will not collide with any
