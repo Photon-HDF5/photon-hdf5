@@ -1,60 +1,3 @@
-1. Introduction
-===============
-
-1.1 Overview
-------------
-
-This document contains the specifications for the Photon-HDF5 format.
-This format allows saving single-molecule spectroscopy experiments when
-there is at least a stream of photon timestamps. It has been envisioned
-as a standard container format for a broad range of experiments
-involving confocal microcopy. Notable examples are confocal smFRET
-experiments (with or without laser alternation) either with a single or
-with multiple excitation spots. It can also store ns-ALEX or FCS
-measurements.
-
-1.2 What problems are we trying to solve?
------------------------------------------
-
--  Ensuring long term persistence of the data
--  A space- and speed-efficient file format for repeated use (by opposition to archiving)
--  Facilitating data sharing and interoperability between analysis programs
-
-1.3 Features of HDF5
---------------------
-
--  Open, standard and wide-spread used format with open source
-   implementations
--  Efficient: the HDF5 format is a binary format that allows compression
-   and is fast to read and write
--  Flexible: data arrays can be stored in "groups" (hierarchical
-   format). Metadata can be attached to each data entry (attributes). No
-   limit in data size. Support for a variety of numeric and non-numeric
-   data types.
-
-1.4 Photon-HDF5: Design principles
------------------------------------
-
-The main design principles we follow are
-
--  Simplicity
--  Flexibility
--  Compatibility
-
-We aim to define a format that has a minimal set of specifications and therefore
-is easy to implement. At the same time, it is important that format can be
-expanded to accomodate new use cases while maintaining backward compatibility.
-
-To achieve simplicity, the only required file characteristics are a
-general file layout and the presence of a few basic attributes and parameters.
-The remaining (small set of) fields here defined will be present only when
-they will be needed by a particular measurement.
-
-We retain flexibility by allowing the user to save any arbitrary data
-outside the specs of this document. To assure that a future version of
-this format will not clash with some user-defined fields, we require
-that all the user-defined field be contained in groups named ``user``.
-
 2. Photon-HDF5 format definition
 ================================
 
@@ -76,7 +19,7 @@ there are optional groups providing information on the sample and setup,
 as well as user-specific information, discussed in the last sections.
 
 2.1.1 Mandatory parameters:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -  **timestamps_unit**: (float) time in seconds of 1-unit increment
    in timestamps. Normally, timestamps are integers and the unit
@@ -110,7 +53,7 @@ as well as user-specific information, discussed in the last sections.
     ``(0, alex_period)``).
 
 2.1.2 Optional parameters
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Currently, optional parameters include information necessary to
 interpret data acquired with alternating laser excitation (ALEX),
@@ -148,7 +91,7 @@ Some of those parameters are mandatory, some other are optional.
     ``alex_period``.
 
 Note for μs-ALEX
-^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 The fields ``alex_period_donor`` and ``alex_period_acceptor`` allow
 defining photons detected during donor or acceptor excitation. As an
@@ -256,7 +199,7 @@ justify the use of an array with one value per photon. This data is
 instead stored in a subgroup with a ``_specs`` suffix.
 
 2.2.4.1 Detector specifications subgroup
-''''''''''''''''''''''''''''''''''''''''
+""""""""""""""""""""""""""""""""""""""""
 
 To provide information about whether a photon has been detected in the
 donor or acceptor channel, and/or in the parallel or perpendicular
@@ -297,13 +240,13 @@ polarization channel, the following arrays are defined inside the
     ``polarization1`` or ``polarization2``, but not in both.
 
 2.2.4.2 User defined detector specifications subgroup (optional)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Additional detector specifications can be saved in a dedicated subgroup:
 ``detectors_specs/user/``.
 
 2.2.4.3 Nanotime specifications subgroup
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 
 If a ``nanotimes`` array is present, the following specifications need
 to be provided:

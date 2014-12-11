@@ -37,4 +37,5 @@ Table of contents
 .. toctree::
     :maxdepth: 3
 
+    intro
     phdata
