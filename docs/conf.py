@@ -203,6 +203,7 @@ latex_elements = {
 
 # Additional stuff for the LaTeX preamble.
 #'preamble': '',
+'preamble': '\setcounter{tocdepth}{3}'
 }
 
 # Grouping the document tree into LaTeX files. List of tuples

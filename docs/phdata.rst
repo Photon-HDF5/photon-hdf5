@@ -1,5 +1,5 @@
-2. Photon-HDF5 format definition
-================================
+Photon-HDF5 format definition
+=============================
 
 An overview of the data format is show in the following figure
 
@@ -8,8 +8,8 @@ An overview of the data format is show in the following figure
     Show a TOC view of a typical file, identifying root data,
     photon group data and subgroups. Mention Metadata.
 
-2.1 Root-level parameters
--------------------------
+Root-level parameters
+---------------------
 
 There are mandatory and optional parameters (scalars or arrays of
 scalars) in the root group, as discussed in the next two sections. The
@@ -18,8 +18,8 @@ contain their own data, as discussed in sections 2.2 & 2.3. Finally,
 there are optional groups providing information on the sample and setup,
 as well as user-specific information, discussed in the last sections.
 
-2.1.1 Mandatory parameters:
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Mandatory parameters
+^^^^^^^^^^^^^^^^^^^^
 
 -  **timestamps_unit**: (float) time in seconds of 1-unit increment
    in timestamps. Normally, timestamps are integers and the unit
@@ -57,8 +57,8 @@ as well as user-specific information, discussed in the last sections.
     (``alex_period_acceptor``) that selects all the photons (i.e.
     ``(0, alex_period)``).
 
-2.1.2 Optional parameters
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Optional parameters
+^^^^^^^^^^^^^^^^^^^
 
 Currently, optional parameters include information necessary to
 interpret data acquired with alternating laser excitation (ALEX),
@@ -120,8 +120,8 @@ period) are obtained by applying one of these two conditions:
     *this requires a schematic to explain what is meant by
     internal and external range.*
 
-2.2 Photon Data Group(s)
-------------------------
+Photon Data Group(s)
+--------------------
 
 A file can contain one or more photon data groups. For instance, a
 typical single-spot experiment will contain a single photon-data group,
@@ -134,8 +134,8 @@ The typical content of a photon data group is briefly described in the
 next section. The following sections then describe each component in
 more details.
 
-2.2.1 Basic layout of photon data groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Basic layout of photon data groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 An overview of the photon data group format is show in the following
 figure
@@ -171,8 +171,8 @@ subgroups, which can reside at all levels of the hierarchy (for instance
 ``/photon_data/user/``). Those can be a location to save additional
 photon or specification information not anticipated by the format.
 
-2.2.2 Mandatory photon data arrays:
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Mandatory photon data arrays:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -  **timestamps**: (array of integers) contains all timestamps.
 
@@ -187,8 +187,8 @@ photon or specification information not anticipated by the format.
    using information provided in the detectors\_specs subgroup (see
    below).
 
-2.2.3 Optional photon data arrays
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Optional photon data arrays
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -  **nanotimes** (array of integers) contains the TCSPC nanotimes.
    This array is only required if **``lifetime``** is True.
@@ -197,16 +197,16 @@ photon or specification information not anticipated by the format.
    This optional array is used when the data comes from a simulation
    providing particle ID information.
 
-2.2.4 Photon data specifications
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Photon data specifications
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Arrays in the ``photon_data`` group can have additional associated
 information that **is not** "photon specific" and therefore does not
 justify the use of an array with one value per photon. This data is
 instead stored in a subgroup with a ``_specs`` suffix.
 
-2.2.4.1 Detector specifications subgroup
-""""""""""""""""""""""""""""""""""""""""
+Detector specifications subgroup
+""""""""""""""""""""""""""""""""
 
 To provide information about whether a photon has been detected in the
 donor or acceptor channel, and/or in the parallel or perpendicular
@@ -249,14 +249,14 @@ polarization channel, the following arrays are defined inside the
     not omitted, the detector(s) ID number should go either in
     ``polarization1`` or ``polarization2``, but not in both.
 
-2.2.4.2 User defined detector specifications subgroup (optional)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+User defined detector specifications subgroup (optional)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Additional detector specifications can be saved in a dedicated subgroup:
 ``detectors_specs/user/``.
 
-2.2.4.3 Nanotime specifications subgroup
-""""""""""""""""""""""""""""""""""""""""
+Nanotime specifications subgroup
+""""""""""""""""""""""""""""""""
 
 If a ``nanotimes`` array is present, the following specifications need
 to be provided:
@@ -299,8 +299,8 @@ Additional specs can be saved in ``nanotimes_specs/user/``.
 
 .. _sec_multispot:
 
-2.3 Multispot layout for photon data
-------------------------------------
+Multispot layout for photon data
+--------------------------------
 
 Multi-spot measurements can be saved using the basic layout described in
 previous sections. In this case, the ``timestamps`` array contains all
@@ -325,8 +325,8 @@ data. The only difference is that, instead of having a single group
 ``/photon_data_0`` .. ``/photon_data_N``, one for each spot. Each group
 has a suffix indicating the spot number (starting from 0).
 
-2.4 Optional Sample Group
--------------------------
+Optional Sample Group
+---------------------
 
 The Photon-HDF5 defines an optional "sample" group where information
 about the measured sample can be stored. This data is stored in the
@@ -347,8 +347,8 @@ Within ``/sample_specs`` the following fields are defined:
 -  **sample_name** (string) free-form description of the sample. For
    example ``'40-bp dsDNA, D-A distance: 7-bp'``.
 
-2.5 Optional Measurement Setup Group
-------------------------------------
+Optional Measurement Setup Group
+--------------------------------
 
 The optional group **``/setup_specs``** contains fields describing the
 measurement setup:
@@ -377,8 +377,8 @@ measurement setup:
    At the moment, there is no standard way to distinguish
    between linear and elliptically/circularly polarized excitation.
 
-2.6 Optional User Data Group
-----------------------------
+Optional User Data Group
+------------------------
 
 An unlimited number of user-defined fields are allowed. To make sure
 that future versions of this format will not collide with any
@@ -389,8 +389,8 @@ data stored. As an example, user-data can be stored in ``'/user'``,
 ``'/photon_data/user'``, ``'/photon_data/nanotimes_specs/user'``,
 ``'/setup_specs/user'``, etc...
 
-2.7 Metadata
-------------
+Metadata
+--------
 
 The root node needs to include the following attributes:
 

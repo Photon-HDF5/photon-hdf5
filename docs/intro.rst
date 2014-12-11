@@ -1,5 +1,5 @@
-1. Introduction
-===============
+Introduction
+============
 
 1.1 Overview
 ------------
@@ -13,15 +13,15 @@ experiments (with or without laser alternation) either with a single or
 with multiple excitation spots. It can also store ns-ALEX or FCS
 measurements.
 
-1.2 What problems are we trying to solve?
------------------------------------------
+What problems are we trying to solve?
+-------------------------------------
 
 -  Ensuring long term persistence of the data
 -  A space- and speed-efficient file format for repeated use (by opposition to archiving)
 -  Facilitating data sharing and interoperability between analysis programs
 
-1.3 Features of HDF5
---------------------
+Features of HDF5
+----------------
 
 -  Open, standard and wide-spread used format with open source
    implementations
@@ -32,8 +32,8 @@ measurements.
    limit in data size. Support for a variety of numeric and non-numeric
    data types.
 
-1.4 Photon-HDF5: Design principles
------------------------------------
+Photon-HDF5: Design principles
+------------------------------
 
 The main design principles we follow are
 
