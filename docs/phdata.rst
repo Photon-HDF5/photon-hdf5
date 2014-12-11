@@ -16,7 +16,7 @@ measurements.
 1.2 What problems are we trying to solve?
 -----------------------------------------
 
--  Ensuring long term persistence of the data 
+-  Ensuring long term persistence of the data
 -  A space- and speed-efficient file format for repeated use (by opposition to archiving)
 -  Facilitating data sharing and interoperability between analysis programs
 
@@ -42,12 +42,12 @@ The main design principles we follow are
 -  Compatibility
 
 We aim to define a format that has a minimal set of specifications and therefore
-is easy to implement. At the same time, it is important that format can be 
+is easy to implement. At the same time, it is important that format can be
 expanded to accomodate new use cases while maintaining backward compatibility.
 
-To achieve simplicity, the only required file characteristics are a 
-general file layout and the presence of a few basic attributes and parameters. 
-The remaining (small set of) fields here defined will be present only when 
+To achieve simplicity, the only required file characteristics are a
+general file layout and the presence of a few basic attributes and parameters.
+The remaining (small set of) fields here defined will be present only when
 they will be needed by a particular measurement.
 
 We retain flexibility by allowing the user to save any arbitrary data
@@ -315,8 +315,7 @@ to be provided:
 
 .. note::
 
-     The field ``tcspc_range`` is equal to
-    ``tcspc_bin*tcspc_nbins``.
+    The field ``tcspc_range`` is equal to ``tcspc_bin*tcspc_nbins``.
 
 Optionally the following specifications can be provided:
 
@@ -443,48 +442,62 @@ Each group or array needs to have a description attribute named
 ``TITLE`` (following the same convention as
 *`pytables <http://pytables.github.io/usersguide/file_format.html>`__*).
 
-The description attribute for each field are described below using
-python dictionary syntax:
+The description attribute for each field are listed in the following table:
 
-::
-
-    fields_meta = dict(
-        # Global data
-        timestamps_unit = 'Time in seconds of 1-unit increment in timestamps.',
-        num_spots = 'Number of excitation or detection spots',
-        alex = 'If True the file contains ALternated EXcitation data.',
-        lifetime = 'If True the data contains nanotimes from TCSPC hardware',
-        alex_period = ('The duration of the excitation alternation using '
-                       'the same units as the timestamps.'),
-        alex_period_donor = ('Start and stop values identifying the donor '
-                             'emission period of us-ALEX measurements'),
-        alex_period_acceptor = ('Start and stop values identifying the acceptor '
-                                'emission period of us-ALEX measurements'),
-        # Photon-data
-        photon_data = ('Group containing arrays of photon-data (one element per '
-                       'photon)'),
-        timestamps = 'Array of photon timestamps',
-        detectors = 'Array of detector numbers for each timestamp',
-        nanotimes = 'TCSPC photon arrival time (nanotimes)',
-        particles = 'Particle label (integer) for each timestamp.',
-
-        detectors_specs = 'Group for detector-specific data.',
-        donor = 'Detectors for the donor spectral range',
-        acceptor = 'Detectors for the acceptor spectral range',
-        polariz_paral = 'Detectors for polarization parallel to excitation',
-        polariz_perp = 'Detectors for polarization perpendicular to excitation',
-
-        nanotimes_specs =  'Group for nanotime-specific data.',
-        tcspc_bin = 'TCSPC time bin duration in seconds (nanotimes unit).',
-        tcspc_nbins = 'Number of TCSPC bins.',
-        tcspc_range = 'TCSPC full-scale range in seconds.',
-        tau_accept_only = 'Intrinsic Acceptor lifetime (seconds).',
-        tau_donor_only = 'Intrinsic Donor lifetime (seconds).',
-        tau_fret_donor = 'Donor lifetime in presence of Acceptor (seconds).',
-        inverse_fret_rate = ('FRET energy transfer lifetime (seconds). '
-                             'Inverse of the rate of D*A -> DA*.'),
-    )
+=========================   ==================================================================
+Field names                 Description used as TITLE attribute
+=========================   ==================================================================
+num_spots                   | Number of excitation or detection spots.
+num_spectral_ch             | Number of different spectral bands in the detection
+                            | channels (i.e. 2 for 2-colors smFRET).
+num_polariz_ch              | Number of different polarization in the detection
+                            | channels. The value is 1 if no polarization selection is
+                            | performed and 2 if two orthogonal polarizations are
+                            | recorded.
+lifetime                    | If True (or 1) the data contains nanotimes from TCSPC
+                            | hardware
+alex                        | If True (or 1) the file contains ALternated EXcitation
+                            | data.
+alex_period                 | The duration of the excitation alternation using the same
+                            | units as the timestamps.
+alex_period_donor           | Start and stop values identifying the donor emission
+                            | period.
+alex_period_acceptor        | Start and stop values identifying the acceptor emission
+                            | period.
+timestamps_unit             | Time in seconds of 1-unit increment in timestamps.
+photon_data                 | Group containing arrays of photon-data (one element per
+                            | photon)
+timestamps                  | Array of photon timestamps
+detectors                   | Array of detector numbers for each timestamp
+detectors_specs             | Group for detector-specific data.
+donor                       | Detectors for the donor spectral range
+acceptor                    | Detectors for the acceptor spectral range
+polarization1               | Detectors ID for the "polarization1". By default is the
+                            | polarization parallel to the excitation, unless specified
+                            | differently in the "/setup_specs".
+polarization2               | Detectors ID for the "polarization2". By default is the
+                            | polarization perpendicular to the excitation, unless
+                            | specified differently in the "/setup_specs".
+nanotimes                   | TCSPC photon arrival time (nanotimes)
+nanotimes_specs             | Group for nanotime-specific data.
+tcspc_bin                   | TCSPC time bin duration in seconds (nanotimes unit).
+tcspc_nbins                 | Number of TCSPC bins.
+tcspc_range                 | TCSPC full-scale range in seconds.
+tau_accept_only             | Intrinsic Acceptor lifetime (seconds).
+tau_donor_only              | Intrinsic Donor lifetime (seconds).
+tau_fret_donor              | Donor lifetime in presence of Acceptor (seconds).
+inverse_fret_rate           | FRET energy transfer lifetime (seconds). Inverse of the
+                            | rate of D*A -> DA*.
+particles                   | Particle label (integer) for each timestamp.
+excitation_wavelengths      | Array of excitation wavelengths (meters).
+excitation_powers           | Array of excitation powers (in the same order as
+                            | excitation_wavelengths). Units: Watts.
+excitation_polarizations    | Polarization angle (in degrees), one for each laser.
+detection_polarization1     | Polarization angle (in degrees) for "polarization1".
+detection_polarization2     | Polarization angle (in degrees) for "polarization2".
+=========================   ==================================================================
 
 Additional attributes are allowed in any node but they should not
 overlap with standard `pytables
 attributes <http://pytables.github.io/usersguide/file_format.html>`__.
+
