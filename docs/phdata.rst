@@ -268,7 +268,7 @@ to be provided:
 
 .. note::
 
-    The field ``tcspc_range`` is equal to ``tcspc_bin*tcspc_nbins``.
+    The field ``tcspc_range`` is equal to ``tcspc_bin * tcspc_nbins``.
 
 Optionally the following specifications can be provided:
 
@@ -295,7 +295,7 @@ optionally contain these additional specifications:
 -  **inverse_fret_rate**: (float) FRET energy transfer lifetime
    (seconds). Inverse of the rate of ``D*A`` -> ``DA*``.
 
-c. Additional specs can be saved in ``nanotimes_specs/user/``.
+Additional specs can be saved in ``nanotimes_specs/user/``.
 
 .. _sec_multispot:
 
