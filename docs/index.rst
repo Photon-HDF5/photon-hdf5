@@ -31,19 +31,10 @@ important for single-molecule data see
     (including typos fixes) are encouraged.
 
 
-Contents:
+Table of contents
+-----------------
 
 .. toctree::
     :maxdepth: 3
 
     phdata
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
