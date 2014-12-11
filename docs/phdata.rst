@@ -8,7 +8,7 @@ An overview of the data format is show in the following figure
     Show a TOC view of a typical file, identifying root data,
     photon group data and subgroups. Mention Metadata.
 
-2.1 Parameter data fields
+2.1 Root-level parameters
 -------------------------
 
 There are mandatory and optional parameters (scalars or arrays of
@@ -26,18 +26,23 @@ as well as user-specific information, discussed in the last sections.
    increment is determined by the acquisition electronics. However,
    timestamps can also be floats and express the time in seconds. In
    this case ``timestamps_unit`` will set to 1.
+
 -  **num_spots**: (integer) Normally it is 1 for single-spot
    measurements. In multi-spot measurements contains the number of
    excitation or detection spots.
+
 -  **alex**: (boolean) if True (i.e. = 1), the measurements uses
    alternated excitation.
+
 -  **lifetime**: (boolean) if True (i.e. = 1), the data contains
    nanotime information for each photon (provided by some kind of
    TAC/TDC i.e. TCSPC hardware) in addition to the standard macrotime
    information (typically provided by some kind of digital clock with a
    10-100 ns period).
+
 -  **num_spectral_ch**: (interger) number of different spectral
    bands in the detection channels (i.e. 2 for 2-colors smFRET).
+
 -  **num_polariz_ch**: (interger) number of different polarization
    in the detection channels. The value is 1 if no polarization
    selection is performed and 2 if two orthogonal polarizations are
@@ -77,6 +82,7 @@ Some of those parameters are mandatory, some other are optional.
 -  **alex_period_donor**: (array with an even-number of elements,
    integers): The start and stop values identifying the donor emission
    period.
+
 -  **alex_period_acceptor**: (array with an even-number of elements,
    integers): The start and stop values identifying the acceptor
    emission period.
@@ -105,6 +111,7 @@ period) are obtained by applying one of these two conditions:
 
 -  ``(A > start) and (A < stop)`` when ``start < stop`` (*internal
    range*)
+
 -  ``(A > start) or  (A < stop)`` when ``start > stop`` (*external
    range*).
 
@@ -211,15 +218,18 @@ polarization channel, the following arrays are defined inside the
    smFRET with polarization (4 detectors) will have 2 values. For a
    multispot measurement, it will contain the list of donor channel
    detectors (see section 2.3).
+
 -  **acceptor**: (array of integers) list of detectors for the
    acceptor channel. A standard smFRET measurement will have only one
    value. A smFRET with polarization (4 detectors) will have 2 values.
    For a multi-spot measurement it will contain the list of
    acceptor-channel detectors (see section 2.3).
+
 -  **polarization1** (array of integers) list of detectors for the
    "first" polarization. If not specified in the experimental setup
    section, this polarization is assumed parallel to the excitation
    polarization.
+
 -  **polarization2** (array of integers) list of detectors for the
    "second" polarization. If not specified in the experimental setup
    section, this polarization is assumed perpendicular to the excitation
@@ -264,8 +274,10 @@ Optionally the following specifications can be provided:
 
 -  **irf_hist_donor**: (array of integers) Instrument Response
    Function (IRF) histogram for the donor detection channel.
+
 -  **irf_hist_acceptor**: (array of integers) Instrument Response
    Function (IRF) histogram for the acceptor detection channel.
+
 -  **calibration_hist**: (array of integers) Histograms of
    uncorrelated counts used to correct the TCSPC non-linearities.
 
@@ -274,9 +286,12 @@ optionally contain these additional specifications:
 
 -  **tau_accept_only**: (float) Intrinsic Acceptor lifetime
    (seconds).
+
 -  **tau_donor_only**: (float) Intrinsic Donor lifetime (seconds).
+
 -  **tau_fret_donor**: (float) Donor lifetime in presence of
    Acceptor (seconds).
+
 -  **inverse_fret_rate**: (float) FRET energy transfer lifetime
    (seconds). Inverse of the rate of ``D*A`` -> ``DA*``.
 
@@ -310,7 +325,7 @@ data. The only difference is that, instead of having a single group
 ``/photon_data_0`` .. ``/photon_data_N``, one for each spot. Each group
 has a suffix indicating the spot number (starting from 0).
 
-2.4 Optional sample group
+2.4 Optional Sample Group
 -------------------------
 
 The Photon-HDF5 defines an optional "sample" group where information
@@ -322,14 +337,17 @@ Within ``/sample_specs`` the following fields are defined:
 -  **num_dyes**: (integer) number of different dyes present in the
    samples. For a standard single-pair FRET measurement the value is 2.
    For donor-only or acceptor-only measurements the value is 1.
+
 -  **dye_names** (array of string) list of dye names (for example:
    ``['ATTO550', 'ATTO647N']``).
+
 -  **buffer_name** (string) free-form description of the sample
    buffer. For example ``'TE50 + 1mM TROLOX'``.
+
 -  **sample_name** (string) free-form description of the sample. For
    example ``'40-bp dsDNA, D-A distance: 7-bp'``.
 
-2.5 Optional measurement setup group
+2.5 Optional Measurement Setup Group
 ------------------------------------
 
 The optional group **``/setup_specs``** contains fields describing the
@@ -359,7 +377,7 @@ measurement setup:
    At the moment, there is no standard way to distinguish
    between linear and elliptically/circularly polarized excitation.
 
-2.6 Optional User Data group
+2.6 Optional User Data Group
 ----------------------------
 
 An unlimited number of user-defined fields are allowed. To make sure
