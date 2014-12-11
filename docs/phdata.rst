@@ -442,7 +442,7 @@ Each group or array needs to have a description attribute named
 ``TITLE`` (following
 `the same convention as pytables <http://pytables.github.io/usersguide/file_format.html>`__).
 
-The description attribute for each field are listed in the following table:
+The description attributes for each field are listed in the following table:
 
 =========================   ==================================================================
 Field names                 Description used as TITLE attribute
