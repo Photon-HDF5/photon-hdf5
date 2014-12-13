@@ -1,12 +1,10 @@
 Photon-HDF5 format definition
 =============================
 
-An overview of the data format is show in the following figure
+An overview of the data format is shown in the following figure:
 
-.. todo::
-
-    Show a TOC view of a typical file, identifying root data,
-    photon group data and subgroups. Mention Metadata.
+.. figure:: /images/alex-photon-hdf5.png
+    :align: center
 
 Root-level parameters
 ---------------------
@@ -115,10 +113,14 @@ period) are obtained by applying one of these two conditions:
 -  ``(A > start) or  (A < stop)`` when ``start > stop`` (*external
    range*).
 
-.. todo::
+.. figure:: /images/alternation_range.png
+    :alt: Illustration of the internal and external ranges
+    :align: center
 
-    *this requires a schematic to explain what is meant by
-    internal and external range.*
+    Alternation histogram showing selection for the donor and acceptor periods.
+    In this case the donor period is defined as an "external range" (2850, 580)
+    while the acceptor period as an "internal range" (900, 2580).
+
 
 Photon Data Group(s)
 --------------------
@@ -137,13 +139,13 @@ more details.
 Basic layout of photon data groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-An overview of the photon data group format is show in the following
-figure
+An overview of the photon data group format is shown in the following
+figure:
 
-.. todo::
+.. figure:: /images/alex-photon-hdf5_5.png
+    :align: center
 
-    *Show a TOC view of a photon data group, identifying arrays
-    and specs subgroups*
+    Structure of the ``photon_data`` group for a μs-ALEX meansurement.
 
 The photon-data group is named ``/photon_data`` in single-spot data
 files.
