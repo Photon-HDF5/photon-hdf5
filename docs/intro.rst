@@ -9,9 +9,10 @@ This format allows saving single-molecule spectroscopy experiments when
 there is at least a stream of photon timestamps. It has been envisioned
 as a standard container format for a broad range of experiments
 involving confocal microcopy. Notable examples are confocal smFRET
-experiments (with or without laser alternation) either with a single or
-with multiple excitation spots. It can also store ns-ALEX or FCS
-measurements.
+experiments either with a single or with multiple excitation spots. 
+Both `μs-ALEX <http://dx.doi.org/10.1529/biophysj.104.054114>`_
+and ns-ALEX data is supported.
+
 
 What problems are we trying to solve?
 -------------------------------------
