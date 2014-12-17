@@ -17,9 +17,9 @@ and ns-ALEX data is supported.
 What problems are we trying to solve?
 -------------------------------------
 
--  Ensuring long term persistence of the data
--  A space- and speed-efficient file format for repeated use (by opposition to archiving)
--  Facilitating data sharing and interoperability between analysis programs
+-  Ensuring long term persistence of the data.
+-  A space- and speed-efficient file format for repeated use as well as for archiving.
+-  Facilitating data sharing and interoperability between analysis programs.
 
 Features of HDF5
 ----------------
