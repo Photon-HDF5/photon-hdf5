@@ -63,7 +63,7 @@ interpret data acquired with alternating laser excitation (ALEX),
 whether μs-ALEX or ns-ALEX (aka PIE, or pulsed-interleaved excitation).
 Some of those parameters are mandatory, some other are optional.
 
-**Mandatory** for ALEX data (``ALEX == True``):
+**Mandatory** for ALEX data (``alex == True``):
 
 -  **alex_period** (integer or float): the duration of one
    excitation alternation period. For μs-ALEX data, it is expressed in
@@ -71,10 +71,8 @@ Some of those parameters are mandatory, some other are optional.
    alternation period in seconds. For ns-ALEX data
    (``lifetime == True``), ``alex_period`` is expressed in TCSPC bin
    units, such that the alternation period in seconds is
-   ``alex_period * tcspc_bin``.
-
-    **OPEN QUESTION**: Why integer OR float and not just float?
-
+   ``alex_period * tcspc_unit``.
+   
 **Optional** for ALEX data:
 
 -  **alex_period_donor**: (array with an even-number of elements,
@@ -263,14 +261,14 @@ Nanotime specifications subgroup
 If a ``nanotimes`` array is present, the following specifications need
 to be provided:
 
--  **tcspc_bin**: (float) TAC/TDC bin size (in seconds).
--  **tcspc_nbins**: (integer) TAC/TDC number of bins.
+-  **tcspc_unit**: (float) TAC/TDC bin size (in seconds).
+-  **tcspc_num_bins**: (integer) TAC/TDC number of bins.
 -  **tcspc_range**: (float) Full-scale range of the TAC/TDC hardware
    in seconds.
 
 .. note::
 
-    The field ``tcspc_range`` is equal to ``tcspc_bin * tcspc_nbins``.
+    The field ``tcspc_range`` is equal to ``tcspc_unit * tcspc_num_bins``.
 
 Optionally the following specifications can be provided:
 
@@ -443,8 +441,8 @@ polarization2               | Detectors ID for the "polarization2". By default i
                             | specified differently in the "/setup_specs".
 nanotimes                   | TCSPC photon arrival time (nanotimes)
 nanotimes_specs             | Group for nanotime-specific data.
-tcspc_bin                   | TCSPC time bin duration in seconds (nanotimes unit).
-tcspc_nbins                 | Number of TCSPC bins.
+tcspc_unit                  | TCSPC time bin duration in seconds (nanotimes unit).
+tcspc_num_bins              | Number of TCSPC bins.
 tcspc_range                 | TCSPC full-scale range in seconds.
 tau_accept_only             | Intrinsic Acceptor lifetime (seconds).
 tau_donor_only              | Intrinsic Donor lifetime (seconds).
