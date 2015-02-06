@@ -72,7 +72,7 @@ Some of those parameters are mandatory, some other are optional.
    (``lifetime == True``), ``alex_period`` is expressed in TCSPC bin
    units, such that the alternation period in seconds is
    ``alex_period * tcspc_unit``.
-   
+
 **Optional** for ALEX data:
 
 -  **alex_period_donor**: (array with an even-number of elements,
@@ -415,12 +415,15 @@ num_polariz_ch              | Number of different polarization in the detection
                             | channels. The value is 1 if no polarization selection is
                             | performed and 2 if two orthogonal polarizations are
                             | recorded.
+num_detectors               | Total number of detector pixels used in the measurement.
+acquisition_time            | Measurement duration in seconds.
 lifetime                    | If True (or 1) the data contains nanotimes from TCSPC
                             | hardware
 alex                        | If True (or 1) the file contains ALternated EXcitation
                             | data.
-alex_period                 | The duration of the excitation alternation using the same
-                            | units as the timestamps.
+alex_period                 | The duration of the us-ALEX excitation alternation in the
+                            | same units as the timestamps.
+laser_pulse_rate            | The laser(s) pulse rate in Hertz.
 alex_period_donor           | Start and stop values identifying the donor emission
                             | period.
 alex_period_acceptor        | Start and stop values identifying the acceptor emission
@@ -450,12 +453,24 @@ tau_fret_donor              | Donor lifetime in presence of Acceptor (seconds).
 inverse_fret_rate           | FRET energy transfer lifetime (seconds). Inverse of the
                             | rate of D*A -> DA*.
 particles                   | Particle label (integer) for each timestamp.
+setup                       | Information about the experimental setup.
 excitation_wavelengths      | Array of excitation wavelengths (meters).
 excitation_powers           | Array of excitation powers (in the same order as
                             | excitation_wavelengths). Units: Watts.
 excitation_polarizations    | Polarization angle (in degrees), one for each laser.
 detection_polarization1     | Polarization angle (in degrees) for "polarization1".
 detection_polarization2     | Polarization angle (in degrees) for "polarization2".
+provenance                  | Information about the original data file.
+filename                    | Original file name.
+full_filename               | Original full file name, including the folder.
+creation_time               | Original file creation time.
+modification_time           | Original file time of last modification.
+identity                    | Information about the Photon-HDF5 data file.
+identity_filename           | Photon-HDF5 file name at creation time.
+identity_full_filename      | Photon-HDF5 full file name, including the folder.
+identity_creation_time      | Photon-HDF5 file creation time.
+identity_software           | Software used to save the Photon-HDF5 file.
+identity_software_version   | Software version used to save the Photon-HDF5 file.
 =========================   ==================================================================
 
 Additional attributes are allowed in any node but they should not
