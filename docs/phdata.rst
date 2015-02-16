@@ -53,14 +53,6 @@ Mandatory parameters
    information (typically provided by some kind of digital clock with a
    10-100 ns period).
 
--  **num_spectral_ch**: (interger) number of different spectral
-   bands in the detection channels (i.e. 2 for 2-colors smFRET).
-
--  **num_polariz_ch**: (interger) number of different polarization
-   in the detection channels. The value is 1 if no polarization
-   selection is performed and 2 if two orthogonal polarizations are
-   recorded.
-
 .. note::
 
     **OPEN QUESTION**: How to handle the case of 2 laser excitation and
