@@ -203,7 +203,7 @@ Optional photon data arrays
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -  **nanotimes** (array of integers) contains the TCSPC nanotimes.
-   This array is only required if **``lifetime``** is True.
+   This array is only required if ``lifetime`` is True.
 
 -  **particles**: particle label (or ID number) for each timestamp.
    This optional array is used when the data comes from a simulation
