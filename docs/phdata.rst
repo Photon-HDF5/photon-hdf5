@@ -29,6 +29,21 @@ Mandatory parameters
    measurements. In multi-spot measurements contains the number of
    excitation or detection spots.
 
+-  **num_spectral_ch**: (integer)
+   Number of different spectral bands in the detection channels
+   (i.e. 2 for 2-colors smFRET).
+
+-  **num_polariz_ch**: (integer)
+   Number of different polarization in the detection channels. The value
+   is 1 if no polarization selection is performed and 2 if two independent
+   polarizations are recorded.
+
+-  **num_detectors**: (integer)
+   Total number of detector pixels used in the measurement.
+
+-  **acquisition_time**: (float)
+   Measurement duration in seconds.
+
 -  **alex**: (boolean) if True (i.e. = 1), the measurements uses
    alternated excitation.
 
@@ -365,7 +380,7 @@ has been converted to Photon-HDF5. It contains the following fields:
   Original file name.
 
 - **full_filename**: (string)
-  Original full file name, including the folder.'
+  Original full file name, including the folder.
 
 - **creation_time**: (string)
   Original file creation time.
