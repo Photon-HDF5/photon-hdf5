@@ -63,15 +63,20 @@ interpret data acquired with alternating laser excitation (ALEX),
 whether μs-ALEX or ns-ALEX (aka PIE, or pulsed-interleaved excitation).
 Some of those parameters are mandatory, some other are optional.
 
-**Mandatory** for ALEX data (``alex == True``):
+**Mandatory** for μs-ALEX data (``alex == True``, ``lifetime == False``):
 
 -  **alex_period** (integer or float): the duration of one
-   excitation alternation period. For μs-ALEX data, it is expressed in
+   complete excitation alternation period expressed in
    timestamp units, such that ``alex_period * timestamps_unit`` is the
-   alternation period in seconds. For ns-ALEX data
-   (``lifetime == True``), ``alex_period`` is expressed in TCSPC bin
+   alternation period in seconds.
+
+**Mandatory** for ns-ALEX data (``alex == True``, ``lifetime == True``):
+
+-  **laser_pulse_rate** (integer or float): the duration of one
+   complete excitation alternation period expressed in TCSPC bin
    units, such that the alternation period in seconds is
    ``alex_period * tcspc_unit``.
+
 
 **Optional** for ALEX data:
 
