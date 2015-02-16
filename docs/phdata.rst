@@ -330,6 +330,50 @@ data. The only difference is that, instead of having a single group
 ``/photon_data_0`` .. ``/photon_data_N``, one for each spot. Each group
 has a suffix indicating the spot number (starting from 0).
 
+Identity group
+--------------
+
+The root group ``/identity`` contains info about the Photon-HDF5 file
+at the moment of creation. It contains the following fields:
+
+- **filename**: (string)
+  Photon-HDF5 file name at creation time.
+
+- **full_filename**: (string)
+  Photon-HDF5 full file name, including the folder
+
+- **creation_time**: (string)
+  Photon-HDF5 file creation time.
+
+- **software**: (string)
+  Software used to save the Photon-HDF5 file.
+
+- **software_version**: (string)
+  Software version used to save the Photon-HDF5 file.
+
+
+Provenance group
+----------------
+
+The root group /provenance contains info about the original file that
+has been converted to Photon-HDF5. It contains the following fields:
+
+- **provenance**: (string)
+  Information about the original data file.
+
+- **filename**: (string)
+  Original file name.
+
+- **full_filename**: (string)
+  Original full file name, including the folder.'
+
+- **creation_time**: (string)
+  Original file creation time.
+
+- **modification_time**: (string)
+  Original file time of last modification.
+
+
 Optional Sample Group
 ---------------------
 
