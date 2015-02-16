@@ -41,9 +41,6 @@ Mandatory parameters
 -  **num_detectors**: (integer)
    Total number of detector pixels used in the measurement.
 
--  **acquisition_time**: (float)
-   Measurement duration in seconds.
-
 -  **alex**: (boolean) if True (i.e. = 1), the measurements uses
    alternated excitation.
 
@@ -62,13 +59,9 @@ Mandatory parameters
     (``alex_period_acceptor``) that selects all the photons (i.e.
     ``(0, alex_period)``).
 
-Optional parameters
-^^^^^^^^^^^^^^^^^^^
-
-Currently, optional parameters include information necessary to
+Other parameters include information necessary to
 interpret data acquired with alternating laser excitation (ALEX),
 whether μs-ALEX or ns-ALEX (aka PIE, or pulsed-interleaved excitation).
-Some of those parameters are mandatory, some other are optional.
 
 **Mandatory** for μs-ALEX data (``alex == True``, ``lifetime == False``):
 
@@ -84,6 +77,12 @@ Some of those parameters are mandatory, some other are optional.
    units, such that the alternation period in seconds is
    ``alex_period * tcspc_unit``.
 
+
+Optional parameters
+^^^^^^^^^^^^^^^^^^^
+
+-  **acquisition_time**: (float)
+   Measurement duration in seconds.
 
 **Optional** for ALEX data:
 
