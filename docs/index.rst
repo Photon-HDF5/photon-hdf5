@@ -8,13 +8,13 @@ Photon-HDF5 file format documentation
 
 :Authors: Antonino Ingargiola, Xavier Michalet, Ted Laurence
 :Contact: tritemio@gmail.com
-:Version: 0.2
+:Version: 0.3
 
 .. note ::
-   This document describes the version "0.2-Draft" of the
+   This document describes the version "0.3" of the
    **Photon-HDF5 file format**. The latest version of this document
    can be found at
-   `http://photon-hdf5.readthedocs.org <http://photon-hdf5.readthedocs.org>`__.
+   `http://photon-hdf5.readthedocs.org <http://photon-hdf5.readthedocs.org/en/version0.3/>`__.
 
 Photon-HDF5 is a file format for a class of single-molecule spectroscopy
 experiments that requires storing photon stream data.

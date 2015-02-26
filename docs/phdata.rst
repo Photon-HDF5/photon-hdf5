@@ -11,15 +11,25 @@ An overview of the data format is shown in the following figure:
 
 A Photon-HDF5 is a standard HDF5 file with a predefined structure.
 
-Every Photon-HDF5 needs to have a ``photon_data`` group that
+Every Photon-HDF5 file has a ``photon_data`` group that
 contains the photon timestamps and other per-photon data.
+In the most basic form ``photon_data`` contains only the per-photon data
+(timestamps, detectors, nanotimes, etc...). However, in order to correctly
+interpret the data, additional information is needed (for example
+which detector is donor/acceptor in a 2-colors smFRET experiment, or the
+alternation period in a us-ALEX experiment). These additional specifications,
+if present, are contained inside **/photon_data** in the
+**measuremet_specs** sub-group.
 
-Other optional groups:
+Other optional groups are:
 
-- ``indentity``
-- ``provenance``
-- ``setup``
-- ``sample``
+- **/indentity**: information about the data file
+- **/provenance**: information about the original data file
+- **/setup**: fundamental parameters of the experimental setup
+- **/sample**: sample information.
+
+The following sections describe in details all the Photon-HDF5
+groups and fields.
 
 Root-level parameters
 ---------------------
@@ -44,7 +54,8 @@ Optional if there is only 1 detector:
 
 - **detectors**
 
-Optional:
+In addition, when the dataset contain nanotime information, the following
+fields must be present:
 
 - **nanotimes**
 - **nanotimes_specs/**
