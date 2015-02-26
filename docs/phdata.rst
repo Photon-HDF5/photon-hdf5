@@ -11,9 +11,9 @@ An overview of the data format is shown in the following figure:
 
 A Photon-HDF5 is a standard HDF5 file with a predefined structure.
 
-Every Photon-HDF5 file has a ``photon_data`` group that
+Every Photon-HDF5 file has a **/photon_data** group that
 contains the photon timestamps and other per-photon data.
-In the most basic form ``photon_data`` contains only the per-photon data
+In the most basic form **/photon_data** contains only the per-photon data
 (timestamps, detectors, nanotimes, etc...). However, in order to correctly
 interpret the data, additional information is needed (for example
 which detector is donor/acceptor in a 2-colors smFRET experiment, or the
@@ -66,7 +66,7 @@ fields must be present:
 Measurement specs
 ^^^^^^^^^^^^^^^^^
 
-The optional ``photon_data/measurements_specs`` group contains additional
+The optional **/photon_data/measurements_specs** group contains additional
 information that allows to correctly interpret the data for each specific
 type of measurement.
 
