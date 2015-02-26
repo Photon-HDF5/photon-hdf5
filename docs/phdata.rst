@@ -133,7 +133,7 @@ The **/setup** group contains information about the measurement setup:
 - **num_split_ch**
 
 - **modulated_excitation** True if there is any form of excitation modulation (wavelength,
-  polarization). True also for 2 or more pulse-interleaved excitation
+  polarization). True also for pulse-interleaved excitation
   (PIE) or ns-ALEX.
 - **lifetime**
 
