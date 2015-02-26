@@ -19,7 +19,7 @@ interpret the data, additional information is needed (for example
 which detector is donor/acceptor in a 2-colors smFRET experiment, or the
 alternation period in a us-ALEX experiment). These additional specifications,
 if present, are contained inside **/photon_data** in the
-**measuremet_specs** sub-group.
+**measurement_specs** sub-group.
 
 Other optional groups are:
 
@@ -54,7 +54,7 @@ Optional if there is only 1 detector:
 
 - **detectors**
 
-In addition, when the dataset contain nanotime information, the following
+In addition, when the dataset contains nanotime information, the following
 fields must be present:
 
 - **nanotimes**
