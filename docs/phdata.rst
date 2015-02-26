@@ -66,7 +66,7 @@ fields must be present:
 Measurement specs
 ^^^^^^^^^^^^^^^^^
 
-The optional **/photon_data/measurements_specs** group contains additional
+The optional **/photon_data/measurement_specs** group contains additional
 information that allows to correctly interpret the data for each specific
 type of measurement.
 
