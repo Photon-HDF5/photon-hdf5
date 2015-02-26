@@ -4,7 +4,8 @@ Photon-HDF5 format definition
 Overview
 --------
 
-An overview of the data format is shown in the following figure:
+An overview of the data format is shown in the following figure
+(**outdated figure**):
 
 .. figure:: /images/alex-photon-hdf5.png
     :align: center
@@ -17,8 +18,8 @@ In the most basic form **/photon_data** contains only the per-photon data
 (timestamps, detectors, nanotimes, etc...). However, in order to correctly
 interpret the data, additional information is needed (for example
 which detector is donor/acceptor in a 2-colors smFRET experiment, or the
-alternation period in a us-ALEX experiment). These additional specifications,
-if present, are contained inside **/photon_data** in the
+alternation period in a us-ALEX experiment). If available, these additional
+specifications are contained inside **/photon_data** in the
 **measurement_specs** sub-group.
 
 Other optional groups are:
@@ -91,7 +92,7 @@ For 2-color (or more) us-ALEX and ns-ALEX (optional)
 Detectors specs
 """""""""""""""
 
-An important sub-group of ``measurement_specs`` is **detectors_specs/**
+Inside **measurement_specs**, the sub-group **detectors_specs/**
 that contains the mapping between the each pixel ID and the detection channels
 (i.e. spectral bands, polarizations, etc...).
 
@@ -99,8 +100,8 @@ that contains the mapping between the each pixel ID and the detection channels
 - **labels**: (optional) a table with 2 columns: detector ID and detector
   label (string).
   For 2-color smFRET the labels should be "donor" and "acceptor".
-  When detector ID is a n-tuple, labels has n+1 column (n for the ID
-  and 1 for the labels).
+  When detector ID is a n-tuple, ``labels`` has *n+1* columns
+  (*n* for the ID and 1 for the labels).
 
 For all 2-color detection (or more) measurements:
 
@@ -108,12 +109,13 @@ For all 2-color detection (or more) measurements:
 - **spectral_ch2**
 - etc...
 
-For measurements that record polarization:
+For measurements that record the polarization:
 
 - **polarization_ch1**
 - **polarization_ch2**
 
-When the detection path is split in 2 ch. through a non-polarizing beam splitter
+When the detection path is split in 2 channels through a non-polarizing
+beam splitter the different detection channels are specified in:
 
 - **split_ch1**
 - **split_ch2**
