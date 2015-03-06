@@ -93,32 +93,64 @@ Detectors specs
 """""""""""""""
 
 Inside **measurement_specs**, the sub-group **detectors_specs/**
-that contains the mapping between the each pixel ID and the detection channels
-(i.e. spectral bands, polarizations, etc...).
+contains the mapping between the each pixel ID and the detection channels
+(i.e. spectral bands, polarizations or splitted channels).
 
+Note that a detector ID can be a single integer of a n-tuple of integers,
+to support the case of 2-D detector arrays. Therefore an array of detector
+IDs can be either a 1-D or a 2-D array, in the latter case it is one row
+per detector.
 
-- **labels**: (optional) a table with 2 columns: detector ID and detector
-  label (string).
-  For 2-color smFRET the labels should be "donor" and "acceptor".
-  When detector ID is a n-tuple, ``labels`` has *n+1* columns
-  (*n* for the ID and 1 for the labels).
-
-For all 2-color detection (or more) measurements:
+When a measurement records more than 1 spectral band, the fields:
 
 - **spectral_ch1**
 - **spectral_ch2**
 - etc...
 
-For measurements that record the polarization:
+specify which detector is employed in each spectral band. When the measurement
+records only 1 spectral band these fields may be omitted. The spectral bands
+are strictly ordered for increasing wavelenghts. For example, for 2-color
+smFRET measurements ``spectral_ch1`` and ``spectral_ch2`` represent the donor
+and acceptor channel respectively.
+
+When a measurement records more than 1 polarization state, the fields:
 
 - **polarization_ch1**
 - **polarization_ch2**
 
+specify which detector is employed for each polarization. When the measurement
+records only one polarization these fields may be omitted.
+
 When the detection path is split in 2 channels through a non-polarizing
-beam splitter the different detection channels are specified in:
+beam splitter the fields:
+
 
 - **split_ch1**
 - **split_ch2**
+
+specify which detector is employed in each of the "splitted" channels.
+
+All the previous fields are arrays containing one or more detector IDs.
+For example, a 2-color smFRET measurement will have only one value in
+``spectral_ch1`` (i.e. donor) and one value in ``spectral_ch2``
+(i.e. acceptor). A 2-color smFRET measurement with polarization
+(4 detectors) will have 2 values in each of the ``spectral_chX`` and
+``polarization_chX`` fields.
+For a multispot smFRET measurement, ``spectral_chX`` will contain the list
+of donor/acceptor detectors (see section 2.3).
+
+Finally, a label (i.e. a string) can be associated to each detector through
+the following optional field:
+
+- **labels**: (optional) a table with 2 columns: detector ID and detector
+  label (a string).
+
+For 2-color smFRET measurements it is recommended to use the labels "donor"
+and "acceptor" for the respective detectors. Note, however, that these
+labels only represent an additional user-defined metadata and are not
+necessary for the interpretation of the measurement.
+When detector ID is a *n*-tuple, ``labels`` has *n+1* columns
+(*n* for the ID and 1 for the labels).
 
 
 setup group
