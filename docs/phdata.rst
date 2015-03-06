@@ -47,22 +47,36 @@ This section illustrates the layout of the **/photon_data** group:
 
 Mandatory:
 
-- **timestamps**
+- **timestamps**: (array) the photon timestamps.
 - **timestamps_specs/**
     - **timestamps_unit**
 
-Optional if there is only 1 detector:
+Optional if there is only 1 detector, otherwise mandatory:
 
-- **detectors**
+- **detectors**: (array of integers) the detector ID for each timestamp.
 
-In addition, when the dataset contains nanotime information, the following
+When the dataset contains nanotime information, the following
 fields must be present:
 
-- **nanotimes**
-- **nanotimes_specs/**
-    - **tcspc_unit**
-    - **tcspc_range**
-    - **tcspc_num_bins**
+- **nanotimes**:(array of integers) the TCSPC nanotimes.
+ - **nanotimes_specs/**
+    - **tcspc_unit**: (float) TAC/TDC bin size (in seconds).
+    - **tcspc_range**:(float) Full-scale range of the TAC/TDC (in seconds).
+    - **tcspc_num_bins**: (integer) TAC/TDC number of bins.
+
+Optionally ``nanotimes_specs`` can also contain:
+
+-  **irf_donor_hist**: (array of integers) Instrument Response
+   Function (IRF) histogram for the donor detection channel.
+-  **irf_acceptor_hist**: (array of integers) Instrument Response
+   Function (IRF) histogram for the acceptor detection channel.
+-  **calibration_hist**: (array of integers) Histograms of
+   uncorrelated counts used to correct the TCSPC non-linearities.
+
+Finally, if the data come from a simulation, ``/photon_data`` may contain:
+
+-  **particles**: (array of integers) a particle ID (integer) for each
+   timestamp.
 
 Measurement specs
 ^^^^^^^^^^^^^^^^^
