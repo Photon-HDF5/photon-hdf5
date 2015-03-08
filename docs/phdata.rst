@@ -5,7 +5,7 @@ Overview
 --------
 
 An overview of the data format is shown in the following figure
-(**outdated figure**):
+(**figure outdated**):
 
 .. figure:: /images/alex-photon-hdf5.png
     :align: center
@@ -42,14 +42,13 @@ Root-level parameters
 Photon-data group
 -----------------
 
+This section describes the layout and fields in the **/photon_data** group.
 
-This section illustrates the layout of the **/photon_data** group:
-
-Mandatory:
+Mandatory fields:
 
 - **timestamps**: (array) the photon timestamps.
 - **timestamps_specs/**
-    - **timestamps_unit**
+    - **timestamps_unit**: (float) timestamps units in *seconds*.
 
 Optional if there is only 1 detector, otherwise mandatory:
 
@@ -82,22 +81,41 @@ Measurement specs
 ^^^^^^^^^^^^^^^^^
 
 The optional **/photon_data/measurement_specs** group contains additional
-information that allows to correctly interpret the data for each specific
-type of measurement.
+information that allows to unambiguously interpret the data for each specific
+type of measurement. This group is optional, but if present it must be complete.
 
-This group is optional, but if present it must be complete.
+- **measurement_type**: (string) the type of the measurements. Valid names
+  are:
+  - "smFRET" (1 excitation color, 2 detection colors)
+  - "smFRET-usALEX" (2 excitation colors, 2 detection colors)
+  - "smFRET-usALEX-3c" (3 excitation colors, 3 detection colors)
+  - "smFRET-nsALEX" (2 excitation colors, 2 detection colors)
 
-- **measurement_type**: (string) "smFRET", "smFRET-usALEX", etc...
+  New names can be created for different kind of measurements and we
+  encourage users to submit new names requests.
 
-For us-ALEX, 2, 3 or N colors
+The field *measurement_type* represents the name of the specific measurement
+that is saved into the file. It is an important field that allows the sofware
+library that reads and saves Photon-HDF5 files to perform strict consistency
+checks.
+In fact, each *measurement_type*, has an associated set of mandatory fields
+that must be present to assure the all the information needed to
+unambiguously interpret the data is present.
+For example, for a 2-color smFRET measurement the software can check if
+the specification of which detector represents the donor or acceptor channel
+is present. If not present, it can throw and error or warn the user so that
+this important information can be added before saving the file.
+This prevents the accidental creation of incomplete or inconsistent files.
+
+For us-ALEX, 2, 3 or N colors:
 
 - **alex_period**
 
-For ns-ALEX (or lifetime with no alternation)
+For ns-ALEX (or lifetime with no alternation):
 
 - **laser_pulse_rate**
 
-For 2-color (or more) us-ALEX and ns-ALEX (optional)
+For 2-color (or more) us-ALEX and ns-ALEX (optional):
 
 - **alex_period_spectral_ch1**
 - **alex_period_spectral_ch2**
