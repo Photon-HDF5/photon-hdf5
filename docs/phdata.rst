@@ -86,6 +86,7 @@ type of measurement. This group is optional, but if present it must be complete.
 
 - **measurement_type**: (string) the type of the measurements. Valid names
   are:
+
   - "smFRET" (1 excitation color, 2 detection colors)
   - "smFRET-usALEX" (2 excitation colors, 2 detection colors)
   - "smFRET-usALEX-3c" (3 excitation colors, 3 detection colors)
@@ -109,17 +110,64 @@ This prevents the accidental creation of incomplete or inconsistent files.
 
 For us-ALEX, 2, 3 or N colors:
 
-- **alex_period**
+- **alex_period**: (integer or float) the duration of one complete excitation
+  alternation period expressed in timestamp units, such that
+  ``alex_period * timestamps_unit`` is the alternation period in seconds.
 
 For ns-ALEX (or lifetime with no alternation):
 
-- **laser_pulse_rate**
+- **laser_pulse_rate**: (float) excitation laser pulse repetition rate in
+  *Hertz*.
 
 For 2-color (or more) us-ALEX and ns-ALEX (optional):
 
-- **alex_period_spectral_ch1**
-- **alex_period_spectral_ch2**
+- **alex_period_spectral_ch1**: (array with an even-number of interger
+  elements) the start and stop values identifying the *spectral_ch1*
+  (i.e. *donor* for smFRET measurements) emission period.
+
+- **alex_period_spectral_ch2**: (array with an even-number of interger
+  elements) the start and stop values identifying the *spectral_ch2*
+  (i.e. *acceptor* for smFRET measurements) emission period.
+
 - etc...
+
+.. note::
+
+    For μs-ALEX, *alex_period_donor* and *alex_period_acceptor*
+    are both 2-element arrays. In this case these values are expressed in
+    *timestamps_units*.
+    For ns-ALEX (or PIE), they are arrays with an even-number of elements,
+    comprising as many start-stop pairs as the number of excitation periods
+    in the TAC/TDC range. In this case these values are expressed in
+    *nanotimes_units*.
+
+Note for μs-ALEX
+""""""""""""""""
+
+The fields ``alex_period_donor`` and ``alex_period_acceptor`` allow
+defining photons detected during donor or acceptor excitation. As an
+example, let's define the array
+
+``A`` = ``timestamps`` MODULO ``alex_period``
+
+as the array of timestamps modulo the ALEX alternation period.
+Photons emitted during the donor period (respectively acceptor
+period) are obtained by applying one of these two conditions:
+
+-  ``(A > start) and (A < stop)`` when ``start < stop`` (*internal
+   range*)
+
+-  ``(A > start) or  (A < stop)`` when ``start > stop`` (*external
+   range*).
+
+.. figure:: /images/alternation_range.png
+    :alt: Illustration of the internal and external ranges
+    :align: center
+
+    Alternation histogram showing selection for the donor and acceptor periods.
+    In this case the donor period is defined as an "external range" (2850, 580)
+    while the acceptor period as an "internal range" (900, 2580).
+
 
 Detectors specs
 """""""""""""""
