@@ -241,7 +241,7 @@ omitted.
 - **excitation_powers**: (array of floats) excitation power in *Watts*
   for each excitation source.
 
-- **detection_splits_ratios**: (array of floats) power fractions detected
+- **detection_split_ch_ratios**: (array of floats) power fractions detected
   by each "beam-split" channel (i.e. independent detection channels
   obtained through a non-polarizing beam splitter). For 2 beam-split
   channels that receive the same power this array should be *[0.5, 0.5]*.
