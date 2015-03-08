@@ -144,13 +144,13 @@ For 2-color (or more) us-ALEX and ns-ALEX (optional):
 Note for μs-ALEX
 """"""""""""""""
 
-The fields ``alex_period_donor`` and ``alex_period_acceptor`` allow
+The fields *alex_period_donor* and *alex_period_acceptor* allow
 defining photons detected during donor or acceptor excitation. As an
 example, let's define the array
 
-``A`` = ``timestamps`` MODULO ``alex_period``
+``A`` = ``timestamps`` *MODULO* ``alex_period``
 
-as the array of timestamps modulo the ALEX alternation period.
+as the array of timestamps modulo the μs-ALEX alternation period.
 Photons emitted during the donor period (respectively acceptor
 period) are obtained by applying one of these two conditions:
 
@@ -220,7 +220,7 @@ For a multispot smFRET measurement, ``spectral_chX`` will contain the list
 of donor/acceptor detectors (see section 2.3).
 
 Finally, a label (i.e. a string) can be associated to each detector through
-the following optional field:
+the optional field *labels*:
 
 - **labels**: (optional) a table with 2 columns: detector ID and detector
   label (a string).
