@@ -108,7 +108,7 @@ Detectors specs
 
 Inside **measurement_specs**, the sub-group **detectors_specs/**
 contains the mapping between the each pixel ID and the detection channels
-(i.e. spectral bands, polarizations or beam-splitted channels).
+(i.e. spectral bands, polarizations or beam-split channels).
 
 Note that a detector ID can be a single integer of a n-tuple of integers,
 to support the case of 2-D detector arrays. Therefore an array of detector
@@ -142,7 +142,7 @@ beam splitter the fields:
 - **split_ch1**
 - **split_ch2**
 
-specify which detector is employed in each of the "beam-splitted" channels.
+specify which detector is employed in each of the "beam-split" channels.
 
 All the previous fields are arrays containing one or more detector IDs.
 For example, a 2-color smFRET measurement will have only one value in
@@ -186,16 +186,16 @@ The **/setup** group contains information about the measurement setup:
   When there is only a single detection channel or all the channels receive
   the same spectral band this value is 1.
 
-- **num_polariz_ch**: (integer) number of distinct detection polarization
+- **num_polarization_ch**: (integer) number of distinct detection polarization
   channels. For example, in polarization anysotropy measurements this value
   is 2.
   When there is only a single detection channel or all the channels receive
-  the same polarization (aven when no polarization selection is performed)
+  the same polarization (even when no polarization selection is performed)
   this value is 1.
 
 - **num_split_ch**: (integer) number of distinct detection channels that
-  receive the same spectral band and polarization. For example, when a
-  non polarizinf beam-splitter is employed in the detection path, this value
+  receive the same spectral and polarization band. For example, when a
+  non-polarizing beam-splitter is employed in the detection path, this value
   is 2. When no polarization- and spectral-insensitive splitting is performed
   this value is 1.
 
@@ -222,12 +222,13 @@ particular experimental configuration. If not-relevant these field should be
 omitted.
 
 - **excitation_polarizations**: (arrays of floats) list of polarization
-  angles for each excitation source.
+  angles (in degrees) for each excitation source.
   The order of excitation sources is the same as in
   ``excitation_wavelengths`` and it is in increasing order of wavelengths.
 
-- **detection_wavelengths**: (arrays of floats) reference wavelengths
-  for each detection spectral band. This array is ordered in increasing order.
+- **detection_wavelengths**: (arrays of floats) reference wavelengths (in
+  *meters*) for each detection spectral band.
+  This array is ordered in increasing order of wavelengths.
   The first element refers to ``detectors_specs/spectral_ch1``, the second to
   ``detectors_specs/spectral_ch2`` and so on.
 
@@ -237,13 +238,13 @@ omitted.
   to ``detectors_specs/polarization_ch2`` and so on.
   This field is not-relevant if no polarization selection is performed.
 
-- **excitation_powers**: (array of floats) excitation power in Watts for each
-  excitation source.
+- **excitation_powers**: (array of floats) excitation power in *Watts*
+  for each excitation source.
 
 - **detection_splits_ratios**: (array of floats) power fractions detected
-  by each "beam-splited" channel (i.e. independent detection channels
-  obtained through a non-polarizing beam splitter). For 2 beam-splitted
-  channesl that receive the same power this array should be *[0.5, 0.5]*.
+  by each "beam-split" channel (i.e. independent detection channels
+  obtained through a non-polarizing beam splitter). For 2 beam-split
+  channels that receive the same power this array should be *[0.5, 0.5]*.
   The first element refers to ``detectors_specs/split_ch1``, the second to
   ``detectors_specs/split_ch2`` and so on.
   This field is not-relevant when no polarization- and spectral-insensitive
