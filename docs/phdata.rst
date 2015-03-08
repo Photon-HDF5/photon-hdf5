@@ -238,13 +238,14 @@ setup group
 
 The **/setup** group contains information about the measurement setup:
 
-- **num_pixels**: (integer) total number of detector's pixels.
+- **num_pixels**: (integer) total number of detector's pixels. For example,
+  for a 1-spot 2-color smFRET measurement using 2 single-pixel SPADs as
+  detectors this field is 2.
 
-- **num_spots**: (integer or "none") the number of excitation (or detection)
+- **num_spots**: (integer) the number of excitation (or detection)
   "spots" in the sample. This field is 1 for all the measurements using a
   single confocal excitation volume. When not applicable, for example under
-  widefield illumination with 2-D imaging detectors, this value must be
-  the string "none".
+  widefield illumination with 2-D imaging detectors, this field is omitted.
 
 - **num_spectral_ch**: (integer) number of distinct detection spectral
   channels. For example, in a 2-color smFRET experiment there are 2
