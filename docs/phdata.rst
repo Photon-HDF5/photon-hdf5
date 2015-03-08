@@ -206,7 +206,7 @@ The **/setup** group contains information about the measurement setup:
 
 - **lifetime**: (boolean) *True* (i.e. 1) if the measurements includes a
   *nanotimes* array of (usually sub-ns resolution) photon arrival times
-  respect to a laser pulse.
+  respect to a laser pulse (like in TCSPC measurements).
 
 - **excitation_cw**: (array of booleans) for each excitation source,
   this field indicates whether it is continuous wave (CW), *True*, or pulsed,
