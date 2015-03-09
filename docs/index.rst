@@ -35,9 +35,8 @@ important for single-molecule spectroscopy see
 
     Even if this specification is still a draft, it is the third complete
     rewrite of the file format. Therefore we do not forsee big modifications
-    anyymore.
-    Comments and suggestions (including typos fixes) are as always encouraged,
-    by all the interested parties.
+    anymore.
+    Comments and suggestions (including typos fixes) are encouraged.
 
     Version 0.3 will be the first version to be declared stable and for which
     we commit to strong backward compatibility.
