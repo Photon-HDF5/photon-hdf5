@@ -12,28 +12,28 @@ An overview of the data format is shown in the following figure
 
 A Photon-HDF5 is a standard HDF5 file with a predefined structure.
 
-Every Photon-HDF5 file has a :ref:`**/photon_data** <photon_data_group>`
+Every Photon-HDF5 file has a :ref:`/photon_data <photon_data_group>`
 group that contains the photon timestamps and other per-photon data.
-In the most basic form **/photon_data** contains only the per-photon data
+In the most basic form */photon_data* contains only the per-photon data
 (timestamps, detectors, nanotimes, etc...). However, in order to correctly
 interpret the data, additional information is needed (for example
 which detector is donor/acceptor in a 2-colors smFRET experiment, or the
 alternation period in a us-ALEX experiment). If available, these additional
-specifications are contained inside **/photon_data** in the
- :ref:`**measurement_specs** sub-group <measurement_specs_group>`.
+specifications are contained inside */photon_data* in the
+ :ref:`measurement_specs sub-group <measurement_specs_group>`.
 
 Other optional groups are:
 
-- :ref:`**/identity** <indentity_group>`:
+- :ref:`/identity <identity_group>`:
   information about the data file
 
-- :ref:`**/provenance** <provenance_group>`:
+- :ref:`/provenance <provenance_group>`:
   information about the original data file
 
-- :ref:`**/setup** <setup_group>`:
+- :ref:`/setup <setup_group>`:
   fundamental parameters of the experimental setup
 
-- :ref:`**/sample** <sample_group>`:
+- :ref:`/sample <sample_group>`:
   sample information.
 
 The following sections describe in details all the Photon-HDF5
