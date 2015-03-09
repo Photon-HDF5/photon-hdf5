@@ -20,7 +20,7 @@ interpret the data, additional information is needed (for example
 which detector is donor/acceptor in a 2-colors smFRET experiment, or the
 alternation period in a us-ALEX experiment). If available, these additional
 specifications are contained inside */photon_data* in the
- :ref:`measurement_specs sub-group <measurement_specs_group>`.
+:ref:`measurement_specs sub-group <measurement_specs_group>`.
 
 Other optional groups are:
 
