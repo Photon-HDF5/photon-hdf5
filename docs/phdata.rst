@@ -12,22 +12,29 @@ An overview of the data format is shown in the following figure
 
 A Photon-HDF5 is a standard HDF5 file with a predefined structure.
 
-Every Photon-HDF5 file has a **/photon_data** group that
-contains the photon timestamps and other per-photon data.
+Every Photon-HDF5 file has a :ref:`**/photon_data** <photon_data_group>`
+group that contains the photon timestamps and other per-photon data.
 In the most basic form **/photon_data** contains only the per-photon data
 (timestamps, detectors, nanotimes, etc...). However, in order to correctly
 interpret the data, additional information is needed (for example
 which detector is donor/acceptor in a 2-colors smFRET experiment, or the
 alternation period in a us-ALEX experiment). If available, these additional
 specifications are contained inside **/photon_data** in the
-**measurement_specs** sub-group.
+ :ref:`**measurement_specs** sub-group <measurement_specs_group>`.
 
 Other optional groups are:
 
-- **/indentity**: information about the data file
-- **/provenance**: information about the original data file
-- **/setup**: fundamental parameters of the experimental setup
-- **/sample**: sample information.
+- :ref:`**/identity** <indentity_group>`:
+  information about the data file
+
+- :ref:`**/provenance** <provenance_group>`:
+  information about the original data file
+
+- :ref:`**/setup** <setup_group>`:
+  fundamental parameters of the experimental setup
+
+- :ref:`**/sample** <sample_group>`:
+  sample information.
 
 The following sections describe in details all the Photon-HDF5
 groups and fields.
@@ -38,6 +45,8 @@ Root-level parameters
 - **/acquisition_time**: (float) the measurement duration in seconds.
 - **/comment**: (string) a user defined comment.
 
+
+.. _photon_data_group:
 
 Photon-data group
 -----------------
@@ -77,12 +86,16 @@ Finally, if the data come from a simulation, ``/photon_data`` may contain:
 -  **particles**: (array of integers) a particle ID (integer) for each
    timestamp.
 
+
+.. _measurement_specs_group:
+
 Measurement specs
 ^^^^^^^^^^^^^^^^^
 
 The optional **/photon_data/measurement_specs** group contains additional
 information that allows to unambiguously interpret the data for each specific
-type of measurement. This group is optional, but if present it must be complete.
+type of measurement. This group is optional, but if present it must be
+complete.
 
 - **measurement_type**: (string) the type of the measurements. Valid names
   are:
@@ -169,6 +182,8 @@ period) are obtained by applying one of these two conditions:
     while the acceptor period as an "internal range" (900, 2580).
 
 
+.. _detectors_specs_group:
+
 Detectors specs
 """""""""""""""
 
@@ -232,6 +247,8 @@ necessary for the interpretation of the measurement.
 When detector ID is a *n*-tuple, ``labels`` has *n+1* columns
 (*n* for the ID and 1 for the labels).
 
+
+.. _setup_group:
 
 setup group
 -----------
@@ -317,6 +334,8 @@ particular experiment. If not-relevant these fields are omitted.
   splitting is performed.
 
 
+.. _identity_group:
+
 identity group
 --------------
 
@@ -330,6 +349,9 @@ The **identity/** group contains info about the specific Photon-HDF5 file:
 - **format_name**: (string) This must always be "Photon-HDF5"
 - **format_version**: (string) "0.3"
 - **format_url**: (string) A URL pointing to the Photon-HDF5 documentation.
+
+
+.. _provenance_group:
 
 provenance group
 ----------------
@@ -345,6 +367,9 @@ been converted to Photon-HDF5 file. This group is optionla but reccomended.
 - **modification_time**: (string)
 - **software**: (string)
 - **software_version**: (string)
+
+
+.. _sample_group:
 
 sample group
 ------------
