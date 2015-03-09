@@ -190,8 +190,8 @@ When a measurement records more than 1 spectral band, the fields:
 specify which detector is employed in each spectral band. When the measurement
 records only 1 spectral band these fields may be omitted. The spectral bands
 are strictly ordered for increasing wavelenghts. For example, for 2-color
-smFRET measurements ``spectral_ch1`` and ``spectral_ch2`` represent the donor
-and acceptor channel respectively.
+smFRET measurements ``spectral_ch1`` and ``spectral_ch2`` represent the
+*donor* and *acceptor* channel respectively.
 
 When a measurement records more than 1 polarization state, the fields:
 
@@ -239,7 +239,7 @@ setup group
 The **/setup** group contains information about the measurement setup:
 
 - **num_pixels**: (integer) total number of detector's pixels. For example,
-  for a 1-spot 2-color smFRET measurement using 2 single-pixel SPADs as
+  for a single-spot 2-color smFRET measurement using 2 single-pixel SPADs as
   detectors this field is 2.
 
 - **num_spots**: (integer) the number of excitation (or detection)
@@ -261,10 +261,10 @@ The **/setup** group contains information about the measurement setup:
   this value is 1.
 
 - **num_split_ch**: (integer) number of distinct detection channels that
-  receive the same spectral and polarization band. For example, when a
-  non-polarizing beam-splitter is employed in the detection path, this value
-  is 2. When no polarization- and spectral-insensitive splitting is performed
-  this value is 1.
+  receive the same spectral band **and** polarization state. For example,
+  when a non-polarizing beam-splitter is employed in the detection path,
+  this value is 2. When no polarization- and spectral-insensitive splitting
+  is performed this value is 1.
 
 - **modulated_excitation**: (boolean) *True* (i.e. 1) if there is any form of
   excitation modulation either in wavelength (like in us-ALEX or PAX) or in
@@ -275,23 +275,25 @@ The **/setup** group contains information about the measurement setup:
   *nanotimes* array of (usually sub-ns resolution) photon arrival times
   respect to a laser pulse (like in TCSPC measurements).
 
+- **excitation_wavelengths**: (array of floats) list of excitation wavelengths
+  (center wavelength if broad-band) in increasing order. Units are in *meters*.
+
 - **excitation_cw**: (array of booleans) for each excitation source,
   this field indicates whether it is continuous wave (CW), *True*, or pulsed,
   *False*.
   The order of excitation sources is the same as in
   ``excitation_wavelengths`` and it is in increasing order of wavelengths.
 
-- **excitation_wavelengths**: (array of floats) list of excitation wavelengths
-  (center wavelength if braod-band) in increasing order. Units are in *meters*.
-
-The following fields are optional and not all all them are relevant for a
-particular experimental configuration. If not-relevant these field should be
-omitted.
+The following fields are optional and not necessarly relevant for each
+particular experiment. If not-relevant these fields are omitted.
 
 - **excitation_polarizations**: (arrays of floats) list of polarization
   angles (in degrees) for each excitation source.
   The order of excitation sources is the same as in
   ``excitation_wavelengths`` and it is in increasing order of wavelengths.
+
+- **excitation_powers**: (array of floats) excitation power in *Watts*
+  for each excitation source.
 
 - **detection_wavelengths**: (arrays of floats) reference wavelengths (in
   *meters*) for each detection spectral band.
@@ -304,9 +306,6 @@ omitted.
   The first element refers to ``detectors_specs/polarization_ch1``, the second
   to ``detectors_specs/polarization_ch2`` and so on.
   This field is not-relevant if no polarization selection is performed.
-
-- **excitation_powers**: (array of floats) excitation power in *Watts*
-  for each excitation source.
 
 - **detection_split_ch_ratios**: (array of floats) power fractions detected
   by each "beam-split" channel (i.e. independent detection channels
