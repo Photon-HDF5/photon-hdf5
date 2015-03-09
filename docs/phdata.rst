@@ -18,7 +18,7 @@ In the most basic form */photon_data* contains only the per-photon data
 (timestamps, detectors, nanotimes, etc...). However, in order to correctly
 interpret the data, additional information is needed (for example
 which detector is donor/acceptor in a 2-colors smFRET experiment, or the
-alternation period in a us-ALEX experiment). If available, these additional
+alternation period in a μs-ALEX experiment). If available, these additional
 specifications are contained inside */photon_data* in the
 :ref:`measurement_specs sub-group <measurement_specs_group>`.
 
@@ -121,7 +121,7 @@ is present. If not present, it can throw and error or warn the user so that
 this important information can be added before saving the file.
 This prevents the accidental creation of incomplete or inconsistent files.
 
-For us-ALEX, 2, 3 or N colors:
+For μs-ALEX, 2, 3 or N colors:
 
 - **alex_period**: (integer or float) the duration of one complete excitation
   alternation period expressed in timestamp units, such that
@@ -132,7 +132,7 @@ For ns-ALEX (or lifetime with no alternation):
 - **laser_pulse_rate**: (float) excitation laser pulse repetition rate in
   *Hertz*.
 
-For 2-color (or more) us-ALEX and ns-ALEX (optional):
+For 2-color (or more) μs-ALEX and ns-ALEX (optional):
 
 - **alex_period_spectral_ch1**: (array with an even-number of interger
   elements) the start and stop values identifying the *spectral_ch1*
@@ -284,7 +284,7 @@ The **/setup** group contains information about the measurement setup:
   is performed this value is 1.
 
 - **modulated_excitation**: (boolean) *True* (i.e. 1) if there is any form of
-  excitation modulation either in wavelength (like in us-ALEX or PAX) or in
+  excitation modulation either in wavelength (like in μs-ALEX or PAX) or in
   polarization. This field is also *True* for pulse-interleaved excitation
   (PIE) or ns-ALEX measurements.
 
