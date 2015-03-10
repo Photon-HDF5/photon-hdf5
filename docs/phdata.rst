@@ -28,7 +28,7 @@ Other optional groups are:
   Information about the data file (**example?**)
 
 - :ref:`/provenance <provenance_group>`:
-  Information about the original data file (when the HDF5 file results from the conversion of a different file format) 
+  Information about the original data file (when the HDF5 file results from the conversion of a different file format)
 
 - :ref:`/setup <setup_group>`:
   Description of the experimental setup (**example?**)
@@ -111,7 +111,7 @@ complete if present (**Should it be discarded if incomplete?**).
   encourage users to submit new name requests.
 
 The *measurement_type* field describes the type of measurement
- saved within the file. It is an important field allowing sofware
+saved within the file. It is an important field allowing sofware
 packages reading and saveing Photon-HDF5 files to perform consistency
 checks.
 Each *measurement_type* has an associated set of mandatory fields
@@ -136,12 +136,14 @@ For ns-ALEX (or lifetime with no alternation):
 For 2-color (or more) μs-ALEX and ns-ALEX (optional):
 
 - **alex_period_spectral_ch1**: (array with an even-number of integer
-  elements) start and stop nanotime values identifying the *spectral_ch1*
-  (i.e. *donor* for smFRET measurements) emission period.
+  elements) start and stop values identifying the *spectral_ch1*
+  (i.e. *donor* for smFRET measurements) emission period (see note below for
+  more details).
 
 - **alex_period_spectral_ch2**: (array with an even-number of interger
-  elements) start and stop nanotime values identifying the *spectral_ch2*
-  (i.e. *acceptor* for smFRET measurements) emission period.
+  elements) start and stop values identifying the *spectral_ch2*
+  (i.e. *acceptor* for smFRET measurements) emission period (see note below for
+  more details).
 
 - etc...
 
@@ -189,14 +191,16 @@ period) are obtained by applying one of these two conditions:
 Detectors specs
 """""""""""""""
 
-Within **measurement_specs**, the **detectors_specs/** sub-group 
-contains all (detector ID, detection channel) associations 
-(i.e. spectral bands, polarizations or beam-split channels (**what's that?**)).
+Within **measurement_specs**, the **detectors_specs/** sub-group
+contains all (detector ID, detection channel) associations,
+i.e. spectral bands, polarizations or
+:ref:`beam-split channels <beam_split_ch>`.
 
-Note that a detector ID can be a single integer (single spot), or a n-tuple of integers
-in the case of 2-D detector arrays (multiple spots). Consequently, the detector
-IDs array can be either a 1-D or a 2-D array. In the latter case, it is one row
-per detector (**spot?**).
+Note that a detector ID is the "name" of each pixels and can be a single
+integer (when all the pixels are numbered with a progressive index), or a
+n-tuple of integers in the case of 2-D detector arrays. Consequently, an
+array of detector IDs can be either a 1-D column array or a 2-D array.
+In either cases, each row identifies a detector.
 
 When a measurement records more than 1 spectral band, the fields:
 
@@ -383,3 +387,32 @@ This group is optional.
 - **dye_names**: (array of string) list of dye names (for example: ['ATTO550', 'ATTO647N'])
 - **buffer_name**: (string) a user defined description for the buffer.
 - **sample_name**: (string) a user defined description for the sample.
+
+
+.. _glossary:
+
+Additional notes adn definitions
+--------------------------------
+
+.. _detector_ids:
+
+Detector IDs
+^^^^^^^^^^^^
+
+TODO
+
+
+.. _beam_split_ch:
+
+Beam-split channels
+^^^^^^^^^^^^^^^^^^^
+
+TODO
+
+
+.. _alex_period_def:
+
+Definition of alternation periods
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+TODO
