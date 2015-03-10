@@ -26,17 +26,17 @@ specifications are contained within the */photon_data* field in the
 Other optional groups are:
 
 - :ref:`/identity <identity_group>`:
-  Information about the data file (**example?**)
+  Information about the data file
 
 - :ref:`/provenance <provenance_group>`:
-  Information about the original data file (when the HDF5 file results from
-  the conversion of a different file format)
+  Information about the original data file (when the Photon-HDF5 file
+  results from the conversion of a different file format)
 
 - :ref:`/setup <setup_group>`:
-  Description of the experimental setup (**example?**)
+  Description of the experimental setup
 
 - :ref:`/sample <sample_group>`:
-  Sample information (**example?**).
+  Description of the measured sample
 
 The following sections describe the Photon-HDF5
 groups and fields.
@@ -278,9 +278,9 @@ The **/setup** group contains information about the measurement setup:
   is performed, its value is 1.
 
 - **modulated_excitation**: (boolean) *True* (or 1) if there is any form of
-  excitation modulation either in the wavelength space (as in μs-ALEX or PAX) or in
-  the polarization space. This field is also *True* for pulse-interleaved excitation
-  (PIE) or ns-ALEX measurements.
+  excitation modulation either in the wavelength space (as in μs-ALEX or PAX)
+  or in the polarization space. This field is also *True* for
+  pulse-interleaved excitation (PIE) or ns-ALEX measurements.
 
 - **lifetime**: (boolean) *True* (or 1) if the measurements includes a
   *nanotimes* array of (usually sub-ns resolution) photon arrival times with
@@ -290,8 +290,8 @@ The **/setup** group contains information about the measurement setup:
   (center wavelength if broad-band) in increasing order (unit: *meter*).
 
 - **excitation_cw**: (array of booleans) for each excitation source,
-  this field indicates whether excitation is continuous wave (CW), *True*, or pulsed,
-  *False*.
+  this field indicates whether excitation is continuous wave (CW), *True*,
+  or pulsed, *False*.
   The order of excitation sources is the same as that in
   ``excitation_wavelengths`` and is in increasing order of wavelengths.
 
@@ -351,8 +351,10 @@ file. If some information is not availble the relative field may be omitted.
 - **full_filename**: (string)
 - **creation_time**: (string) Creation time with the following format:
   "YYYY-MM-DD HH:MM:SS".
-- **software**: (string) name of the software that created the Photon-HDF5 file.
-- **software_version**: (string) version of the software that created the Photon-HDF5 file.
+- **software**: (string) name of the software that created the
+  Photon-HDF5 file.
+- **software_version**: (string) version of the software that created
+  the Photon-HDF5 file.
 - **format_name**: (string) this must always be "Photon-HDF5"
 - **format_version**: (string) for the current version it  must be "0.3"
 - **format_url**: (string) A URL pointing to the Photon-HDF5 specification
