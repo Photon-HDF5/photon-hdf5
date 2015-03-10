@@ -17,7 +17,8 @@ group that contains the photon timestamps and other single photon data.
 In the most basic form */photon_data* contains only the per-photon data
 (timestamps, detectors, nanotimes, etc...). However, in order to correctly
 interpret the data, additional information is needed (for example
-which detectors correspond to the donor and acceptor channels in a 2-colors smFRET experiment, or the
+which detectors correspond to the donor and acceptor channels in a 2-colors
+smFRET experiment, or the
 alternation period in a μs-ALEX experiment). If available, these additional
 specifications are contained within the */photon_data* field in the
 :ref:`measurement_specs sub-group <measurement_specs_group>`.
@@ -28,7 +29,8 @@ Other optional groups are:
   Information about the data file (**example?**)
 
 - :ref:`/provenance <provenance_group>`:
-  Information about the original data file (when the HDF5 file results from the conversion of a different file format)
+  Information about the original data file (when the HDF5 file results from
+  the conversion of a different file format)
 
 - :ref:`/setup <setup_group>`:
   Description of the experimental setup (**example?**)
@@ -63,25 +65,18 @@ Optional if there is only 1 detector, otherwise mandatory:
 
 - **detectors**: (array of integers) detector ID for each timestamp.
 
-When the dataset contains nanotime information (i.e. arrival time of each photon with respect to a laser pulse), the following
-fields must be present (**nanotime can be -in principle- counted from the previous or next laser pulse: how is this defined in the format?**)
+When the dataset contains nanotime information (i.e. arrival time of each
+photon with respect to a laser pulse), the following
+fields must be present:
 
 - **nanotimes**:(array of integers) TCSPC nanotimes.
  - **nanotimes_specs/**
     - **tcspc_unit**: (float) TAC/TDC bin size (in seconds).
     - **tcspc_range**:(float) full-scale range of the TAC/TDC (in seconds).
     - **tcspc_num_bins**: (integer) number of TAC/TDC bins.
-
-Optionally, ``nanotimes_specs`` can also contain:
-
--  **irf_donor_hist**: (array of integers) Instrument Response
-   Function (IRF) histogram for the donor detection channel.
--  **irf_acceptor_hist**: (array of integers) Instrument Response
-   Function (IRF) histogram for the acceptor detection channel.
--  **calibration_hist**: (array of integers) Histograms of
-   uncorrelated counts used to correct the TCSPC non-linearities.
-
-(**this needs to contain some information on how these histograms have been acquired: duration of measurement, sample, optical setup configuration, etc)**
+    - **time_reversed**: (boolean) *True* if nanotimes contains the
+      time elapsed between a photon and the next laser pulse. *False*
+      if it contains the time elapsed between a laser pulse and a photon.
 
 Finally, if the data come from a simulation, ``/photon_data`` may contain:
 
@@ -96,8 +91,7 @@ Measurement specs
 
 The optional **/photon_data/measurement_specs** group contains additional
 information allowing unambiguous interpretration of the data for each specific
-type of measurement. This group must be
-complete if present (**Should it be discarded if incomplete?**).
+type of measurement.
 
 - **measurement_type**: (string) the type of the measurements. Valid names
   are:
@@ -113,20 +107,13 @@ complete if present (**Should it be discarded if incomplete?**).
 The *measurement_type* field describes the type of measurement
 saved within the file. It is an important field allowing sofware
 packages reading and saveing Photon-HDF5 files to perform consistency
-checks.
-Each *measurement_type* has an associated set of mandatory fields
-which must be present to ensure that all information needed to
-unambiguously interpret the data is present.
-For example, for a 2-color smFRET measurement, a software package creating a file should check that
-the association between detector and donor or acceptor channel
-is present. If absent, the software package should warn the user in order that
-this information is added before saving the file (**that doesn't make much sense in a file format description. Either the software is designed to write an incomplete data set, and then it is not compliant, or it is designed properly and it will not write a file if there are missing fields**).
+checks (see also :ref:`measurement_type`).
 
 For μs-ALEX, 2, 3 or N colors:
 
 - **alex_period**: (integer or float) duration of one complete excitation
-  alternation period expressed in timestamp units. The alternation period is equal to
-  ``alex_period * timestamps_unit``.
+  alternation period expressed in timestamp units. The alternation period
+  is equal to ``alex_period * timestamps_unit``.
 
 For ns-ALEX (or lifetime with no alternation):
 
@@ -152,10 +139,10 @@ For 2-color (or more) μs-ALEX and ns-ALEX (optional):
     For μs-ALEX, both *alex_period_donor* and *alex_period_acceptor*
     are 2-element arrays. In this case, these values are expressed in
     *timestamps_units*.
-    For ns-ALEX (also known as PIE), they are arrays with an even-number of elements,
-    comprising as many start-stop nanotime pairs as there are excitation periods
-    within the TAC/TDC range. In this case these values are expressed in
-    *nanotimes_units*.
+    For ns-ALEX (also known as PIE), they are arrays with an even-number
+    of elements, comprising as many start-stop nanotime pairs as
+    there are excitation periods within the TAC/TDC range.
+    In this case these values are expressed in *nanotimes_units*.
 
 Note for μs-ALEX
 """"""""""""""""
@@ -183,7 +170,8 @@ period) are obtained by applying one of these two conditions:
     Alternation histogram showing selection for the donor and acceptor periods.
     In this case the donor period is defined as an "external range" (2850, 580)
     while the acceptor period is defined as an "internal range" (900, 2580).
-    This situation is due to the ALEX period being out of phase with respect to the time stamping clock.
+    This situation is due to the ALEX period being out of phase with respect
+    to the time stamping clock.
 
 
 .. _detectors_specs_group:
@@ -243,8 +231,8 @@ of donor/acceptor detectors (see section 2.3).
 Finally, a label (string) can be associated to each detector using
 the optional *labels* field:
 
-- **labels**: (optional) table with 2 columns: detector ID (integer) and detector
-  label (string).
+- **labels**: (optional) table with 2 columns: detector ID (integer)
+  and detector label (string).
 
 For 2-color smFRET measurements, it is recommended to use the "donor"
 and "acceptor" labels for the respective detectors. Note, however, that these
@@ -307,16 +295,22 @@ The **/setup** group contains information about the measurement setup:
   The order of excitation sources is the same as that in
   ``excitation_wavelengths`` and is in increasing order of wavelengths.
 
-The following fields are optional and not necessarly relevant for all experiments.
-If irrelevant, these fields are (**or can be?**) omitted.
+The following fields are optional and not necessarly relevant for
+all experiments. If the associated information is irrelevant or not available,
+these fields are omitted.
 
 - **excitation_polarizations**: (arrays of floats) list of polarization
   angles (in degrees) for each excitation source.
   The order of excitation sources is the same as in
   ``excitation_wavelengths`` and is in increasing order of wavelengths.
 
-- **excitation_powers**: (array of floats) excitation power in *Watts*
-  for each excitation source (**this should really be an intensity and should be expressed in Watts/m^2**).
+- **excitation_input_powers**: (array of floats) excitation power in *Watts*
+  for each excitation source. This is the excitation power entering
+  the optical system.
+
+- **excitation_intensity**: (array of floats) excitation intensity in the
+  sample for each excitation source (units: *Watts/meters²*).
+  In the case of confocal excitation this is the peak PSF intensity.
 
 - **detection_wavelengths**: (arrays of floats) reference wavelengths (in
   *meters*) for each detection spectral band.
@@ -333,7 +327,7 @@ If irrelevant, these fields are (**or can be?**) omitted.
 - **detection_split_ch_ratios**: (array of floats) power fraction detected
   by each "beam-split" channel (i.e. independent detection channels
   obtained through a non-polarizing beam splitter). For 2 beam-split
-  channels that receive the same power this array should be *[0.5, 0.5]*.
+  channels that receive the same power this array should be ``[0.5, 0.5]``.
   The first element refers to ``detectors_specs/split_ch1``, the second to
   ``detectors_specs/split_ch2`` and so on.
   This field is not relevant when no polarization- and spectral-insensitive
@@ -345,17 +339,25 @@ If irrelevant, these fields are (**or can be?**) omitted.
 identity group
 --------------
 
-The **identity/** group contains information about the specific Photon-HDF5 file:
+The **identity/** group contains information about the specific Photon-HDF5
+file. If some information is not availble the relative field may be omitted.
+
+- **author**: (string)
+- **affiliation**: (string)
+- **url**: (string) URL for the data file.
+- **doi**: (string) Digital Object Identification (DOI) for the data file.
 
 - **filename**: (string)
 - **full_filename**: (string)
-- **creation_time**: (string) Creation time with the following format: "YYYY-MM-DD HH:MM:SS".
-- **software**: (string)
-- **software_version**: (string)
-- **format_name**: (string) This must always be "Photon-HDF5"
-- **format_version**: (string) "0.3"
-- **format_url**: (string) A URL pointing to the Photon-HDF5 documentation.
-(**no DOI?**)
+- **creation_time**: (string) Creation time with the following format:
+  "YYYY-MM-DD HH:MM:SS".
+- **software**: (string) name of the software that created the Photon-HDF5 file.
+- **software_version**: (string) version of the software that created the Photon-HDF5 file.
+- **format_name**: (string) this must always be "Photon-HDF5"
+- **format_version**: (string) for the current version it  must be "0.3"
+- **format_url**: (string) A URL pointing to the Photon-HDF5 specification
+  document.
+
 
 .. _provenance_group:
 
@@ -363,10 +365,12 @@ provenance group
 ----------------
 
 The **provenance/** group contains info about the original file that has
-been converted into a Photon-HDF5 file. This group is optional but reccomended.
+been converted into a Photon-HDF5 file.
+If some information is not availble the relative field may be omitted.
 
 - **author**: (string)
 - **affiliation**: (string)
+
 - **filename**: (string)
 - **full_filename**: (string)
 - **creation_time**: (string)
@@ -384,7 +388,8 @@ The **/sample** group contains information related to the measured sample.
 This group is optional.
 
 - **num_dyes**: (integer) number of different dyes present in the samples.
-- **dye_names**: (array of string) list of dye names (for example: ['ATTO550', 'ATTO647N'])
+- **dye_names**: (array of string) list of dye names (for example:
+  ``['ATTO550', 'ATTO647N']``)
 - **buffer_name**: (string) a user defined description for the buffer.
 - **sample_name**: (string) a user defined description for the sample.
 
@@ -416,3 +421,19 @@ Definition of alternation periods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 TODO
+
+.. _measurement_type:
+
+Measurement type
+^^^^^^^^^^^^^^^^
+
+Each *measurement_type* has an associated set of mandatory fields
+which must be present to ensure that all information needed to
+unambiguously interpret the data is present.
+For example, for a 2-color smFRET measurement, a software package creating
+a file should check that
+the association between detector and donor or acceptor channel
+is present. If some necessary field is absent, the software package
+should warn the user in order that this information is added before
+saving the file.
+
