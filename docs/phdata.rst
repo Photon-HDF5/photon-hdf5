@@ -13,37 +13,37 @@ An overview of the data format is shown in the following figure
 A Photon-HDF5 is a standard HDF5 file with a predefined structure.
 
 Every Photon-HDF5 file has a :ref:`/photon_data <photon_data_group>`
-group that contains the photon timestamps and other per-photon data.
+group that contains the photon timestamps and other single photon data.
 In the most basic form */photon_data* contains only the per-photon data
 (timestamps, detectors, nanotimes, etc...). However, in order to correctly
 interpret the data, additional information is needed (for example
-which detector is donor/acceptor in a 2-colors smFRET experiment, or the
+which detectors correspond to the donor and acceptor channels in a 2-colors smFRET experiment, or the
 alternation period in a μs-ALEX experiment). If available, these additional
-specifications are contained inside */photon_data* in the
+specifications are contained within the */photon_data* field in the
 :ref:`measurement_specs sub-group <measurement_specs_group>`.
 
 Other optional groups are:
 
 - :ref:`/identity <identity_group>`:
-  information about the data file
+  Information about the data file (**example?**)
 
 - :ref:`/provenance <provenance_group>`:
-  information about the original data file
+  Information about the original data file (when the HDF5 file results from the conversion of a different file format) 
 
 - :ref:`/setup <setup_group>`:
-  fundamental parameters of the experimental setup
+  Description of the experimental setup (**example?**)
 
 - :ref:`/sample <sample_group>`:
-  sample information.
+  Sample information (**example?**).
 
-The following sections describe in details all the Photon-HDF5
+The following sections describe the Photon-HDF5
 groups and fields.
 
 Root-level parameters
 ---------------------
 
 - **/acquisition_time**: (float) the measurement duration in seconds.
-- **/comment**: (string) a user defined comment.
+- **/comment**: (string) a user-defined comment.
 
 
 .. _photon_data_group:
@@ -55,24 +55,24 @@ This section describes the layout and fields in the **/photon_data** group.
 
 Mandatory fields:
 
-- **timestamps**: (array) the photon timestamps.
+- **timestamps**: (array) photon timestamps.
 - **timestamps_specs/**
-    - **timestamps_unit**: (float) timestamps units in *seconds*.
+    - **timestamps_unit**: (float) timestamp units in *seconds*.
 
 Optional if there is only 1 detector, otherwise mandatory:
 
-- **detectors**: (array of integers) the detector ID for each timestamp.
+- **detectors**: (array of integers) detector ID for each timestamp.
 
-When the dataset contains nanotime information, the following
-fields must be present:
+When the dataset contains nanotime information (i.e. arrival time of each photon with respect to a laser pulse), the following
+fields must be present (**nanotime can be -in principle- counted from the previous or next laser pulse: how is this defined in the format?**)
 
-- **nanotimes**:(array of integers) the TCSPC nanotimes.
+- **nanotimes**:(array of integers) TCSPC nanotimes.
  - **nanotimes_specs/**
     - **tcspc_unit**: (float) TAC/TDC bin size (in seconds).
-    - **tcspc_range**:(float) Full-scale range of the TAC/TDC (in seconds).
-    - **tcspc_num_bins**: (integer) TAC/TDC number of bins.
+    - **tcspc_range**:(float) full-scale range of the TAC/TDC (in seconds).
+    - **tcspc_num_bins**: (integer) number of TAC/TDC bins.
 
-Optionally ``nanotimes_specs`` can also contain:
+Optionally, ``nanotimes_specs`` can also contain:
 
 -  **irf_donor_hist**: (array of integers) Instrument Response
    Function (IRF) histogram for the donor detection channel.
@@ -80,6 +80,8 @@ Optionally ``nanotimes_specs`` can also contain:
    Function (IRF) histogram for the acceptor detection channel.
 -  **calibration_hist**: (array of integers) Histograms of
    uncorrelated counts used to correct the TCSPC non-linearities.
+
+(**this needs to contain some information on how these histograms have been acquired: duration of measurement, sample, optical setup configuration, etc)**
 
 Finally, if the data come from a simulation, ``/photon_data`` may contain:
 
@@ -93,9 +95,9 @@ Measurement specs
 ^^^^^^^^^^^^^^^^^
 
 The optional **/photon_data/measurement_specs** group contains additional
-information that allows to unambiguously interpret the data for each specific
-type of measurement. This group is optional, but if present it must be
-complete.
+information allowing unambiguous interpretration of the data for each specific
+type of measurement. This group must be
+complete if present (**Should it be discarded if incomplete?**).
 
 - **measurement_type**: (string) the type of the measurements. Valid names
   are:
@@ -106,26 +108,25 @@ complete.
   - "smFRET-nsALEX" (2 excitation colors, 2 detection colors)
 
   New names can be created for different kind of measurements and we
-  encourage users to submit new names requests.
+  encourage users to submit new name requests.
 
-The field *measurement_type* represents the name of the specific measurement
-that is saved into the file. It is an important field that allows the sofware
-library that reads and saves Photon-HDF5 files to perform strict consistency
+The *measurement_type* field describes the type of measurement
+ saved within the file. It is an important field allowing sofware
+packages reading and saveing Photon-HDF5 files to perform consistency
 checks.
-In fact, each *measurement_type*, has an associated set of mandatory fields
-that must be present to assure the all the information needed to
+Each *measurement_type* has an associated set of mandatory fields
+which must be present to ensure that all information needed to
 unambiguously interpret the data is present.
-For example, for a 2-color smFRET measurement the software can check if
-the specification of which detector represents the donor or acceptor channel
-is present. If not present, it can throw and error or warn the user so that
-this important information can be added before saving the file.
-This prevents the accidental creation of incomplete or inconsistent files.
+For example, for a 2-color smFRET measurement, a software package creating a file should check that
+the association between detector and donor or acceptor channel
+is present. If absent, the software package should warn the user in order that
+this information is added before saving the file (**that doesn't make much sense in a file format description. Either the software is designed to write an incomplete data set, and then it is not compliant, or it is designed properly and it will not write a file if there are missing fields**).
 
 For μs-ALEX, 2, 3 or N colors:
 
-- **alex_period**: (integer or float) the duration of one complete excitation
-  alternation period expressed in timestamp units, such that
-  ``alex_period * timestamps_unit`` is the alternation period in seconds.
+- **alex_period**: (integer or float) duration of one complete excitation
+  alternation period expressed in timestamp units. The alternation period is equal to
+  ``alex_period * timestamps_unit``.
 
 For ns-ALEX (or lifetime with no alternation):
 
@@ -134,37 +135,37 @@ For ns-ALEX (or lifetime with no alternation):
 
 For 2-color (or more) μs-ALEX and ns-ALEX (optional):
 
-- **alex_period_spectral_ch1**: (array with an even-number of interger
-  elements) the start and stop values identifying the *spectral_ch1*
+- **alex_period_spectral_ch1**: (array with an even-number of integer
+  elements) start and stop nanotime values identifying the *spectral_ch1*
   (i.e. *donor* for smFRET measurements) emission period.
 
 - **alex_period_spectral_ch2**: (array with an even-number of interger
-  elements) the start and stop values identifying the *spectral_ch2*
+  elements) start and stop nanotime values identifying the *spectral_ch2*
   (i.e. *acceptor* for smFRET measurements) emission period.
 
 - etc...
 
 .. note::
 
-    For μs-ALEX, *alex_period_donor* and *alex_period_acceptor*
-    are both 2-element arrays. In this case these values are expressed in
+    For μs-ALEX, both *alex_period_donor* and *alex_period_acceptor*
+    are 2-element arrays. In this case, these values are expressed in
     *timestamps_units*.
-    For ns-ALEX (or PIE), they are arrays with an even-number of elements,
-    comprising as many start-stop pairs as the number of excitation periods
-    in the TAC/TDC range. In this case these values are expressed in
+    For ns-ALEX (also known as PIE), they are arrays with an even-number of elements,
+    comprising as many start-stop nanotime pairs as there are excitation periods
+    within the TAC/TDC range. In this case these values are expressed in
     *nanotimes_units*.
 
 Note for μs-ALEX
 """"""""""""""""
 
-The fields *alex_period_donor* and *alex_period_acceptor* allow
+The *alex_period_donor* and *alex_period_acceptor* fields allow
 defining photons detected during donor or acceptor excitation. As an
 example, let's define the array
 
 ``A`` = ``timestamps`` *MODULO* ``alex_period``
 
 as the array of timestamps modulo the μs-ALEX alternation period.
-Photons emitted during the donor period (respectively acceptor
+Photons emitted during the donor period (respectively, acceptor
 period) are obtained by applying one of these two conditions:
 
 -  ``(A > start) and (A < stop)`` when ``start < stop`` (*internal
@@ -179,7 +180,8 @@ period) are obtained by applying one of these two conditions:
 
     Alternation histogram showing selection for the donor and acceptor periods.
     In this case the donor period is defined as an "external range" (2850, 580)
-    while the acceptor period as an "internal range" (900, 2580).
+    while the acceptor period is defined as an "internal range" (900, 2580).
+    This situation is due to the ALEX period being out of phase with respect to the time stamping clock.
 
 
 .. _detectors_specs_group:
@@ -187,14 +189,14 @@ period) are obtained by applying one of these two conditions:
 Detectors specs
 """""""""""""""
 
-Inside **measurement_specs**, the sub-group **detectors_specs/**
-contains the mapping between the each pixel ID and the detection channels
-(i.e. spectral bands, polarizations or beam-split channels).
+Within **measurement_specs**, the **detectors_specs/** sub-group 
+contains all (detector ID, detection channel) associations 
+(i.e. spectral bands, polarizations or beam-split channels (**what's that?**)).
 
-Note that a detector ID can be a single integer of a n-tuple of integers,
-to support the case of 2-D detector arrays. Therefore an array of detector
-IDs can be either a 1-D or a 2-D array, in the latter case it is one row
-per detector.
+Note that a detector ID can be a single integer (single spot), or a n-tuple of integers
+in the case of 2-D detector arrays (multiple spots). Consequently, the detector
+IDs array can be either a 1-D or a 2-D array. In the latter case, it is one row
+per detector (**spot?**).
 
 When a measurement records more than 1 spectral band, the fields:
 
@@ -208,40 +210,40 @@ are strictly ordered for increasing wavelenghts. For example, for 2-color
 smFRET measurements ``spectral_ch1`` and ``spectral_ch2`` represent the
 *donor* and *acceptor* channel respectively.
 
-When a measurement records more than 1 polarization state, the fields:
+If a measurement records more than 1 polarization states, the fields:
 
 - **polarization_ch1**
 - **polarization_ch2**
 
-specify which detector is employed for each polarization. When the measurement
-records only one polarization these fields may be omitted.
+specify which detector is used for each polarization. When the measurement
+records only one polarization, these fields may be omitted.
 
-When the detection path is split in 2 channels through a non-polarizing
-beam splitter the fields:
+When the detection light is split into 2 channels using a non-polarizing
+beam-splitter the fields:
 
 
 - **split_ch1**
 - **split_ch2**
 
-specify which detector is employed in each of the "beam-split" channels.
+specify which detector is used in each of the "beam-split" channels.
 
-All the previous fields are arrays containing one or more detector IDs.
+All previous fields are arrays containing one or more detector IDs.
 For example, a 2-color smFRET measurement will have only one value in
-``spectral_ch1`` (i.e. donor) and one value in ``spectral_ch2``
-(i.e. acceptor). A 2-color smFRET measurement with polarization
+``spectral_ch1`` (donor) and one value in ``spectral_ch2``
+(acceptor). A 2-color smFRET measurement with polarization
 (4 detectors) will have 2 values in each of the ``spectral_chX`` and
-``polarization_chX`` fields.
+``polarization_chX`` fields (where X=1 or 2).
 For a multispot smFRET measurement, ``spectral_chX`` will contain the list
 of donor/acceptor detectors (see section 2.3).
 
-Finally, a label (i.e. a string) can be associated to each detector through
-the optional field *labels*:
+Finally, a label (string) can be associated to each detector using
+the optional *labels* field:
 
-- **labels**: (optional) a table with 2 columns: detector ID and detector
-  label (a string).
+- **labels**: (optional) table with 2 columns: detector ID (integer) and detector
+  label (string).
 
-For 2-color smFRET measurements it is recommended to use the labels "donor"
-and "acceptor" for the respective detectors. Note, however, that these
+For 2-color smFRET measurements, it is recommended to use the "donor"
+and "acceptor" labels for the respective detectors. Note, however, that these
 labels only represent an additional user-defined metadata and are not
 necessary for the interpretation of the measurement.
 When detector ID is a *n*-tuple, ``labels`` has *n+1* columns
@@ -255,7 +257,7 @@ setup group
 
 The **/setup** group contains information about the measurement setup:
 
-- **num_pixels**: (integer) total number of detector's pixels. For example,
+- **num_pixels**: (integer) total number of detector pixels. For example,
   for a single-spot 2-color smFRET measurement using 2 single-pixel SPADs as
   detectors this field is 2.
 
@@ -266,51 +268,51 @@ The **/setup** group contains information about the measurement setup:
 
 - **num_spectral_ch**: (integer) number of distinct detection spectral
   channels. For example, in a 2-color smFRET experiment there are 2
-  detection spectral channels (donor and acceptor) so this value is 2.
-  When there is only a single detection channel or all the channels receive
-  the same spectral band this value is 1.
+  detection spectral channels (donor and acceptor), therefore its value is 2.
+  When there is a single detection channel or all channels detect
+  the same spectral band, its value is 1.
 
 - **num_polarization_ch**: (integer) number of distinct detection polarization
-  channels. For example, in polarization anysotropy measurements this value
+  channels. For example, in polarization anysotropy measurements, its value
   is 2.
-  When there is only a single detection channel or all the channels receive
-  the same polarization (even when no polarization selection is performed)
-  this value is 1.
+  When there is a single detection channel or all channels detect
+  the same polarization (including when no polarization selection is performed)
+  its value is 1.
 
-- **num_split_ch**: (integer) number of distinct detection channels that
-  receive the same spectral band **and** polarization state. For example,
+- **num_split_ch**: (integer) number of distinct detection channels
+  detecting the same spectral band **and** polarization state. For example,
   when a non-polarizing beam-splitter is employed in the detection path,
-  this value is 2. When no polarization- and spectral-insensitive splitting
-  is performed this value is 1.
+  its value is 2. When no splitting
+  is performed, its value is 1.
 
-- **modulated_excitation**: (boolean) *True* (i.e. 1) if there is any form of
-  excitation modulation either in wavelength (like in μs-ALEX or PAX) or in
-  polarization. This field is also *True* for pulse-interleaved excitation
+- **modulated_excitation**: (boolean) *True* (or 1) if there is any form of
+  excitation modulation either in the wavelength space (as in μs-ALEX or PAX) or in
+  the polarization space. This field is also *True* for pulse-interleaved excitation
   (PIE) or ns-ALEX measurements.
 
-- **lifetime**: (boolean) *True* (i.e. 1) if the measurements includes a
-  *nanotimes* array of (usually sub-ns resolution) photon arrival times
-  respect to a laser pulse (like in TCSPC measurements).
+- **lifetime**: (boolean) *True* (or 1) if the measurements includes a
+  *nanotimes* array of (usually sub-ns resolution) photon arrival times with
+  respect to a laser pulse (as in TCSPC measurements).
 
 - **excitation_wavelengths**: (array of floats) list of excitation wavelengths
-  (center wavelength if broad-band) in increasing order. Units are in *meters*.
+  (center wavelength if broad-band) in increasing order (unit: *meter*).
 
 - **excitation_cw**: (array of booleans) for each excitation source,
-  this field indicates whether it is continuous wave (CW), *True*, or pulsed,
+  this field indicates whether excitation is continuous wave (CW), *True*, or pulsed,
   *False*.
-  The order of excitation sources is the same as in
-  ``excitation_wavelengths`` and it is in increasing order of wavelengths.
+  The order of excitation sources is the same as that in
+  ``excitation_wavelengths`` and is in increasing order of wavelengths.
 
-The following fields are optional and not necessarly relevant for each
-particular experiment. If not-relevant these fields are omitted.
+The following fields are optional and not necessarly relevant for all experiments.
+If irrelevant, these fields are (**or can be?**) omitted.
 
 - **excitation_polarizations**: (arrays of floats) list of polarization
   angles (in degrees) for each excitation source.
   The order of excitation sources is the same as in
-  ``excitation_wavelengths`` and it is in increasing order of wavelengths.
+  ``excitation_wavelengths`` and is in increasing order of wavelengths.
 
 - **excitation_powers**: (array of floats) excitation power in *Watts*
-  for each excitation source.
+  for each excitation source (**this should really be an intensity and should be expressed in Watts/m^2**).
 
 - **detection_wavelengths**: (arrays of floats) reference wavelengths (in
   *meters*) for each detection spectral band.
@@ -322,15 +324,15 @@ particular experiment. If not-relevant these fields are omitted.
   for each detection polarization band.
   The first element refers to ``detectors_specs/polarization_ch1``, the second
   to ``detectors_specs/polarization_ch2`` and so on.
-  This field is not-relevant if no polarization selection is performed.
+  This field is not relevant if no polarization selection is performed.
 
-- **detection_split_ch_ratios**: (array of floats) power fractions detected
+- **detection_split_ch_ratios**: (array of floats) power fraction detected
   by each "beam-split" channel (i.e. independent detection channels
   obtained through a non-polarizing beam splitter). For 2 beam-split
   channels that receive the same power this array should be *[0.5, 0.5]*.
   The first element refers to ``detectors_specs/split_ch1``, the second to
   ``detectors_specs/split_ch2`` and so on.
-  This field is not-relevant when no polarization- and spectral-insensitive
+  This field is not relevant when no polarization- and spectral-insensitive
   splitting is performed.
 
 
@@ -339,17 +341,17 @@ particular experiment. If not-relevant these fields are omitted.
 identity group
 --------------
 
-The **identity/** group contains info about the specific Photon-HDF5 file:
+The **identity/** group contains information about the specific Photon-HDF5 file:
 
 - **filename**: (string)
 - **full_filename**: (string)
-- **creation_time**: (string) Creation time as "YYYY-MM-DD HH:MM:SS".
+- **creation_time**: (string) Creation time with the following format: "YYYY-MM-DD HH:MM:SS".
 - **software**: (string)
 - **software_version**: (string)
 - **format_name**: (string) This must always be "Photon-HDF5"
 - **format_version**: (string) "0.3"
 - **format_url**: (string) A URL pointing to the Photon-HDF5 documentation.
-
+(**no DOI?**)
 
 .. _provenance_group:
 
@@ -357,7 +359,7 @@ provenance group
 ----------------
 
 The **provenance/** group contains info about the original file that has
-been converted to Photon-HDF5 file. This group is optionla but reccomended.
+been converted into a Photon-HDF5 file. This group is optional but reccomended.
 
 - **author**: (string)
 - **affiliation**: (string)
