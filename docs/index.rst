@@ -11,29 +11,29 @@ Photon-HDF5 file format documentation
 :Version: 0.3
 
 .. note ::
-   This document describes **Photon-HDF5 version 0.3**, that is
-   already the third iteration of the *Photon-HDF5 file format*.
+   This document describes **Photon-HDF5 version 0.3**, the third iteration of the *Photon-HDF5 file format*.
    The latest version of this document can be found at
    `http://photon-hdf5.readthedocs.org <http://photon-hdf5.readthedocs.org/>`__.
 
 Photon-HDF5 is a file format for a class of single-molecule spectroscopy
 experiments that requires storing photon stream data.
-Any dataset containing a photon timestamps and other per-photon information
-can be store in the Photon-HDF5 format.
+Any dataset containing a photon timestamp and other per-photon information
+can be stored using the Photon-HDF5 format.
 Additionally, for some predefined types of measurements, it is possible to
-store all the associated metadata needed for a complete interpretation
-of the dataset. For example, a confocal single-molecule FRET (smFRET)
-will contain the association between detector IDs and donor/acceptor channels
+store all associated metadata needed for a complete interpretation
+of the dataset. For example, a dataset created in a single confocal spot,
+diffusing single-molecule FRET (smFRET) experiment,
+will contain a description of the relation between detector IDs and donor/acceptor channels
 (called ``spectral_ch1`` and ``spectral_ch2`` respectively) allowing for
 a correct interpretation of the dataset by a burst analysis program.
 
-For a brief introduction on what the HDF5 format is and why we believe it is
-important for single-molecule spectroscopy see
+For a brief introduction on the HDF5 format and its
+use for single-molecule spectroscopy, see
 `Why an HDF5-based smFRET file format <http://fretbursts.readthedocs.org/en/latest/HDF5_format.html>`__.
 
 .. warning::
 
-    Even if this specification is still a draft, it is the third complete
+    Although this specification is still a draft, it is the third complete
     rewrite of the file format. Therefore we do not forsee big modifications
     anymore.
     Comments and suggestions (including typos fixes) are encouraged.
