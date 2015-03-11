@@ -1,7 +1,7 @@
 Introduction
 ============
 
-1.1 Overview
+Overview
 ------------
 
 This document contains specifications of the Photon-HDF5 format.
