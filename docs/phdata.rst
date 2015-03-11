@@ -144,34 +144,7 @@ For 2-color (or more) μs-ALEX and ns-ALEX (optional):
     there are excitation periods within the TAC/TDC range.
     In this case these values are expressed in *nanotimes_units*.
 
-Note for μs-ALEX
-""""""""""""""""
-
-The *alex_period_donor* and *alex_period_acceptor* fields allow
-defining photons detected during donor or acceptor excitation. As an
-example, let's define the array
-
-``A`` = ``timestamps`` *MODULO* ``alex_period``
-
-as the array of timestamps modulo the μs-ALEX alternation period.
-Photons emitted during the donor period (respectively, acceptor
-period) are obtained by applying one of these two conditions:
-
--  ``(A > start) and (A < stop)`` when ``start < stop`` (*internal
-   range*)
-
--  ``(A > start) or  (A < stop)`` when ``start > stop`` (*external
-   range*).
-
-.. figure:: /images/alternation_range.png
-    :alt: Illustration of the internal and external ranges
-    :align: center
-
-    Alternation histogram showing selection for the donor and acceptor periods.
-    In this case the donor period is defined as an "external range" (2850, 580)
-    while the acceptor period is defined as an "internal range" (900, 2580).
-    This situation is due to the ALEX period being out of phase with respect
-    to the time stamping clock.
+    For more details see :ref:`alex_period_def`.
 
 
 .. _detectors_specs_group:
@@ -226,7 +199,7 @@ For example, a 2-color smFRET measurement will have only one value in
 (4 detectors) will have 2 values in each of the ``spectral_chX`` and
 ``polarization_chX`` fields (where X=1 or 2).
 For a multispot smFRET measurement, ``spectral_chX`` will contain the list
-of donor/acceptor detectors (see section 2.3).
+of donor/acceptor detectors (see :ref:`multi_spot`).
 
 Finally, a label (string) can be associated to each detector using
 the optional *labels* field:
@@ -398,7 +371,7 @@ This group is optional.
 
 .. _glossary:
 
-Additional notes adn definitions
+Additional notes and definitions
 --------------------------------
 
 .. _detector_ids:
@@ -422,7 +395,35 @@ TODO
 Definition of alternation periods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-TODO
+Note for μs-ALEX
+""""""""""""""""
+
+The *alex_period_donor* and *alex_period_acceptor* fields allow
+defining photons detected during donor or acceptor excitation. As an
+example, let's define the array
+
+``A`` = ``timestamps`` *MODULO* ``alex_period``
+
+as the array of timestamps modulo the μs-ALEX alternation period.
+Photons emitted during the donor period (respectively, acceptor
+period) are obtained by applying one of these two conditions:
+
+-  ``(A > start) and (A < stop)`` when ``start < stop`` (*internal
+   range*)
+
+-  ``(A > start) or  (A < stop)`` when ``start > stop`` (*external
+   range*).
+
+.. figure:: /images/alternation_range.png
+    :alt: Illustration of the internal and external ranges
+    :align: center
+
+    Alternation histogram showing selection for the donor and acceptor periods.
+    In this case the donor period is defined as an "external range" (2850, 580)
+    while the acceptor period is defined as an "internal range" (900, 2580).
+    This situation is due to the ALEX period being out of phase with respect
+    to the time stamping clock.
+
 
 .. _measurement_type:
 
@@ -439,3 +440,10 @@ is present. If some necessary field is absent, the software package
 should warn the user in order that this information is added before
 saving the file.
 
+
+.. _multi_spot:
+
+Multi-spot measurements
+^^^^^^^^^^^^^^^^^^^^^^^
+
+TODO
