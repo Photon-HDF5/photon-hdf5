@@ -49,8 +49,7 @@ expanded to accomodate new use cases while maintaining backward compatibility.
 
 To achieve simplicity, the only required file characteristics are a
 general file layout and the presence of a few basic attributes and parameters.
-The remaining (small set of) fields here defined will be present only when
-they will be needed by a particular measurement.
+The remaining (small set of) fields defined in this document will be present only when needed by a particular measurement.
 
 We retain flexibility by allowing the user to save any arbitrary data
 outside the specs of this document. To assure that future versions of
