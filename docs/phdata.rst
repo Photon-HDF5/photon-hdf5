@@ -153,8 +153,8 @@ Detectors specs
 """""""""""""""
 
 Within **measurement_specs**, the **detectors_specs/** sub-group
-contains all the :ref:`detector ID `<detector_ids>`--detection channel
- associations, i.e. spectral bands, polarizations or
+contains all the :ref:`detector ID <detector_ids>`--detection channel
+associations, i.e. spectral bands, polarizations or
 :ref:`beam-split channels <beam_split_ch>`.
 
 When a measurement records more than 1 spectral band, the fields:
