@@ -34,7 +34,7 @@ use for single-molecule spectroscopy, see
 .. warning::
 
     Although this specification is still a draft, it is the third complete
-    rewrite of the file format. Therefore we do not forsee big modifications
+    rewrite of the file format. Therefore we do not foresee major modifications
     anymore.
     Comments and suggestions (including typos fixes) are encouraged.
 
