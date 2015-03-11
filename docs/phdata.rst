@@ -30,7 +30,7 @@ Other optional groups are:
 
 - :ref:`/provenance <provenance_group>`:
   Information about the original data file (when the Photon-HDF5 file
-  results from the conversion of a different file format)
+  has been converted from another format)
 
 - :ref:`/setup <setup_group>`:
   Description of the experimental setup
