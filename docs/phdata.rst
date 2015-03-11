@@ -153,15 +153,9 @@ Detectors specs
 """""""""""""""
 
 Within **measurement_specs**, the **detectors_specs/** sub-group
-contains all (detector ID, detection channel) associations,
-i.e. spectral bands, polarizations or
+contains all the :ref:`detector ID `<detector_ids>`--detection channel
+ associations, i.e. spectral bands, polarizations or
 :ref:`beam-split channels <beam_split_ch>`.
-
-Note that a detector ID is the "name" of each pixels and can be a single
-integer (when all the pixels are numbered with a progressive index), or a
-n-tuple of integers in the case of 2-D detector arrays. Consequently, an
-array of detector IDs can be either a 1-D column array or a 2-D array.
-In either cases, each row identifies a detector.
 
 When a measurement records more than 1 spectral band, the fields:
 
@@ -318,7 +312,7 @@ file. If some information is not availble the relative field may be omitted.
 - **author**: (string)
 - **affiliation**: (string)
 - **url**: (string) URL for the data file.
-- **doi**: (string) Digital Object Identification (DOI) for the data file.
+- **doi**: (string) Digital Object Identifier (DOI) for the data file.
 
 - **filename**: (string)
 - **full_filename**: (string)
@@ -379,7 +373,13 @@ Additional notes and definitions
 Detector IDs
 ^^^^^^^^^^^^
 
-TODO
+A detector ID is the "name" of each pixels and is typically a single
+integer (when all the pixels are numbered with a progressive index).
+In some case (when using detector arrays) the detector ID
+can be a *n*-tuple of integers. This allow to specify, for each pixel,
+the module number and the X, Y location, for example. Therefore, an
+array of detector IDs can be either a 1-D column array or a 2-D array.
+In either cases, each row identifies a detector.
 
 
 .. _beam_split_ch:
@@ -387,7 +387,11 @@ TODO
 Beam-split channels
 ^^^^^^^^^^^^^^^^^^^
 
-TODO
+When the emitted light path is split in 2 or more detection paths by using
+a non-polarizing beam splitter the measurement has so called
+beam-split channels. The fields `split_ch1` and `split_ch2` contains
+the list of detector IDs for each beam-split channel
+(see :ref:`detectors_specs_group`).
 
 
 .. _alex_period_def:
