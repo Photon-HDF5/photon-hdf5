@@ -324,7 +324,7 @@ file. If some information is not availble the relative field may be omitted.
   data file.
 
 - **filename**: (string) Photon-HDF5 file name at creation time. This field
-  saves the original file name even is the file is later on renamed on disk.
+  saves the original file name even if the file is later on renamed on disk.
 - **full_filename**: (string) Photon-HDF5 file name (including the full path)
   at creation time.
 - **creation_time**: (string) the Photon-HDF5 file creation time with
