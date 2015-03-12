@@ -309,19 +309,31 @@ identity group
 The **identity/** group contains information about the specific Photon-HDF5
 file. If some information is not availble the relative field may be omitted.
 
-- **author**: (string)
-- **affiliation**: (string)
-- **url**: (string) URL for the data file.
-- **doi**: (string) Digital Object Identifier (DOI) for the data file.
+- **author**: (string) the author of the measurement (or simulation).
+- **author_affiliation**: (string) the company or institution the *author*
+  is affiliated with.
 
-- **filename**: (string)
-- **full_filename**: (string)
-- **creation_time**: (string) Creation time with the following format:
-  "YYYY-MM-DD HH:MM:SS".
-- **software**: (string) name of the software that created the
-  Photon-HDF5 file.
-- **software_version**: (string) version of the software that created
+- **creator**: (string) the Photon-HDF5 file creator. Used when the data
+  was previously stored in another format and the conversion is perfomed by
+  a different person than the author.
+- **creator_affiliation**: (string) the company or institution the *creator*
+  is affiliated with.
+
+- **url**: (string) URL that allow to download the Photon-HDF5 data file.
+- **doi**: (string) Digital Object Identifier (DOI) for the Photon-HDF5
+  data file.
+
+- **filename**: (string) Photon-HDF5 file name at creation time. This field
+  saves the original file name even is the file is later on renamed on disk.
+- **full_filename**: (string) Photon-HDF5 file name (including the full path)
+  at creation time.
+- **creation_time**: (string) the Photon-HDF5 file creation time with
+  the following format: "YYYY-MM-DD HH:MM:SS".
+- **software**: (string) name of the software used to create
   the Photon-HDF5 file.
+- **software_version**: (string) version of the software used to create
+  the Photon-HDF5 file.
+
 - **format_name**: (string) this must always be "Photon-HDF5"
 - **format_version**: (string) for the current version it  must be "0.3"
 - **format_url**: (string) A URL pointing to the Photon-HDF5 specification
@@ -336,9 +348,6 @@ provenance group
 The **provenance/** group contains info about the original file that has
 been converted into a Photon-HDF5 file.
 If some information is not availble the relative field may be omitted.
-
-- **author**: (string)
-- **affiliation**: (string)
 
 - **filename**: (string)
 - **full_filename**: (string)
