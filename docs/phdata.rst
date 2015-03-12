@@ -211,7 +211,7 @@ When detector ID is a *n*-tuple, ``labels`` has *n+1* columns
 
 .. _setup_group:
 
-setup group
+Setup group
 -----------
 
 The **/setup** group contains information about the measurement setup:
@@ -303,7 +303,7 @@ these fields are omitted.
 
 .. _identity_group:
 
-identity group
+Identity group
 --------------
 
 The **identity/** group contains information about the specific Photon-HDF5
@@ -342,7 +342,7 @@ file. If some information is not availble the relative field may be omitted.
 
 .. _provenance_group:
 
-provenance group
+Provenance group
 ----------------
 
 The **provenance/** group contains info about the original file that has
@@ -359,7 +359,7 @@ If some information is not availble the relative field may be omitted.
 
 .. _sample_group:
 
-sample group
+Sample group
 ------------
 
 The **/sample** group contains information related to the measured sample.
