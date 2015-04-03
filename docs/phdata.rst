@@ -90,7 +90,7 @@ Measurement specs
 ^^^^^^^^^^^^^^^^^
 
 The optional **/photon_data/measurement_specs** group contains additional
-information allowing unambiguous interpretration of the data for each specific
+information allowing unambiguous interpretation of the data for each specific
 type of measurement.
 
 - **measurement_type**: (string) the type of the measurements. Valid names
@@ -105,8 +105,8 @@ type of measurement.
   encourage users to submit new name requests.
 
 The *measurement_type* field describes the type of measurement
-saved within the file. It is an important field allowing sofware
-packages reading and saveing Photon-HDF5 files to perform consistency
+saved within the file. It is an important field allowing software
+packages reading and saving Photon-HDF5 files to perform consistency
 checks (see also :ref:`measurement_type`).
 
 For μs-ALEX, 2, 3 or N colors:
@@ -127,7 +127,7 @@ For 2-color (or more) μs-ALEX and ns-ALEX (optional):
   (i.e. *donor* for smFRET measurements) emission period (see note below for
   more details).
 
-- **alex_period_spectral_ch2**: (array with an even-number of interger
+- **alex_period_spectral_ch2**: (array with an even-number of integer
   elements) start and stop values identifying the *spectral_ch2*
   (i.e. *acceptor* for smFRET measurements) emission period (see note below for
   more details).
@@ -165,7 +165,7 @@ When a measurement records more than 1 spectral band, the fields:
 
 specify which detector is employed in each spectral band. When the measurement
 records only 1 spectral band these fields may be omitted. The spectral bands
-are strictly ordered for increasing wavelenghts. For example, for 2-color
+are strictly ordered for increasing wavelengths. For example, for 2-color
 smFRET measurements ``spectral_ch1`` and ``spectral_ch2`` represent the
 *donor* and *acceptor* channel respectively.
 
@@ -232,7 +232,7 @@ The **/setup** group contains information about the measurement setup:
   the same spectral band, its value is 1.
 
 - **num_polarization_ch**: (integer) number of distinct detection polarization
-  channels. For example, in polarization anysotropy measurements, its value
+  channels. For example, in polarization anisotropy measurements, its value
   is 2.
   When there is a single detection channel or all channels detect
   the same polarization (including when no polarization selection is performed)
@@ -262,7 +262,7 @@ The **/setup** group contains information about the measurement setup:
   The order of excitation sources is the same as that in
   ``excitation_wavelengths`` and is in increasing order of wavelengths.
 
-The following fields are optional and not necessarly relevant for
+The following fields are optional and not necessarily relevant for
 all experiments. If the associated information is irrelevant or not available,
 these fields are omitted.
 
@@ -307,14 +307,14 @@ Identity group
 --------------
 
 The **identity/** group contains information about the specific Photon-HDF5
-file. If some information is not availble the relative field may be omitted.
+file. If some information is not available the relative field may be omitted.
 
 - **author**: (string) the author of the measurement (or simulation).
 - **author_affiliation**: (string) the company or institution the *author*
   is affiliated with.
 
 - **creator**: (string) the Photon-HDF5 file creator. Used when the data
-  was previously stored in another format and the conversion is perfomed by
+  was previously stored in another format and the conversion is performed by
   a different person than the author.
 - **creator_affiliation**: (string) the company or institution the *creator*
   is affiliated with.
@@ -347,7 +347,7 @@ Provenance group
 
 The **provenance/** group contains info about the original file that has
 been converted into a Photon-HDF5 file.
-If some information is not availble the relative field may be omitted.
+If some information is not available the relative field may be omitted.
 
 - **filename**: (string)
 - **filename_full**: (string)
