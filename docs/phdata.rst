@@ -325,7 +325,7 @@ file. If some information is not availble the relative field may be omitted.
 
 - **filename**: (string) Photon-HDF5 file name at creation time. This field
   saves the original file name even if the file is later on renamed on disk.
-- **full_filename**: (string) Photon-HDF5 file name (including the full path)
+- **filename_full**: (string) Photon-HDF5 file name (including the full path)
   at creation time.
 - **creation_time**: (string) the Photon-HDF5 file creation time with
   the following format: "YYYY-MM-DD HH:MM:SS".
@@ -350,7 +350,7 @@ been converted into a Photon-HDF5 file.
 If some information is not availble the relative field may be omitted.
 
 - **filename**: (string)
-- **full_filename**: (string)
+- **filename_full**: (string)
 - **creation_time**: (string)
 - **modification_time**: (string)
 - **software**: (string)
