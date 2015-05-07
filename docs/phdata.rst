@@ -459,4 +459,18 @@ saving the file.
 Multi-spot measurements
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-TODO
+Multi-spot measurements are simply handled by having multiple ``photon_data``
+groups, one for each excitation spot. The naming convention is the following::
+
+    photon_data0
+    photon_data1
+    ...
+    photon_data10
+    ...
+    photon_data100
+
+Note that the enumeration starts from zero and there is no zero filling.
+
+
+
+
