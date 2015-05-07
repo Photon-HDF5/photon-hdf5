@@ -4,13 +4,13 @@ Photon-HDF5 format definition
 Overview
 --------
 
+A Photon-HDF5 is a HDF5 file with a predefined structure for timestamp-based
+data.
+
 A screenshot of a typical Photon-HDF5 file opened in HDFView is shown here:
 
 .. figure:: /images/hdfview.png
     :align: center
-
-A Photon-HDF5 is a HDF5 file with a predefined structure for timestamp-based
-data.
 
 Every Photon-HDF5 file has a :ref:`/photon_data <photon_data_group>`
 group that contains the photon timestamps and other single photon data.
