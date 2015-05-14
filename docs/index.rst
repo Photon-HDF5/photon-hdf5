@@ -10,26 +10,32 @@ Photon-HDF5 file format documentation
 :Contact: tritemio@gmail.com
 :Version: 0.3
 
-.. note ::
-   This document describes **Photon-HDF5 version 0.3**, the third iteration of the *Photon-HDF5 file format*.
-   The latest version of this document can be found at
-   `http://photon-hdf5.readthedocs.org <http://photon-hdf5.readthedocs.org/>`__.
+Photon-HDF5 is a file format single-molecule experiments
+that requires storing photon stream data (e.g. photon timestamps).
+Typical examples are freely-diffusing single-molecule FRET (smFRET)
+(with or without lifetime), Fluorescence Correlation Spectroscopy (FCS)
+and related techniques.
 
-Photon-HDF5 is a file format for a class of single-molecule spectroscopy
-experiments that requires storing photon stream data.
 Any dataset containing a photon timestamp and other per-photon information
 can be stored using the Photon-HDF5 format.
 Additionally, for some predefined types of measurements, it is possible to
 store all associated metadata needed for a complete interpretation
 of the dataset. For example, a dataset created in a single confocal spot,
-diffusing single-molecule FRET (smFRET) experiment,
-will contain a description of the relation between detector IDs and donor/acceptor channels
-(called ``spectral_ch1`` and ``spectral_ch2`` respectively) allowing for
-a correct interpretation of the dataset by a burst analysis program.
+freely-diffusing smFRET experiment,
+will contain a description of the relation between detector IDs and
+donor/acceptor channels (called ``spectral_ch1`` and ``spectral_ch2``
+respectively) allowing for a correct interpretation of the dataset
+by a burst analysis program.
 
 For a brief introduction on the HDF5 format and its
 use for single-molecule spectroscopy, see
 `Why an HDF5-based smFRET file format <http://fretbursts.readthedocs.org/en/latest/HDF5_format.html>`__.
+
+
+.. note ::
+   This document describes **Photon-HDF5 version 0.3**, the third iteration of the *Photon-HDF5 file format*.
+   The latest version of this document can be found at
+   `http://photon-hdf5.readthedocs.org <http://photon-hdf5.readthedocs.org/>`__.
 
 .. warning::
 
