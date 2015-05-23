@@ -14,13 +14,13 @@ The Photon-HDF5 project consist of these parts:
 
 All the sources (including for the documentation) are `hosted on GitHub <https://github.com/Photon-Data>`__
 and we encourage to open *GitHub Issues* in the
-`documentation repository <https://github.com/Photon-Data/photon-hdf5>`__.
+`documentation repository <https://github.com/Photon-Data/photon-hdf5>`__
 to discuss any topic related Photon-HDF5.
 You can also contact us by email, but we prefer to use GitHub in order to
 keep any discussion public.
 
 Contributions (such as fixes or enhancements) can be sent using *GitHub Pull Requests*
-(PR). You can find guides on using PR on the GitHub website. If have have any
+(PR). You can find guides on how to send a PR on the GitHub website. If have have any
 doubts, please contact us and we will be glad to help you getting started.
 
 There are several ways you can get involved:
@@ -40,7 +40,7 @@ There are several ways you can get involved:
   send a fix for the
   `current examples <https://github.com/Photon-Data/photon_hdf5_reading_examples>`__.
 
-- **Contributing to phconvert``**: you can open issues to report bugs, discuss
+- **Contributing to phconvert**: you can open issues to report bugs, discuss
   usage or propose enhancements. You are also more than welcome to send PR
   for fixes or enhancements to the library. The official repository is
   `this one <https://github.com/Photon-Data/phconvert>`__.
