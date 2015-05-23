@@ -70,7 +70,7 @@ photon with respect to a laser pulse), the following
 fields must be present:
 
 - **nanotimes**:(array of integers) TCSPC nanotimes.
- - **nanotimes_specs/**
+- **nanotimes_specs/**
     - **tcspc_unit**: (float) TAC/TDC bin size (in seconds).
     - **tcspc_range**:(float) full-scale range of the TAC/TDC (in seconds).
     - **tcspc_num_bins**: (integer) number of TAC/TDC bins.
