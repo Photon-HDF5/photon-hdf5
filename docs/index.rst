@@ -28,10 +28,11 @@ respectively) allowing for a correct interpretation of the dataset
 by a burst analysis program.
 
 This document contains the reference documentation for the Photon-HDF5 format.
-Other related resources are:
+
+Related resources:
 
 - `Examples of reading Photon-HDF5 files in multiple laguages <https://github.com/Photon-Data/photon_hdf5_reading_examples>`__
-- **`phconvert <https://github.com/Photon-Data/phconvert>`__**: reference library to write and convert Photon-HDF5 files
+- `**phconvert** <https://github.com/Photon-Data/phconvert>`__: reference library to write and convert Photon-HDF5 files
 
 For a brief introduction on the HDF5 format and its
 use for single-molecule spectroscopy, see
@@ -64,3 +65,4 @@ Table of contents
     intro
     phdata
     limitations
+    contributing
