@@ -11,8 +11,8 @@ Photon-HDF5 file format documentation
 :Version: 0.3
 
 
-Photon-HDF5 is a file format for freely diffusing single-molecule spectroscopy 
-experiments such as single-molecule FRET (smFRET) (with or without lifetime), 
+Photon-HDF5 is a file format for freely diffusing single-molecule spectroscopy
+experiments such as single-molecule FRET (smFRET) (with or without lifetime),
 Fluorescence Correlation Spectroscopy (FCS) and related techniques.
 
 Any dataset containing photon timestamps and other per-photon data
@@ -25,7 +25,7 @@ The present document contains the reference documentation for the Photon-HDF5 fo
 
 Other related resources are:
 
-- `Examples of reading Photon-HDF5 files in multiple laguages <https://github.com/Photon-Data/photon_hdf5_reading_examples>`__
+- `Examples of reading Photon-HDF5 files in multiple languages <https://github.com/Photon-Data/photon_hdf5_reading_examples>`__
 - `phconvert <https://github.com/Photon-Data/phconvert>`__: reference library to create and convert Photon-HDF5 files
 - `Why an HDF5-based smFRET file format <http://fretbursts.readthedocs.org/en/latest/HDF5_format.html>`__
 - Photon-HDF5: an open format for single-molecule spectroscopy
