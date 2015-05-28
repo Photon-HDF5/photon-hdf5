@@ -15,7 +15,7 @@ Photon-HDF5 is a file format for freely diffusing single-molecule spectroscopy
 experiments such as single-molecule FRET (smFRET) (with or without lifetime), 
 Fluorescence Correlation Spectroscopy (FCS) and related techniques.
 
-Any dataset containing a photon timestamps and other per-photon data
+Any dataset containing photon timestamps and other per-photon data
 can be stored in Photon-HDF5 files.
 Photon-HDF5 is designed for long-term preservation and data sharing and
 can therefore store experimental details and metadata such as
