@@ -33,19 +33,11 @@ Other related resources are:
 
 
 .. note ::
-   This document describes **Photon-HDF5 version 0.3**, the third iteration of the *Photon-HDF5 file format*.
+   This document describes **Photon-HDF5 version 0.3**.
    The latest version of this document can be found at
    `http://photon-hdf5.readthedocs.org <http://photon-hdf5.readthedocs.org/>`__.
-
-.. warning::
-
-    Although this specification is still a draft, it is the third complete
-    rewrite of the file format. Therefore we do not foresee major modifications
-    anymore.
-    Comments and suggestions (including typos fixes) are encouraged.
-
-    Version 0.3 will be the first version to be declared stable and for which
-    we commit to strong backward compatibility.
+   To send correction or getting involved in the file format
+   development please see the :ref:`contributing <contributing>` section.
 
 
 Table of contents
