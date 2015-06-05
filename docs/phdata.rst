@@ -54,22 +54,26 @@ Photon-data group
 -----------------
 
 This section describes the layout and fields in the **/photon_data** group.
+Note that only the kind of data is specified (i.e. scalar,
+integer array, float array), but no data type size is mandated.
+For arrays, the most commonly used data-type is indicated.
 
 Mandatory fields:
 
-- **timestamps**: (array) photon timestamps.
+- **timestamps**: (array) photon timestamps. Typical data-type int64.
 - **timestamps_specs/**
     - **timestamps_unit**: (float) timestamp units in *seconds*.
 
 Optional if there is only 1 detector, otherwise mandatory:
 
 - **detectors**: (array of integers) detector ID for each timestamp.
+  Typical data-type uint8.
 
 When the dataset contains nanotime information (i.e. arrival time of each
 photon with respect to a laser pulse), the following
 fields must be present:
 
-- **nanotimes**:(array of integers) TCSPC nanotimes.
+- **nanotimes**:(array of integers) TCSPC nanotimes. Typical data-type uint16.
 - **nanotimes_specs/**
     - **tcspc_unit**: (float) TAC/TDC bin size (in seconds).
     - **tcspc_range**:(float) full-scale range of the TAC/TDC (in seconds).
@@ -81,7 +85,7 @@ fields must be present:
 Finally, if the data come from a simulation, ``/photon_data`` may contain:
 
 -  **particles**: (array of integers) a particle ID (integer) for each
-   timestamp.
+   timestamp. Typical data-type uint8.
 
 
 .. _measurement_specs_group:
