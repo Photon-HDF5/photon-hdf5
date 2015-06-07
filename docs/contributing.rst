@@ -10,13 +10,13 @@ interested users.
 The Photon-HDF5 project consist of these parts:
 
 1. `Reference Documentation <http://photon-hdf5.readthedocs.org/>`__ (i.e. this document).
-2. `Examples on reading Photon-HDF5 in multiple languages <https://github.com/Photon-Data/photon_hdf5_reading_examples>`__.
-3. `phconvert <https://github.com/Photon-Data/phconvert>`__: reference python library for writing and converting
+2. `Examples on reading Photon-HDF5 in multiple languages <https://github.com/Photon-HDF5/photon_hdf5_reading_examples>`__.
+3. `phconvert <https://github.com/Photon-HDF5/phconvert>`__: reference python library for writing and converting
    Photon-HDF5 files.
 
-All the sources (including for the documentation) are `hosted on GitHub <https://github.com/Photon-Data>`__
+All the sources (including for the documentation) are `hosted on GitHub <https://github.com/Photon-HDF5>`__
 and we encourage to open *GitHub Issues* in the
-`documentation repository <https://github.com/Photon-Data/photon-hdf5>`__
+`documentation repository <https://github.com/Photon-HDF5/photon-hdf5>`__
 to discuss any topic related Photon-HDF5.
 You can also contact us by email, but we prefer to use GitHub in order to
 keep any discussion public.
@@ -30,22 +30,22 @@ There are several ways you can get involved:
 - **Sending feedback**: if you use or plan to use Photon-HDF5 and have any comment
   or suggestion, please send it to us! Even if you don't have any problem we would like to
   hear back about your use case. For this topic please open an issue in the
-  `documentation repository <https://github.com/Photon-Data/photon-hdf5>`__.
+  `documentation repository <https://github.com/Photon-HDF5/photon-hdf5>`__.
 
 - **Documentation contributions**: if you feel that some section of this document
   should be expanded or enhanced in any way, please feel free to open an issue
   or send a PR (see note above) on the
-  `documentation repository <https://github.com/Photon-Data/photon-hdf5>`__.
+  `documentation repository <https://github.com/Photon-HDF5/photon-hdf5>`__.
 
 - **Contributing examples**: you can send a new example on reading Photon-HDF5
   files in a new language or for a different measurement type. Or simply
   send a fix for the
-  `current examples <https://github.com/Photon-Data/photon_hdf5_reading_examples>`__.
+  `current examples <https://github.com/Photon-HDF5/photon_hdf5_reading_examples>`__.
 
 - **Contributing to phconvert**: you can open issues to report bugs, discuss
   usage or propose enhancements. You are also more than welcome to send PR
   for fixes or enhancements to the library. The official repository is
-  `this one <https://github.com/Photon-Data/phconvert>`__.
+  `this one <https://github.com/Photon-HDF5/phconvert>`__.
 
 
 Contributions Acknowledgement
