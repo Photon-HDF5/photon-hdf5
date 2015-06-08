@@ -7,36 +7,44 @@ Overview
 A Photon-HDF5 is a HDF5 file with a predefined structure for timestamp-based
 data.
 
-A screenshot of a typical Photon-HDF5 file opened in HDFView is shown here:
+A screen-shot of a typical Photon-HDF5 file opened in HDFView is shown here:
 
 .. figure:: /images/hdfview.png
     :align: center
 
-Every Photon-HDF5 file has a :ref:`/photon_data <photon_data_group>`
-group that contains the photon timestamps and other single photon data.
-In the most basic form */photon_data* contains only the per-photon data
-(timestamps, detectors, nanotimes, etc...). However, in order to correctly
-interpret the data, additional information is needed (for example
-which detectors correspond to the donor and acceptor channels in a 2-colors
-smFRET experiment, or the
-alternation period in a μs-ALEX experiment). If available, these additional
-specifications are contained within the */photon_data* field in the
-:ref:`measurement_specs sub-group <measurement_specs_group>`.
+The previous figure shows the 5 main groups contained in a Photon-HDF5 file.
+Of these, :ref:`/photon_data <photon_data_group>` and  :ref:`/setup <setup_group>`
+contains the raw data and all the information needed for the analysis.
+A schematic overview is shown in the next figure:
 
-Other optional groups are:
+.. figure:: /images/format-diagram_first2.png
+    :align: center
+
+The remaining 3 groups (``/sample``, ``/identity``, ``/provenance``) provides
+additional metadata that make the Photon-HDF5 files self-contained and
+suitable long-term on-line archival. An overview of there groups is shown below:
+
+
+.. figure:: /images/format-diagram_last3.png
+    :align: center
+
+As a quick reference, here we list links to the documentation for each group:
+
+- :ref:`/photon_data <photon_data_group>`:
+  RAW data and measurement type specifications.
+
+- :ref:`/setup <setup_group>`:
+  Description of the experimental setup.
 
 - :ref:`/identity <identity_group>`:
-  Information about the data file
+  Information about the data file.
 
 - :ref:`/provenance <provenance_group>`:
   Information about the original data file (when the Photon-HDF5 file
-  has been converted from another format)
-
-- :ref:`/setup <setup_group>`:
-  Description of the experimental setup
+  has been converted from another format).
 
 - :ref:`/sample <sample_group>`:
-  Description of the measured sample
+  Description of the measured sample.
 
 The following sections describe the Photon-HDF5
 groups and fields.
@@ -44,8 +52,16 @@ groups and fields.
 Root-level parameters
 ---------------------
 
+The root node ("/") in a Photon-HDF5 file contains the following fields:
+
 - **/acquisition_time**: (float) the measurement duration in seconds.
 - **/comment**: (string) a user-defined comment.
+
+In addition, the root node has the following attributes that can be used to
+distinguish Photon-HDF5 files from other HDF5 files:
+
+- **format_name**: must contain the string "Photon-HDF5"
+- **format_version**: (string) the Photon-HDF5 format version.
 
 
 .. _photon_data_group:
