@@ -468,7 +468,7 @@ Definition of alternation periods
 Note for μs-ALEX
 """"""""""""""""
 
-The *alex_period_spectral_ch1* and *alex_period_spectral_ch2* fields allow
+The *alex_period_excitation1* and *alex_period_excitation2* fields allow
 defining photons detected during donor or acceptor excitation. As an
 example, let's define the array
 
