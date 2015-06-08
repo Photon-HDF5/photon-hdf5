@@ -156,7 +156,7 @@ For 2-color (or more) μs-ALEX and ns-ALEX (optional):
 
 .. note::
 
-    For μs-ALEX, both *alex_period_donor* and *alex_period_acceptor*
+    For μs-ALEX, both *alex_period_spectral_ch1* and *alex_period_spectral_ch2*
     are 2-element arrays. In this case, these values are expressed in
     *timestamps_units*.
     For ns-ALEX (also known as PIE), they are arrays with an even-number
@@ -431,7 +431,7 @@ Definition of alternation periods
 Note for μs-ALEX
 """"""""""""""""
 
-The *alex_period_donor* and *alex_period_acceptor* fields allow
+The *alex_period_spectral_ch1* and *alex_period_spectral_ch2* fields allow
 defining photons detected during donor or acceptor excitation. As an
 example, let's define the array
 
