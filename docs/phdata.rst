@@ -142,21 +142,33 @@ For ns-ALEX (or lifetime with no alternation):
 
 For 2-color (or more) μs-ALEX and ns-ALEX (optional):
 
-- **alex_period_spectral_ch1**: (array with an even-number of integer
-  elements) start and stop values identifying the *spectral_ch1*
-  (i.e. *donor* for smFRET measurements) emission period (see note below for
-  more details).
+- **alex_period_excitation1**: (array with an even-number of integer
+  elements) start and stop values identifying the excitation periods for
+  the **first** wavelength in ``/setup/excitation_wavelengths`` (which is the
+  shortest wavelength).
+  In smFRET experiments with 2-colors excitation this field defines the
+  *donor excitation period*.
+  See also :ref:`wavelengths_order` and note below.
 
-- **alex_period_spectral_ch2**: (array with an even-number of integer
-  elements) start and stop values identifying the *spectral_ch2*
-  (i.e. *acceptor* for smFRET measurements) emission period (see note below for
-  more details).
+- **alex_period_excitation2**: (array with an even-number of integer
+  elements) start and stop values identifying the excitation periods for
+  the **second** wavelength in ``/setup/excitation_wavelengths``.
+  In smFRET experiments with 2-colors excitation this field defines the
+  *acceptor excitation period*.
+  See also :ref:`wavelengths_order` and note below.
+
+For 3 or more color alternated or interleaved excitation:
+
+- **alex_period_excitation3**: (array with an even-number of integer
+  elements) start and stop values identifying the excitation periods for
+  the **third** wavelength in ``/setup/excitation_wavelengths``.
+  See also :ref:`wavelengths_order` and note below.
 
 - etc...
 
 .. note::
 
-    For μs-ALEX, both *alex_period_spectral_ch1* and *alex_period_spectral_ch2*
+    For μs-ALEX, both *alex_period_excitation1* and *alex_period_excitation2*
     are 2-element arrays. In this case, these values are expressed in
     *timestamps_units*.
     For ns-ALEX (also known as PIE), they are arrays with an even-number
@@ -243,7 +255,7 @@ The **/setup** group contains information about the measurement setup:
 - **num_spots**: (integer) the number of excitation (or detection)
   "spots" in the sample. This field is 1 for all the measurements using a
   single confocal excitation volume. When not applicable, for example under
-  widefield illumination with 2-D imaging detectors, this field is omitted.
+  wide-field illumination with 2-D imaging detectors, this field is omitted.
 
 - **num_spectral_ch**: (integer) number of distinct detection spectral
   channels. For example, in a 2-color smFRET experiment there are 2
@@ -421,6 +433,31 @@ a non-polarizing beam splitter the measurement has so called
 beam-split channels. The fields `split_ch1` and `split_ch2` contains
 the list of detector IDs for each beam-split channel
 (see :ref:`detectors_specs_group`).
+
+
+.. _wavelengths_order:
+
+Wavelengths and spectral band order
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In Photon-HDF5, by convention, all the excitation wavelengths and detection
+spectral bands are ordered in increasing order: from the shortest to the
+longest wavelength. This ordering is strictly followed and removes any
+ambiguity in defining first, second, etc... wavelength or spectral band.
+
+For examples, for μs-ALEX and ns-ALEX (or PIE) the excitation wavelengths
+(in ``/setup/excitation_wavelenths``) are ordered as
+
+1. *donor excitation wavelength*,
+2. *acceptor excitation wavelength*
+
+Similarly, the donor (or acceptor) excitation period is defined by
+``/photon_data/measurement_specs/alex_period_excitation1``
+(or ``/photon_data/measurement_specs/alex_period_excitation2``).
+
+Finally the donor (or acceptor) detector number is defined in
+``/photon_data/measurement_specs/detectors_specs/spectral_ch1``
+(or ``/photon_data/measurement_specs/detectors_specs/spectral_ch2``).
 
 
 .. _alex_period_def:
