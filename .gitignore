@@ -1,3 +1,5 @@
 docs/_build/
 docs/html/
 docs_html/
+.doctrees/
+.ipynb_checkpoints/
