@@ -1,6 +1,8 @@
 Photon-HDF5 format definition
 =============================
 
+.. contents::
+
 Overview
 --------
 
