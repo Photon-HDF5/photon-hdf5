@@ -50,4 +50,5 @@ Table of contents
     intro
     phdata
     limitations
+    writing
     contributing
