@@ -20,15 +20,17 @@ A schematic overview is shown in the next figure:
 .. figure:: /images/format-diagram_first2.png
     :align: center
 
-The remaining 3 groups (``/sample``, ``/identity``, ``/provenance``) provides
+The remaining 3 groups (``/sample``, ``/identity``, ``/provenance``) provide
 additional metadata that make the Photon-HDF5 files self-contained and
 suitable long-term on-line archival. An overview of there groups is shown below:
-
 
 .. figure:: /images/format-diagram_last3.png
     :align: center
 
-As a quick reference, here we list links to the documentation for each group:
+The following sections describe the Photon-HDF5
+groups and their contents.
+
+As a quick reference, direct links to sections for each group follows:
 
 - :ref:`/photon_data <photon_data_group>`:
   RAW data and measurement type specifications.
@@ -46,8 +48,6 @@ As a quick reference, here we list links to the documentation for each group:
 - :ref:`/sample <sample_group>`:
   Description of the measured sample.
 
-The following sections describe the Photon-HDF5
-groups and fields.
 
 Root-level parameters
 ---------------------
