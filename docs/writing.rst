@@ -4,7 +4,7 @@ Writing Photon-HDF5 files
 =========================
 
 The recommended way to write (or convert) Photon-HDF5 files is by using the
-phconvert python library.
+`phconvert <https://github.com/Photon-HDF5/phconvert>`_ python library.
 
 However, some user may want to save Photon-HDF5 files directly from an
 acquisition software not written in python (as opposed to converting the files
@@ -48,7 +48,7 @@ files, some users may prefer saving file directly from their non-python
 applications. This is the only approach for non-python acquisition
 applications that want to natively save to Photon-HDF5.
 
-Note that in this case the user needs to use a HDF5 library for the language
+Note that in this case, the user needs to use a HDF5 library for the language
 of choice and needs to be able to create HDF5 files.
 
 To facilitate this task, we provide a JSON file containing all the official

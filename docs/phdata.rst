@@ -367,7 +367,7 @@ file. If some information is not available the relative field may be omitted.
   the Photon-HDF5 file.
 
 - **format_name**: (string) this must always be "Photon-HDF5"
-- **format_version**: (string) for the current version it  must be "0.3"
+- **format_version**: (string) the Photon-HDF5 version string (e.g. "0.3")
 - **format_url**: (string) A URL pointing to the Photon-HDF5 specification
   document.
 

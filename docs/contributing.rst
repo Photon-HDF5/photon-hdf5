@@ -57,6 +57,6 @@ the authors.
 Contributions to the examples repository need to be under the MIT license
 and will retain the copyright notice of the original contributor.
 
-Contributions to phconvert, currently, need to be under the GNU GPL v2 license.
-We are discussing to relicense phconvert to MIT license, so stay tuned.
+*phconvert* is released under the open source `MIT license <http://opensource.org/licenses/MIT>`__
+and contributions are accepted under the same license.
 
