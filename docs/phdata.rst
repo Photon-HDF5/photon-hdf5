@@ -129,44 +129,48 @@ For μs-ALEX, 2, 3 or N colors:
 
 For ns-ALEX (or lifetime with no alternation):
 
-- **laser_pulse_rate**: (float) excitation laser pulse repetition rate in
+- **laser_repetition_rate**: (float) excitation laser pulse repetition rate in
   *Hertz*.
 
 For 2-color (or more) μs-ALEX and ns-ALEX (optional):
 
-- **alex_period_excitation1**: (array with an even-number of integer
-  elements) start and stop values identifying the excitation periods for
-  the **first** wavelength in ``/setup/excitation_wavelengths`` (which is the
-  shortest wavelength).
+- **alex_offset**: (scalar) [μs-ALEX only] Time offset (in timestamps units)
+  to be applied to the timestamps array before computing the μs-ALEX histogram.
+  It is assumed that the μs-ALEX alternation histogram is the histogram of
+  (``timestamps`` - ``alex_offset``) **MOD** ``alex_period``.
+
+- **alex_excitation_period1**: (array with an even-number of integer
+  elements, normally 2) start and stop values identifying the excitation
+  periods for the **first** wavelength in ``/setup/excitation_wavelengths``
+  (which is the shortest wavelength).
   In smFRET experiments with 2-colors excitation this field defines the
   *donor excitation period*.
   See also :ref:`wavelengths_order` and note below.
 
-- **alex_period_excitation2**: (array with an even-number of integer
-  elements) start and stop values identifying the excitation periods for
-  the **second** wavelength in ``/setup/excitation_wavelengths``.
+- **alex_excitation_period2**: (array with an even-number of integer
+  elements, normally 2) start and stop values identifying the excitation
+  periods for the **second** wavelength in ``/setup/excitation_wavelengths``.
   In smFRET experiments with 2-colors excitation this field defines the
   *acceptor excitation period*.
   See also :ref:`wavelengths_order` and note below.
 
-For 3 or more color alternated or interleaved excitation:
+For 3 (or more) colors alternated or interleaved excitation:
 
-- **alex_period_excitation3**: (array with an even-number of integer
-  elements) start and stop values identifying the excitation periods for
-  the **third** wavelength in ``/setup/excitation_wavelengths``.
+- **alex_excitation_period3**: (array with an even-number of integer
+  elements, normally 2) start and stop values identifying the excitation
+  periods for the **third** wavelength in ``/setup/excitation_wavelengths``.
   See also :ref:`wavelengths_order` and note below.
 
 - etc...
 
 .. note::
 
-    For μs-ALEX, both *alex_period_excitation1* and *alex_period_excitation2*
-    are 2-element arrays. In this case, these values are expressed in
-    *timestamps_units*.
+    For μs-ALEX, both *alex_excitation_period1* and *alex_excitation_period2*
+    are 2-element arrays and are expressed in *timestamps_units*.
     For ns-ALEX (also known as PIE), they are arrays with an even-number
     of elements, comprising as many start-stop nanotime pairs as
     there are excitation periods within the TAC/TDC range.
-    In this case these values are expressed in *nanotimes_units*.
+    In this case the values are expressed in *nanotimes_units*.
 
     For more details see :ref:`alex_period_def`.
 
@@ -443,9 +447,9 @@ For examples, for μs-ALEX and ns-ALEX (or PIE) the excitation wavelengths
 1. *donor excitation wavelength*,
 2. *acceptor excitation wavelength*
 
-Similarly, the donor (or acceptor) excitation period is defined by
-``/photon_data/measurement_specs/alex_period_excitation1``
-(or ``/photon_data/measurement_specs/alex_period_excitation2``).
+Similarly, the donor (or acceptor) excitation period range is defined by
+``/photon_data/measurement_specs/alex_excitation_period1``
+(or ``/photon_data/measurement_specs/alex_excitation_period2``).
 
 Finally the donor (or acceptor) detector number is defined in
 ``/photon_data/measurement_specs/detectors_specs/spectral_ch1``
@@ -460,31 +464,29 @@ Definition of alternation periods
 Note for μs-ALEX
 """"""""""""""""
 
-The *alex_period_excitation1* and *alex_period_excitation2* fields allow
-defining photons detected during donor or acceptor excitation. As an
-example, let's define the array
+The fields *alex_offset*, *alex_excitation_period1* and *alex_excitation_period2*
+define the excitation period for each excitation source. The alternation
+histogram is the histogram of the following quantity:
 
-``A`` = ``timestamps`` *MODULO* ``alex_period``
+``A`` = (``timestamps`` - ``alex_offset``) **MODULO** ``alex_period``
 
-as the array of timestamps modulo the μs-ALEX alternation period.
-Photons emitted during the donor period (respectively, acceptor
-period) are obtained by applying one of these two conditions:
+Note that ``alex_offset`` must be a value that shifts the timestamps in a way
+that the resulting alternation histogram has uninterrupted excitation periods
+for each excitation source. It can be thought as the delay between the start
+of the timestamping and the start of the alternation modulation.
+In most cases this is just an empirical parameter depending on the
+specific setup.
 
--  ``(A > start) and (A < stop)`` when ``start < stop`` (*internal
-   range*)
+Photons emitted during the donor period (or, respectively, acceptor
+period) are obtained by applying the condition:
 
--  ``(A > start) or  (A < stop)`` when ``start > stop`` (*external
-   range*).
+-  ``(A >= start) and (A < stop)``
 
 .. figure:: /images/alternation_range.png
-    :alt: Illustration of the internal and external ranges
+    :alt: μs-ALEX alternation histogram with marked excitation ranges.
     :align: center
 
     Alternation histogram showing selection for the donor and acceptor periods.
-    In this case the donor period is defined as an "external range" (2850, 580)
-    while the acceptor period is defined as an "internal range" (900, 2580).
-    This situation is due to the ALEX period being out of phase with respect
-    to the time stamping clock.
 
 
 .. _measurement_type:
