@@ -8,7 +8,7 @@ Photon-HDF5 file format documentation
 
 :Authors: Antonino Ingargiola, Xavier Michalet, Ted Laurence
 :Contact: tritemio@gmail.com
-:Version: 0.3
+:Version: 0.4
 
 
 Photon-HDF5 is a file format for freely diffusing single-molecule spectroscopy
@@ -33,7 +33,7 @@ Other related resources are:
 
 
 .. note ::
-   This document describes **Photon-HDF5 version 0.3**.
+   This document describes **Photon-HDF5 version 0.4**.
    The latest version of this document can be found at
    `http://photon-hdf5.readthedocs.org <http://photon-hdf5.readthedocs.org/>`__.
    To send correction or getting involved in the file format
