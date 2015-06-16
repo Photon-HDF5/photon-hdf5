@@ -45,11 +45,12 @@ Even if using *phconvert* is the recommended way to save or convert Photon-HDF5
 files, some users may prefer saving file directly from their non-python
 applications. This approach is needed for non-python acquisition
 applications that want to natively save to Photon-HDF5.
-Note also that from some languages like MATLAB, you can directly call python functions 
-(since R2014b) and so it would be better (simpler) to just call phconvert 
+Note also that, from some languages like MATLAB (since R2014b), 
+you can directly call python functions.
+In this case it is advisable to call the phconvert functions
 instead of coding new routines from scratch.
 
-Note that the user wnating to code writing routines from scratch needs to use 
+Note that the user wanting to code writing routines from scratch needs to use 
 the HDF5 library for the language of choice and needs to be able to create HDF5 files.
 
 To facilitate this task, we provide 
