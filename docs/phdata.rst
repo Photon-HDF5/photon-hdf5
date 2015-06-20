@@ -46,8 +46,8 @@ Root-level parameters
 
 The root node ("/") in a Photon-HDF5 file contains the following fields:
 
-- **/acquisition_time**: (float) the measurement duration in seconds.
-- **/comment**: (string) a user-defined comment.
+- **/acquisition_duration**: (float) the measurement duration in seconds.
+- **/description**: (string) a user-defined measurement description.
 
 In addition, the root node has the following attributes that can be used to
 distinguish Photon-HDF5 files from other HDF5 files:
