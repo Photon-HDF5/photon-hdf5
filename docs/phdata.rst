@@ -350,6 +350,11 @@ file. If some information is not available the relative field may be omitted.
 - **url**: (string) URL that allow to download the Photon-HDF5 data file.
 - **doi**: (string) Digital Object Identifier (DOI) for the Photon-HDF5
   data file.
+- **funding**: (string) Description of funding sources and or grants that
+  supported the data collection.
+- **license**: (string) License under which the data is released. Many journals
+  and funding agencies require or suggest "CC0" (or equivalently "Public Domain")
+  for the data.
 
 - **filename**: (string) Photon-HDF5 file name at creation time. This field
   saves the original file name even if the file is later on renamed on disk.
