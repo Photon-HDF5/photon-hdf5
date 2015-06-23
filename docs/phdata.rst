@@ -329,6 +329,21 @@ these fields are omitted.
   splitting is performed.
 
 
+.. _sample_group:
+
+Sample group
+------------
+
+The **/sample** group contains information related to the measured sample.
+This group is optional.
+
+- **num_dyes**: (integer) number of different dyes present in the samples.
+- **dye_names**: (string) comma-separated list of dye names (for example:
+  ``"ATTO550, ATTO647N"``)
+- **buffer_name**: (string) a user defined description for the buffer.
+- **sample_name**: (string) a user defined description for the sample.
+
+
 .. _identity_group:
 
 Identity group
@@ -388,21 +403,6 @@ If some information is not available the relative field may be omitted.
 - **modification_time**: (string)
 - **software**: (string)
 - **software_version**: (string)
-
-
-.. _sample_group:
-
-Sample group
-------------
-
-The **/sample** group contains information related to the measured sample.
-This group is optional.
-
-- **num_dyes**: (integer) number of different dyes present in the samples.
-- **dye_names**: (string) comma-separated list of dye names (for example:
-  ``"ATTO550, ATTO647N"``)
-- **buffer_name**: (string) a user defined description for the buffer.
-- **sample_name**: (string) a user defined description for the sample.
 
 
 .. _glossary:
