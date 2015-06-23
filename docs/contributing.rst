@@ -60,3 +60,6 @@ and will retain the copyright notice of the original contributor.
 *phconvert* is released under the open source `MIT license <http://opensource.org/licenses/MIT>`__
 and contributions are accepted under the same license.
 
+....
+
+The development of the Photon-HDF5 file format was supported by NIH Grant R01-GM95904. 
