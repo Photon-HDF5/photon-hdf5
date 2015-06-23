@@ -13,14 +13,9 @@ later on). Both use cases are illustrated below.
 Using phconvert
 ---------------
 
-Users that want to convert existing files to Photon-HDF5 are strongly
-encouraged to use phconvert. Even if phconvert is a python library, no python
-knowledge is strictly required as users can simply follows the steps
-illustrated in the *phconvert notebooks* (`repository <https://github.com/Photon-HDF5/phconvert/tree/master/notebooks>`__,
-`see on-line <http://nbviewer.ipython.org/github/Photon-HDF5/phconvert/tree/master/notebooks/>`__).
-For the absolute python beginner,
-we recommend `this page <http://jupyter-notebook-beginner-guide.readthedocs.org/>`__
-with installation and first-run instructions.
+Users wanting to convert existing files to Photon-HDF5 can use phconvert.
+`phconvert homepage <http://photon-hdf5.github.io/phconvert/>`_ has
+instructions on how to convert files.
 
 If your input file format is not supported by *phconvert* please open a
 `new issue <https://github.com/Photon-HDF5/phconvert/issues>`__ on GitHub for phconvert.
@@ -45,17 +40,18 @@ Even if using *phconvert* is the recommended way to save or convert Photon-HDF5
 files, some users may prefer saving file directly from their non-python
 applications. This approach is needed for non-python acquisition
 applications that want to natively save to Photon-HDF5.
-Note also that, from some languages like MATLAB (since R2014b), 
+Note also that, from some languages like MATLAB (since R2014b),
 you can directly call python functions.
 In this case it is advisable to call the phconvert functions
 instead of coding new routines from scratch.
 
-Note that the user wanting to code writing routines from scratch needs to use 
+Note that the user wanting to code writing routines from scratch needs to use
 the HDF5 library for the language of choice and needs to be able to create HDF5 files.
 
-To facilitate this task, we provide 
-`a JSON file <https://github.com/Photon-HDF5/phconvert/blob/master/phconvert/specs/photon-hdf5_fields.json>`_ 
-containing all the official field names and their description. 
+To facilitate this task, we provide
+`a JSON file <https://github.com/Photon-HDF5/phconvert/blob/master/phconvert/specs/photon-hdf5_specs.json>`_
+containing all the official field names, a short description and a broad
+type definition (array, scalar, string or group).
 This JSON file can be used both to
 validate the names of the fields and to retrieve a standard short description.
 The description string should be saved for all the official fields in

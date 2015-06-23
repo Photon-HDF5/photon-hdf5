@@ -23,11 +23,11 @@ setup configurations, sample information, authorship and provenance.
 
 The present document contains the reference documentation for the Photon-HDF5 format.
 
-Other related resources are:
+Other related resources:
 
-- `Examples of reading Photon-HDF5 files in multiple languages <https://github.com/Photon-Data/photon_hdf5_reading_examples>`__
-- `phconvert <https://github.com/Photon-Data/phconvert>`__: reference library to create and convert Photon-HDF5 files
-- `Why an HDF5-based smFRET file format <http://fretbursts.readthedocs.org/en/latest/HDF5_format.html>`__
+- `Example Photon-HDF5 files <http://figshare.com/articles/Example_smFRET_data_files_in_Photon_HDF5_format/1456362>`_
+- `Code examples of reading Photon-HDF5 files in multiple languages <https://github.com/Photon-Data/photon_hdf5_reading_examples>`__
+- `phconvert <http://photon-hdf5.github.io/phconvert/>`__: reference library to create and convert Photon-HDF5 files
 - Photon-HDF5: an open format for single-molecule spectroscopy
   using photon-counting devices (*coming soon*).
 
@@ -35,7 +35,7 @@ Other related resources are:
 .. note ::
    This document describes **Photon-HDF5 version 0.4**.
    The latest version of this document can be found at
-   `http://photon-hdf5.readthedocs.org <http://photon-hdf5.readthedocs.org/>`__.
+   `http://photon-hdf5.org <http://photon-hdf5.org/>`__.
    To send correction or getting involved in the file format
    development please see the :ref:`contributing <contributing>` section.
 
