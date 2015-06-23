@@ -397,12 +397,12 @@ The **provenance/** group contains info about the original file that has
 been converted into a Photon-HDF5 file.
 If some information is not available the relative field may be omitted.
 
-- **filename**: (string)
-- **filename_full**: (string)
-- **creation_time**: (string)
-- **modification_time**: (string)
-- **software**: (string)
-- **software_version**: (string)
+- **filename**: (string) File name of the original data file before conversion to Photon-HDF5.
+- **filename_full**: (string) File name (with full path) of the original data file before conversion to Photon-HDF5.
+- **creation_time**: (string) Creation time of the original data file.
+- **modification_time**: (string) Time of last modification of the original data file.
+- **software**: (string) Software used to save the original data file.
+- **software_version**: (string) Version of the software used to save the original data file.
 
 
 .. _glossary:
