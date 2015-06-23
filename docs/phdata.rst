@@ -338,7 +338,7 @@ The **/sample** group contains information related to the measured sample.
 This group is optional.
 
 - **num_dyes**: (integer) number of different dyes present in the samples.
-- **dye_names**: (string) comma-separated list of dye names (for example:
+- **dye_names**: (string) comma-separated list of dye or fluorophore names (for example:
   ``"ATTO550, ATTO647N"``)
 - **buffer_name**: (string) a user defined description for the buffer.
 - **sample_name**: (string) a user defined description for the sample.
