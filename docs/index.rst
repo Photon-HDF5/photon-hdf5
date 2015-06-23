@@ -25,11 +25,19 @@ The present document contains the reference documentation for the Photon-HDF5 fo
 
 Other related resources:
 
-- `Example Photon-HDF5 files <http://figshare.com/articles/Example_smFRET_data_files_in_Photon_HDF5_format/1456362>`_
+- |example_files|, view them with |hdfview|.
 - `Code examples of reading Photon-HDF5 files in multiple languages <https://github.com/Photon-Data/photon_hdf5_reading_examples>`__
 - `phconvert <http://photon-hdf5.github.io/phconvert/>`__: reference library to create and convert Photon-HDF5 files
 - Photon-HDF5: an open format for single-molecule spectroscopy
   using photon-counting devices (*coming soon*).
+
+.. |example_files| raw:: html
+
+   <a href="http://figshare.com/articles/Example_smFRET_data_files_in_Photon_HDF5_format/1456362" target="_blank">Example Photon-HDF5 data files</a>
+
+.. |hdfview| raw:: html
+
+   <a href="https://www.hdfgroup.org/products/java/hdfview/" target="_blank">HDFView</a>
 
 
 .. note ::
