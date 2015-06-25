@@ -223,19 +223,6 @@ For example, a 2-color smFRET measurement will have only one value in
 For a multispot smFRET measurement, ``spectral_chX`` will contain the list
 of donor/acceptor pixels (see :ref:`multi_spot`).
 
-Finally, a label (string) can be associated to each pixel using
-the optional *labels* field:
-
-- **labels**: (optional) table with 2 columns: detector pixel ID (integer)
-  and detector label (string).
-
-For 2-color smFRET measurements, it is recommended to use the "donor"
-and "acceptor" labels for the respective pixel. Note, however, that these
-labels only represent an additional user-defined metadata and are not
-necessary for the interpretation of the measurement.
-When :ref:`detector_ids` is a *n*-tuple, ``labels`` has *n+1* columns
-(*n* for the ID and 1 for the labels).
-
 
 .. _setup_group:
 
