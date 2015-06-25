@@ -74,7 +74,7 @@ Mandatory fields:
 
 Optional if there is only 1 detector, otherwise mandatory:
 
-- **detectors**: (array of integers) detector ID for each timestamp.
+- **detectors**: (array of integers) :ref:`detector_ids` for each timestamp.
   Typical data-type uint8.
 
 When the dataset contains nanotime information (i.e. arrival time of each
@@ -181,7 +181,7 @@ Detectors specs
 """""""""""""""
 
 Within **measurement_specs**, the **detectors_specs/** sub-group
-contains all the :ref:`detector ID <detector_ids>`--detection channel
+contains all the :ref:`pixel ID <detector_ids>`--detection channel
 associations, i.e. spectral bands, polarizations or
 :ref:`beam-split channels <beam_split_ch>`.
 
@@ -191,7 +191,7 @@ When a measurement records more than 1 spectral band, the fields:
 - **spectral_ch2**
 - etc...
 
-specify which detector is employed in each spectral band. When the measurement
+specify which detector pixel is employed in each spectral band. When the measurement
 records only 1 spectral band these fields may be omitted. The spectral bands
 are strictly ordered for increasing wavelengths. For example, for 2-color
 smFRET measurements ``spectral_ch1`` and ``spectral_ch2`` represent the
@@ -202,7 +202,7 @@ If a measurement records more than 1 polarization states, the fields:
 - **polarization_ch1**
 - **polarization_ch2**
 
-specify which detector is used for each polarization. When the measurement
+specify which detector pixel is used for each polarization. When the measurement
 records only one polarization, these fields may be omitted.
 
 When the detection light is split into 2 channels using a non-polarizing
@@ -212,28 +212,28 @@ beam-splitter the fields:
 - **split_ch1**
 - **split_ch2**
 
-specify which detector is used in each of the "beam-split" channels.
+specify which detector pixel is used in each of the "beam-split" channels.
 
-All previous fields are arrays containing one or more detector IDs.
+All previous fields are arrays containing one or more :ref:`detector_ids`.
 For example, a 2-color smFRET measurement will have only one value in
 ``spectral_ch1`` (donor) and one value in ``spectral_ch2``
 (acceptor). A 2-color smFRET measurement with polarization
 (4 detectors) will have 2 values in each of the ``spectral_chX`` and
 ``polarization_chX`` fields (where X=1 or 2).
 For a multispot smFRET measurement, ``spectral_chX`` will contain the list
-of donor/acceptor detectors (see :ref:`multi_spot`).
+of donor/acceptor pixels (see :ref:`multi_spot`).
 
-Finally, a label (string) can be associated to each detector using
+Finally, a label (string) can be associated to each pixel using
 the optional *labels* field:
 
-- **labels**: (optional) table with 2 columns: detector ID (integer)
+- **labels**: (optional) table with 2 columns: detector pixel ID (integer)
   and detector label (string).
 
 For 2-color smFRET measurements, it is recommended to use the "donor"
-and "acceptor" labels for the respective detectors. Note, however, that these
+and "acceptor" labels for the respective pixel. Note, however, that these
 labels only represent an additional user-defined metadata and are not
 necessary for the interpretation of the measurement.
-When detector ID is a *n*-tuple, ``labels`` has *n+1* columns
+When :ref:`detector_ids` is a *n*-tuple, ``labels`` has *n+1* columns
 (*n* for the ID and 1 for the labels).
 
 
@@ -412,16 +412,16 @@ Additional notes and definitions
 
 .. _detector_ids:
 
-Detector IDs
-^^^^^^^^^^^^
+Detector pixel IDs
+^^^^^^^^^^^^^^^^^^
 
-A detector ID is the "name" of each pixels and is typically a single
-integer (when all the pixels are numbered with a progressive index).
-In some case (when using detector arrays) the detector ID
+A *detector pixel ID* (or simply *pixel ID*) is the "name" of each pixels and 
+is typically a single integer and pixels are numbered with a progressive index.
+In some cases (when using detector arrays) the pixel ID
 can be a *n*-tuple of integers. This allow to specify, for each pixel,
 the module number and the X, Y location, for example. Therefore, an
-array of detector IDs can be either a 1-D column array or a 2-D array.
-In either cases, each row identifies a detector.
+array of pixel IDs can be either a 1-D column array or a 2-D array.
+In either cases, each row identifies a pixel.
 
 
 .. _beam_split_ch:
@@ -432,7 +432,7 @@ Beam-split channels
 When the emitted light path is split in 2 or more detection paths by using
 a non-polarizing beam splitter the measurement has so called
 beam-split channels. The fields `split_ch1` and `split_ch2` contains
-the list of detector IDs for each beam-split channel
+the list of :ref:`detector_ids` for each beam-split channel
 (see :ref:`detectors_specs_group`).
 
 
@@ -456,7 +456,7 @@ Similarly, the donor (or acceptor) excitation period range is defined by
 ``/photon_data/measurement_specs/alex_excitation_period1``
 (or ``/photon_data/measurement_specs/alex_excitation_period2``).
 
-Finally the donor (or acceptor) detector number is defined in
+Finally the donor (or acceptor) :ref:`detector_ids` number is defined in
 ``/photon_data/measurement_specs/detectors_specs/spectral_ch1``
 (or ``/photon_data/measurement_specs/detectors_specs/spectral_ch2``).
 
@@ -504,7 +504,7 @@ which must be present to ensure that all information needed to
 unambiguously interpret the data is present.
 For example, for a 2-color smFRET measurement, a software package creating
 a file should check that
-the association between detector and donor or acceptor channel
+the association between detector-pixel and donor or acceptor channel
 is present. If some necessary field is absent, the software package
 should warn the user in order that this information is added before
 saving the file.
