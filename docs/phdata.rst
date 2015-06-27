@@ -81,14 +81,14 @@ When the dataset contains nanotime information (i.e. arrival time of each
 photon with respect to a laser pulse), the following
 fields must be present:
 
-- **nanotimes**:(array of integers) TCSPC nanotimes. Typical data-type uint16.
+- **nanotimes**:(array of integers) TCSPC nanotimes. Conventionally the time 
+  axis direction is the "natural" direction, i.e. lifetime decays looks
+  correctly oriented. For more details see :ref:`nanotimes_time_axis`.
+  Typical data-type uint16.
 - **nanotimes_specs/**
     - **tcspc_unit**: (float) TAC/TDC bin size (in seconds).
     - **tcspc_range**:(float) full-scale range of the TAC/TDC (in seconds).
     - **tcspc_num_bins**: (integer) number of TAC/TDC bins.
-    - **time_reversed**: (boolean) *True* if nanotimes contains the
-      time elapsed between a photon and the next laser pulse. *False*
-      if it contains the time elapsed between a laser pulse and a photon.
 
 Finally, if the data come from a simulation, ``/photon_data`` may contain:
 
@@ -495,6 +495,25 @@ the association between detector-pixel and donor or acceptor channel
 is present. If some necessary field is absent, the software package
 should warn the user in order that this information is added before
 saving the file.
+
+
+.. _nanotimes_time_axis:
+
+Nanotimes time direction
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+In tipical TCSPC measurement the *start* and *stop* inputs are inverted,
+i.e. the *start* is triggered by the photon and the *stop* by the the laser sync.
+This allows to start TAC or TDC measurements only when a photon is
+detected and not at each laser sync pulse. However, due to this experimental
+condition, the resulting TCSPC histogram "looks" with an inverted time axis 
+direction. 
+
+In Photon-HDF5 files, by convention, when a `nanotimes` time axis inversion 
+is needed, it is applied before saving the array. In this way, regardless of 
+the way the nanotimes are acquired, TCSPC histogram computed directly from 
+`nanotimes` in Photon-HDF5 always "look" with the time axsis correctly 
+oriented.
 
 
 .. _multi_spot:
