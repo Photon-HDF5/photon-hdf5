@@ -82,8 +82,8 @@ photon with respect to a laser pulse), the following
 fields must be present:
 
 - **nanotimes**:(array of integers) TCSPC nanotimes. Conventionally the time 
-  axis direction is the "natural" direction, i.e. lifetime decays looks
-  correctly oriented. For more details see :ref:`nanotimes_time_axis`.
+  axis direction is the "natural" direction, i.e. lifetime decays look
+  correctly oriented in time. For more details see :ref:`nanotimes_time_axis`.
   Typical data-type uint16.
 - **nanotimes_specs/**
     - **tcspc_unit**: (float) TAC/TDC bin size (in seconds).
@@ -511,7 +511,7 @@ direction.
 
 In Photon-HDF5 files, by convention, when a `nanotimes` time axis inversion 
 is needed, it is applied before saving the array. In this way, regardless of 
-the way the nanotimes are acquired, TCSPC histogram computed directly from 
+the way the nanotimes are acquired, TCSPC histograms computed directly from 
 `nanotimes` in Photon-HDF5 always "look" with the time axsis correctly 
 oriented.
 
