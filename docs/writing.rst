@@ -40,28 +40,31 @@ Even if using *phconvert* is the recommended way to save or convert Photon-HDF5
 files, some users may prefer saving file directly from their non-python
 applications. This approach is needed for non-python acquisition
 applications that want to natively save to Photon-HDF5.
-Note also that, from some languages like MATLAB (since R2014b),
+Note however that, from some languages like MATLAB (since R2014b),
 you can directly call python functions.
 In this case it is advisable to call the phconvert functions
-instead of coding new routines from scratch.
+instead of coding new routines to save Photon-HDF5 files. This will both
+save development time and assure compatibility of the generated files.
 
 Note that the user wanting to code writing routines from scratch needs to use
 the HDF5 library for the language of choice and needs to be able to create HDF5 files.
 
 To facilitate this task, we provide
 `a JSON file <https://github.com/Photon-HDF5/phconvert/blob/master/phconvert/specs/photon-hdf5_specs.json>`_
-containing all the official field names, a short description and a broad
+containing all the official field names, a short description and a generic
 type definition (array, scalar, string or group).
 This JSON file can be used both to
-validate the names of the fields and to retrieve a standard short description.
+validate names and types of the data fields and to retrieve the standard short description.
 The description string should be saved for all the official fields in
-an attribute named "TITLE".
+an attribute named "TITLE". For compatibility with h5labview, we recommend to 
+use a single-space string (" ") for all the user fields that lack a description
+(phconvert uses this workaround too).
 
 Furthermore, the :ref:`/identity group <identity_group>` should include
 the fields ``software_name`` and ``software_version`` to specify the name
 and the version of the software that created the file.
 
-Finally, please make sure that the generate files are compliant with the
-Photon-HDF5 specifications by loading the file with *phconvert*
-(using ``phconvert.hdf5.load_photon_hdf5()``). This function will raise errors
-or warnings if the files does not follows the specs.
+Finally, you can verify that the generate files are compliant with the
+Photon-HDF5 specifications by using the *phconvert* function 
+``phconvert.hdf5.assert_valid_photon_hdf5_tables()``. This function will 
+raise errors or warnings if the input file does not follows the specs.
