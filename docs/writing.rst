@@ -10,7 +10,7 @@ However, some user may want to save Photon-HDF5 files directly from an
 acquisition software not written in python (as opposed to converting the files
 later on). Both use cases are illustrated below.
 
-From python
+From Python
 -----------
 
 Python users can convert existing files to Photon-HDF5 with ``phconvert``.
