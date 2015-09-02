@@ -11,7 +11,7 @@ by executing one of the provided
 Phconvert's MIT license is compatible with inclusion in both open and 
 closed source software.
 
-Some user may want to save Photon-HDF5 files from an acquisition software 
+Some users may want to save Photon-HDF5 files from an acquisition software 
 not written in python (as opposed to converting the files
 later on). Also this use case is illustrated below.
 
