@@ -4,45 +4,51 @@ Writing Photon-HDF5 files
 =========================
 
 The recommended way to write (or convert) Photon-HDF5 files is by using the
-`phconvert <https://github.com/Photon-HDF5/phconvert>`_ python library.
+`phconvert <https://github.com/Photon-HDF5/phconvert>`_.
+`phconvert` is a python library that can be used as a stand-alone program 
+by executing one of the provided 
+`Jupyter notebooks <https://github.com/Photon-HDF5/phconvert/tree/master/notebooks>`_.
+Phconvert's MIT license is compatible with inclusion in both open and 
+closed source software.
 
-However, some user may want to save Photon-HDF5 files directly from an
-acquisition software not written in python (as opposed to converting the files
-later on). Both use cases are illustrated below.
+Some user may want to save Photon-HDF5 files from an acquisition software 
+not written in python (as opposed to converting the files
+later on). Also this use case is illustrated below.
 
-From Python
------------
+From Python, or stand-alone converter
+-------------------------------------
 
-Python users can convert existing files to Photon-HDF5 with ``phconvert``.
-`phconvert homepage <http://photon-hdf5.github.io/phconvert/>`_ has
-instructions on how to convert files.
+Python users, or any user wanting a stand-alone application to convert a file 
+to Photon-HDF5, can use ``phconvert``. Instructions on the
+`phconvert homepage <http://photon-hdf5.github.io/phconvert/>`_ should be 
+detailed enough to guide new users in setting-up the Jupyter Notebook
+and running a notebook to perform the conversion. If something is not 
+clear, please open an `phconvert Issue <https://github.com/Photon-HDF5/phconvert/issues>`_
+or ask on `Photon-HDF5 mailing list <https://groups.google.com/forum/#!forum/photon-hdf5>`_.
+The `Jupyter notebooks <https://github.com/Photon-HDF5/phconvert/tree/master/notebooks>`_
+included with phconvert also serve as examples on how to use the library, in case
+you want to import it in other applications.
 
 If your input file format is not supported by *phconvert* please open a
 `new issue <https://github.com/Photon-HDF5/phconvert/issues>`__ on GitHub for phconvert.
 Adding a new file format is quite straightforward
 and we want to support as many format as possible out of the box.
 
-When saving a new file, *phconvert* performs a validation the user input
-therefore assuring that the generated file is a valid Photon-HDF5 file.
-Furthermore a description attribute (*TITLE*) is automatically added to every
+One advantage of using phconvert is that files are validated and guaranteed 
+to conform to the Photon-HDF5 specifications.
+Furthermore, standard description attributes (*TITLE*) are automatically added to every
 field making easier for a user to interactively inspect the file
 (for example with `HDFView <https://www.hdfgroup.org/products/java/hdfview/>`__).
-
-Please refer to the *phconvert notebook* for examples on how to use phconvert to
-create Photon-HDF5 files. If something is not clear please ask questions
-by opening an `issue on GitHub <https://github.com/Photon-HDF5/phconvert/issues>`_
-or using the `Photon-HDF5 mailing list <https://groups.google.com/forum/#!forum/photon-hdf5>`__.
-
 
 From MATLAB
 -----------
 
-The easiest way to create Photon-HDF5 files from MATLAB is calling the 
-python library ``phconvert`` (see previous section) directly from MATLAB 
-(see `<http://www.mathworks.com/help/matlab/call-python-libraries.html>`__).
+If you are a MATLAB user, the easiest way to create Photon-HDF5 files is calling the 
+python library ``phconvert`` (see previous section). In fact, starting from  
+version R2014b, MATLAB can easily call python code (see 
+`<http://www.mathworks.com/help/matlab/call-python-libraries.html>`__).
 This approach will save development time and assure compatibility 
 of the generated files with the Photon-HDF5 specifications. 
-Calling python function from MATLAB requires MATLAB R2014b or newer.
 If you encounter any difficulties please contact us 
 (`Photon-HDF5 google group <https://groups.google.com/forum/#!forum/photon-hdf5>`__),
 we are committed to fully support this approach.
@@ -55,15 +61,15 @@ from your language of choice. Note that phconvert licence (MIT) is compatible
 with both opensource and closed source applications. In principle,
 you should be able to call python function at least from from C, Java, R
 and MATLAB.
-Please `contact us <https://groups.google.com/forum/#!forum/photon-hdf5>`__
-if you want to use one of those languages, we will try to help. 
+Please `use the mailing list <https://groups.google.com/forum/#!forum/photon-hdf5>`__
+if you have any questions about using phconvert from those languages.
 We are willing to modify phconvert to maximize its inter-language compatibility.
 
 If calling python is not possible from your language, you have to implement 
 routines to write Photon-HDF5 files using the HDF5 library for your platform,
 taking care of following the Photon-HDF5 specification.
 
-In the following paragraph we provide a few suggestions on how to implement 
+In the next paragraph we provide a few suggestions on how to implement 
 Photon-HDF5 writing routines. For more info or questions
 please contact us on the public mailing list 
 (`Photon-HDF5 google group <https://groups.google.com/forum/#!forum/photon-hdf5>`__).
