@@ -7,6 +7,9 @@ The success of a file format is only determined by the extent of its adoption.
 For this reason we greatly welcome any feedback and contribution from
 interested users.
 
+How to participate?
+-------------------
+
 The Photon-HDF5 project consist of these parts:
 
 1. `Reference Documentation <http://photon-hdf5.readthedocs.org/>`__ (i.e. this document).
@@ -55,8 +58,9 @@ Any contributions to this documentation will be listed in the front page, just b
 the authors.
 
 Contributions to other repository (i.e phconvert, reading examples) will be 
-acknowledged in the respective website and listed in the ``LICENSE`` file.
-All the code in Photon-HDF5 projects is released under the `MIT license <http://opensource.org/licenses/MIT>`_.
+acknowledged in the respective website and listed in their ``LICENSE`` files.
+All the code in Photon-HDF5 projects is released under the 
+`MIT license <http://opensource.org/licenses/MIT>`_.
 
 
 Contributor Code of Conduct
