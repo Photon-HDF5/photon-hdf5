@@ -64,15 +64,15 @@ Read the photon-data following these steps:
    documentation for the details. Note that ``measurement_specs`` may be not
    present.
 
-3. If ``measurement_specs`` is present and the measurement-type starts with
+4. If ``measurement_specs`` is present and the measurement-type starts with
    ``smFRET`` load detectors definitions
    (donor: ``measurement_specs/detectors_specs/spectral_ch1``,
    acceptor: ``measurement_specs/detectors_specs/spectral_ch2``).
 
-4. For us-ALEX load ``alex_period`` and for ns-ALEX load ``
+5. For us-ALEX load ``alex_period`` and for ns-ALEX load ``
    load the period definitions.
 
-5. For both us-ALEX and ns-ALEX load the donor and acceptor
+6. For both us-ALEX and ns-ALEX load the donor and acceptor
    period definitions (``alex_excitation_period1`` and
    ``alex_excitation_period1``). For us-ALEX also load
    ``alex_offset``. All these field may not be present.
