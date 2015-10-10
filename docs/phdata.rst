@@ -81,7 +81,7 @@ When the dataset contains nanotime information (i.e. arrival time of each
 photon with respect to a laser pulse), the following
 fields must be present:
 
-- **nanotimes**:(array of integers) TCSPC nanotimes. Conventionally the time 
+- **nanotimes**:(array of integers) TCSPC nanotimes. Conventionally the time
   axis direction is the "natural" direction, i.e. lifetime decays look
   correctly oriented in time. For more details see :ref:`nanotimes_time_axis`.
   Typical data-type uint16.
@@ -370,7 +370,7 @@ file. If some information is not available the relative field may be omitted.
   the Photon-HDF5 file.
 
 - **format_name**: (string) this must always be "Photon-HDF5"
-- **format_version**: (string) the Photon-HDF5 version string (e.g. "0.3")
+- **format_version**: (string) the Photon-HDF5 version string (e.g. "0.4")
 - **format_url**: (string) A URL pointing to the Photon-HDF5 specification
   document.
 
@@ -402,7 +402,7 @@ Additional notes and definitions
 Detector pixel IDs
 ^^^^^^^^^^^^^^^^^^
 
-A *detector pixel ID* (or simply *pixel ID*) is the "name" of each pixels and 
+A *detector pixel ID* (or simply *pixel ID*) is the "name" of each pixels and
 is typically a single integer and pixels are numbered with a progressive index.
 In some cases (when using detector arrays) the pixel ID
 can be a *n*-tuple of integers. This allow to specify, for each pixel,
@@ -506,13 +506,13 @@ In tipical TCSPC measurement the *start* and *stop* inputs are inverted,
 i.e. the *start* is triggered by the photon and the *stop* by the the laser sync.
 This allows to start TAC or TDC measurements only when a photon is
 detected and not at each laser sync pulse. However, due to this experimental
-condition, the resulting TCSPC histogram "looks" with an inverted time axis 
-direction. 
+condition, the resulting TCSPC histogram "looks" with an inverted time axis
+direction.
 
-In Photon-HDF5 files, by convention, when a `nanotimes` time axis inversion 
-is needed, it is applied before saving the array. In this way, regardless of 
-the way the nanotimes are acquired, TCSPC histograms computed directly from 
-`nanotimes` in Photon-HDF5 always "look" with the time axsis correctly 
+In Photon-HDF5 files, by convention, when a `nanotimes` time axis inversion
+is needed, it is applied before saving the array. In this way, regardless of
+the way the nanotimes are acquired, TCSPC histograms computed directly from
+`nanotimes` in Photon-HDF5 always "look" with the time axsis correctly
 oriented.
 
 
@@ -532,7 +532,3 @@ groups, one for each excitation spot. The naming convention is the following::
     photon_data100
 
 Note that the enumeration starts from zero and there is no zero filling.
-
-
-
-
