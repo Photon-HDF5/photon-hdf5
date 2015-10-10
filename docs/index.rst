@@ -50,8 +50,8 @@ Other related resources:
 .. |photon-hdf5_paper| raw:: html
 
    <a href="" target="_blank">Photon-HDF5: an open format for single-molecule spectroscopy using photon-counting devices </a>
-   
-   
+
+
 .. note ::
    This document describes **Photon-HDF5 version 0.4**.
    The latest version of this document can be found at
@@ -69,6 +69,7 @@ Table of contents
 
     intro
     phdata
-    limitations
+    reading
     writing
+    limitations
     contributing
