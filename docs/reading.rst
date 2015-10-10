@@ -27,7 +27,7 @@ The scheme is reported here as an example on how to add support for reading
 Photon-HDF5 files to an analysis program.
 
  Read Photon-HDF5 files
- ~~~~~~~~~~~~~~~~~~~~~~~
+ ''''''''''''''''''''''
 
 1. Get the Photon-HDF5 version from ``/identity/format_version``.
    The version must be ``'0.4'`` or greater.
@@ -43,7 +43,7 @@ Photon-HDF5 files to an analysis program.
    function (next section).
 
 Read single-spot function
-~~~~~~~~~~~~~~~~~~~~~~~~~
+'''''''''''''''''''''''''
 
 Make a function that takes a channel parameter (`N`) and reads the data of the
 corresponding channel (``/photon_dataN``). If `N` is not passed, the function
@@ -78,7 +78,7 @@ Read the photon-data following these steps:
    ``alex_offset``. All these field may not be present.
 
 Read multi-spot function
-~~~~~~~~~~~~~~~~~~~~~~~~
+''''''''''''''''''''''''
 
 Implement the single-channel version then:
 
