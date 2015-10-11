@@ -10,7 +10,7 @@ interested users.
 How to participate?
 -------------------
 
-The Photon-HDF5 project consist of these parts:
+The Photon-HDF5 project consists of these parts:
 
 1. `Reference Documentation <http://photon-hdf5.readthedocs.org/>`__ (i.e. this document).
 2. `Examples on reading Photon-HDF5 in multiple languages <https://github.com/Photon-HDF5/photon_hdf5_reading_examples>`__.
