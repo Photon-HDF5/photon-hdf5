@@ -5,12 +5,15 @@ Reading Photon-HDF5 files
 
 You can easily read a Photon-HDF5 file in Python, MATLAB, LabVIEW or any
 in any other language that supports HDF5 (C, C++, Java, R, etc...).
+Reading Photon-HDF5 files is no different than reading any other HDF5 file,
+with the advantage that in Photon-HDF5 you know in advance which field may be
+present.
 
-We provide
-`examples  on reading Photon-HDF5 files <http://photon-hdf5.github.io/photon_hdf5_reading_examples/>`_
+We provide a few
+`examples on reading Photon-HDF5 files <http://photon-hdf5.github.io/photon_hdf5_reading_examples/>`_
 in different programming languages.
 
-The next section discuss how to write a generic Photon-HDF5 reader
+The next section shows an example of how to write a generic Photon-HDF5 reader
 for a single-molecule FRET analysis program.
 
 
