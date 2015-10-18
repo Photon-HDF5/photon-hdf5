@@ -4,7 +4,7 @@ Reading Photon-HDF5 files
 =========================
 
 You can easily read a Photon-HDF5 file in Python, MATLAB, LabVIEW or any
-in any other language that supports HDF5 (C, C++, Java, R, etc...).
+other language that supports HDF5 (C, C++, Java, R, etc...).
 Reading Photon-HDF5 files is no different than reading any other HDF5 file,
 with the advantage that in Photon-HDF5 you know in advance which field may be
 present.
@@ -13,21 +13,21 @@ We provide a few
 `examples on reading Photon-HDF5 files <http://photon-hdf5.github.io/photon_hdf5_reading_examples/>`_
 in different programming languages.
 
-The next section shows an example of how to write a generic Photon-HDF5 reader
+The next section shows an example of how to implement a generic Photon-HDF5 reader
 for a single-molecule FRET analysis program.
 
 
 Reading Photon-HDF5 in a smFRET analysis program
 -------------------------------------------------
 
-In this section describes a scheme can be used to read
-Photon-HDF5 files in smFRET analysis programs. This scheme is implement
-in the burst analysis program
-`FRETBursts <http://tritemio.github.io/FRETBursts/>`_
-(`see code <https://github.com/tritemio/FRETBursts/blob/master/fretbursts/loader.py#L226>`_).
-
-The scheme is reported here as an example on how to add support for reading
+This section describes an example of how to add support for reading
 Photon-HDF5 files to an analysis program.
+In particular, this scheme refers to reading Photon-HDF5 files in smFRET
+analysis programs.
+This scheme is implement in the burst analysis program
+`FRETBursts <http://tritemio.github.io/FRETBursts/>`_
+(`see code for full details <https://github.com/tritemio/FRETBursts/blob/master/fretbursts/loader.py#L226>`_).
+
 
  Read Photon-HDF5 files
  ''''''''''''''''''''''
