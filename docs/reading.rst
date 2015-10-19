@@ -21,9 +21,7 @@ Reading Photon-HDF5 in a smFRET analysis program
 -------------------------------------------------
 
 This section describes an example of how to add support for reading
-Photon-HDF5 files to an analysis program.
-In particular, this scheme refers to reading Photon-HDF5 files in smFRET
-analysis programs.
+Photon-HDF5 files to an smFRET analysis program.
 This scheme is implement in the burst analysis program
 `FRETBursts <http://tritemio.github.io/FRETBursts/>`_
 (`see code for full details <https://github.com/tritemio/FRETBursts/blob/master/fretbursts/loader.py#L226>`_).
