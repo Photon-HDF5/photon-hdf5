@@ -9,7 +9,7 @@ Photon-HDF5 files, like any other HDF5 file, are read using the HDF5 library
 for the language of choice. One specific advantage is that all field names 
 (and their meaning) are defined in the specifications (:ref:`specifications`).
 
-To Photon-HDF5 in a given programming language, the user only needs to install 
+To read Photon-HDF5 in a given programming language, the user only needs to install 
 the HDF5 library and a wrapper for that language. Scientific Python distributions 
 and MATLAB already include all the needed software support. In the case of Python,
 both pytables or h5py can be used. In the case of MATLAB, we suggest using 2013a 
@@ -20,11 +20,11 @@ wrapper to support HDF5 file reading or writing.
 is currently our recommended HDF5 wrapper for LabVIEW which is also used in the 
 `reading examples <http://photon-hdf5.github.io/photon_hdf5_reading_examples/>`_.
 
-We provide
+To facilitate the adoption of Photon-HDF5 we provide
 `examples on reading Photon-HDF5 files <http://photon-hdf5.github.io/photon_hdf5_reading_examples/>`_
 in different programming languages.
 
-The next section discuss how to implement a generic Photon-HDF5 reader
+In the next section we discuss how to implement a generic Photon-HDF5 reader
 for a single-molecule FRET analysis program.
 
 
@@ -68,7 +68,7 @@ Read the photon-data following these steps:
    in SPAD array).
 
 2. Load photon-data arrays. Load the array ``timestamps`` and its unit
-   (``timestamps+specs/timestamps_unit``). If present, load also
+   (``timestamps_specs/timestamps_unit``). If present, load also
    ``detectors``, ``nanotimes`` and ``particles``. If ``nanotimes`` is present
    load ``nanotime_specs`` (``tcspc_unit`` and ``tcspc_num_bins``).
 
@@ -81,12 +81,12 @@ Read the photon-data following these steps:
    (donor: ``measurement_specs/detectors_specs/spectral_ch1``,
    acceptor: ``measurement_specs/detectors_specs/spectral_ch2``).
 
-5. For us-ALEX load ``alex_period`` and for ns-ALEX load ``
-   load the period definitions.
+5. For μs-ALEX load ``alex_period`` and for ns-ALEX load 
+   ``laser_repetition_rate``.
 
-6. For both us-ALEX and ns-ALEX load the donor and acceptor
+6. For both μs-ALEX and ns-ALEX load the donor and acceptor
    period definitions (``alex_excitation_period1`` and
-   ``alex_excitation_period1``). For us-ALEX also load
+   ``alex_excitation_period1``). For μs-ALEX also load
    ``alex_offset``. All these field may not be present.
 
 Read multi-spot function
