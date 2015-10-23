@@ -26,13 +26,17 @@ keep any discussion public.
 
 Contributions (such as fixes or enhancements) can be sent using *GitHub Pull Requests*
 (PR). You can find guides on how to send a PR on the GitHub website. If have have any
-doubts, please contact us and we will be glad to help you getting started.
+doubts, please contact us on the 
+`Photon-HDF5 google group <https://groups.google.com/forum/#!forum/photon-hdf5>`_
+and we will be glad to help you getting started.
 
 There are several ways you can get involved:
 
 - **Sending feedback**: if you use or plan to use Photon-HDF5 and have any comment
   or suggestion, please send it to us! Even if you don't have any problem we would like to
-  hear back about your use case. For this topic please open an issue in the
+  hear back about your use case. For this topic please use the 
+  `Photon-HDF5 google group <https://groups.google.com/forum/#!forum/photon-hdf5>`_
+  or open an issue in the
   `documentation repository <https://github.com/Photon-HDF5/photon-hdf5>`__.
 
 - **Documentation contributions**: if you feel that some section of this document
@@ -78,7 +82,3 @@ Instances of abusive, harassing, or otherwise unacceptable behavior may be repor
 
 This Code of Conduct is adapted from the Contributor Covenant, version 1.0.0, available from 
 http://contributor-covenant.org/version/1/0/0/.
-
-....
-
-The development of the Photon-HDF5 file format was supported by NIH Grant R01-GM95904. 
