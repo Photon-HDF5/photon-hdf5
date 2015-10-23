@@ -28,7 +28,7 @@ Other related resources:
 - |example_files|, view them with |hdfview|.
 - |read_examples|
 - |phconvert|: reference library to create and convert Photon-HDF5 files
-- |photon-hdf5_paper| (*coming soon*).
+- |photon-hdf5_paper| (BioRxiv manuscript, *submitted for peer-review*).
 
 
 .. |example_files| raw:: html
@@ -49,8 +49,7 @@ Other related resources:
 
 .. |photon-hdf5_paper| raw:: html
 
-   <a href="" target="_blank">Photon-HDF5: an open format for single-molecule spectroscopy using photon-counting devices </a>
-
+   <a href="http://dx.doi.org/10.1101/026484" target="_blank">Photon-HDF5: an open file format for single-molecule fluorescence experiments using photon-counting detectors</a>
 
 .. note ::
    This document describes **Photon-HDF5 version 0.4**.
