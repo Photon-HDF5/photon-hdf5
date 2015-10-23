@@ -1,3 +1,5 @@
+.. _specifications:
+
 Photon-HDF5 format definition
 =============================
 
