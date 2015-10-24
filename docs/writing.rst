@@ -7,19 +7,20 @@ To create Photon-HDF5 files, users can convert existing files or
 save directly from suitably modified acquisition software. The 
 conversion option is generally the simplest approach and, when 
 using closed-source acquisition software, also the only one available
-(until vendors start supporting saving Photon-HDF5 files from their software). 
+(until vendors start supporting Photon-HDF5). 
 
-To simplify saving (and converting) Photon-HDF5 files we maintain, 
+To simplify saving (and converting) Photon-HDF5 files we developed and maintain, 
 `phconvert <http://photon-hdf5.github.io/phconvert/>`_, an open-source 
 python library serving as reference implementation for the 
-Photon-HDF5 format. While Photon-HDF5 can be created without phconvert 
+Photon-HDF5 format. While Photon-HDF5 
+:ref:`can be created without phconvert <writing_from_scratch>`, 
 using only a HDF5 library, we recommend taking advantage of phconvert 
 to simplify the writing step and to make sure that the saved file
 conforms to the specifications. Phconvert, in fact, checks that all mandatory 
 fields are present and have correct names and types, and adds a description 
 to each field. Phconvert can be directly used in programs written in Python, 
 MATLAB or other languages that allow calling Python code (see next sections).
-phconvert permissive license (MIT) allows intergration with both open and 
+phconvert permissive license (MIT) allows integration with both open and 
 closed source software.
 
 Converting files to Photon-HDF5
@@ -77,6 +78,8 @@ writing, automatic file validation).
 
 We are exploring the possibility to create a MEX file to support older
 MATLAB versions. If you would like this functionality please contact us.
+
+.. _writing_from_scratch:
 
 Saving Photon-HDF5 from scratch using only an HDF5 library
 -----------------------------------------------------------
