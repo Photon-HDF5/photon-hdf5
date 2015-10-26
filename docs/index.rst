@@ -11,7 +11,8 @@ Photon-HDF5 file format documentation
 :Version: 0.4
 
 
-Photon-HDF5 is a file format for freely diffusing single-molecule spectroscopy
+This is the reference documentation for Photon-HDF5, 
+a file format for freely diffusing single-molecule spectroscopy
 experiments such as single-molecule FRET (smFRET) (with or without lifetime),
 Fluorescence Correlation Spectroscopy (FCS) and related techniques.
 
