@@ -41,7 +41,11 @@ Beyond the currently supported ones, other formats can be converted by
 writing a Python function to load the data and by using phconvert to save 
 the data to Photon-HDF5. Taking the 
 existing `phconvert loader functions <https://github.com/Photon-HDF5/phconvert/blob/master/phconvert/loader.py>`_ 
-as examples, this task is relatively easy even for inexperienced Python programmers. 
+as examples, this task is relatively easy even for inexperienced Python programmers.
+See also the notebook 
+`Writing Photon-HDF5 files <https://github.com/Photon-HDF5/phconvert/blob/master/notebooks/Writing%20Photon-HDF5%20files.ipynb>`_
+(`view online <http://nbviewer.ipython.org/github/Photon-HDF5/phconvert/blob/master/notebooks/Writing%20Photon-HDF5%20files.ipynb>`_).
+
 We encourage interested users to contribute to phconvert so that 
 out-of-the-box support for conversion of the largest number of formats can 
 be provided. If you have an input file format not supported by phconvert
@@ -55,7 +59,11 @@ Save Photon-HDF5 from a third party-software
 To directly save Photon-HDF5 files from within an acquisition software, 
 the amount of work will vary. For acquisition software written in Python or MATLAB, 
 phconvert functions can be reused and therefore the amount of effort to adapt 
-the acquisition software is minimized. For acquisition software written in LabVIEW, 
+the acquisition software is minimized. See for example the notebook 
+`Writing Photon-HDF5 files <https://github.com/Photon-HDF5/phconvert/blob/master/notebooks/Writing%20Photon-HDF5%20files.ipynb>`_
+(`view online <http://nbviewer.ipython.org/github/Photon-HDF5/phconvert/blob/master/notebooks/Writing%20Photon-HDF5%20files.ipynb>`_).
+
+For acquisition software written in LabVIEW, 
 there is currently no easy way to call phconvert functions therefore all fields 
 and metadata will have to be populated and written from scratch (using h5labview), 
 making sure that all mandatory fields are present and in the correct position. 
