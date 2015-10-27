@@ -11,10 +11,10 @@ Photon-HDF5 file format documentation
 :Format Version: 0.4
 
 
-This is the reference documentation for Photon-HDF5,
-a file format for freely diffusing single-molecule spectroscopy
+This is the reference documentation for `Photon-HDF5<http://photon-hdf5.org/>`__,
+a file format for timestamp-based single-molecule spectroscopy
 experiments such as single-molecule FRET (smFRET) (with or without lifetime),
-Fluorescence Correlation Spectroscopy (FCS) and related techniques.
+Fluorescence Correlation Spectroscopy (FCS) and other related techniques.
 
 Any dataset containing photon timestamps and other per-photon data
 can be stored in Photon-HDF5 files.
@@ -24,7 +24,7 @@ setup configurations, sample information, authorship and provenance.
 
 The present document contains the reference documentation for the Photon-HDF5 format.
 
-Other related resources:
+**Related resources:**
 
 - |example_files|, view them with |hdfview|.
 - |read_examples|
@@ -51,13 +51,6 @@ Other related resources:
 .. |photon-hdf5_paper| raw:: html
 
    <a href="http://dx.doi.org/10.1101/026484" target="_blank">Photon-HDF5: an open file format for single-molecule fluorescence experiments using photon-counting detectors</a>
-
-.. note ::
-   This document describes **Photon-HDF5 version 0.4**.
-   The latest version of this document can be found at
-   `http://photon-hdf5.org <http://photon-hdf5.org/>`__.
-   To send correction or getting involved in the file format
-   development please see the :ref:`contributing <contributing>` section.
 
 
 Table of contents
