@@ -427,6 +427,11 @@ beam-split channels. The fields `split_ch1` and `split_ch2` contains
 the list of :ref:`detector_ids` for each beam-split channel
 (see :ref:`detectors_specs_group`).
 
+Beam split channels can receive same or different (depending on whether the
+beam splitter is 50-50). The fractional power of each beam split channel
+can be saved in the field `detection_split_ch_ratios` in the
+:ref:`setup_group`.
+
 
 .. _wavelengths_order:
 

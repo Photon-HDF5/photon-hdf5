@@ -1,10 +1,12 @@
 .. _new_measurement_specs:
 
-Adding new measurement types
-============================
+Defining new measurement types
+==============================
 
-If you need to save a type of measurement not included in the current list
-of measurement types, you need to define a new `measurement_specs`.
+If you need to save a type of measurement not included in the list of currently
+supported measurement types, you need to define a new "measurement_specs",
+i.e. which info to put in the :ref:`measurement_specs group <measurement_specs_group>`
+in order to make the dataset self contained.
 
 What to put in measurement_specs
 --------------------------------
@@ -22,15 +24,20 @@ channels. In Alternated Excitation (ALEX) measurements it will also contains
 definition of laser alternation (period, range for donor and acceptor, etc...).
 
 In most cases, measurement_specs will contain the association between
-detector IDs physical detection channels. Detection channels may differ in
+detector IDs physical detection channels (:ref:`detectors_specs_group`).
+Detection channels may differ in
 the detected spectral band and in detected polarization, called
 `spectral_chX` and `polarization_chX` (where *X* is 1, 2, ...). When using a
 non-polarizing beam splitter and both spectral band and polarization are
-equal the detection channels are names `split_chX` (where *X* is 1, 2, ...).
+equal, the detection channels are names `split_chX`
+(see :ref:`beam_split_ch`).
+
 If possible, new measurent_specs should used the naming conventions of
 other official measurement_specs.
 
-For any question please use the `Photon-HDF5 Google Group <https://groups.google.com/forum/#!forum/photon-hdf5>`_.
+For any question please use the
+`Photon-HDF5 Google Group <https://groups.google.com/forum/#!forum/photon-hdf5>`_.
+
 
 How to propose a new measurement_specs
 --------------------------------------
