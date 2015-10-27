@@ -231,7 +231,8 @@ of donor/acceptor pixels (see :ref:`multi_spot`).
 Setup group
 -----------
 
-The **/setup** group contains information about the measurement setup:
+The **/setup** group contains information about the measurement setup.
+The following 7 fields are mandatory:
 
 - **num_pixels**: (integer) total number of detector pixels. For example,
   for a single-spot 2-color smFRET measurement using 2 single-pixel SPADs as
@@ -269,6 +270,8 @@ The **/setup** group contains information about the measurement setup:
 - **lifetime**: (boolean) *True* (or 1) if the measurements includes a
   *nanotimes* array of (usually sub-ns resolution) photon arrival times with
   respect to a laser pulse (as in TCSPC measurements).
+
+The remaining fields are optional:
 
 - **excitation_wavelengths**: (array of floats) list of excitation wavelengths
   (center wavelength if broad-band) in increasing order (unit: *meter*).
