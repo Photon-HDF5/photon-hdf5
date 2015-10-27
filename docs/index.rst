@@ -11,7 +11,7 @@ Photon-HDF5 file format documentation
 :Version: 0.4
 
 
-This is the reference documentation for Photon-HDF5, 
+This is the reference documentation for Photon-HDF5,
 a file format for freely diffusing single-molecule spectroscopy
 experiments such as single-molecule FRET (smFRET) (with or without lifetime),
 Fluorescence Correlation Spectroscopy (FCS) and related techniques.
@@ -71,5 +71,6 @@ Table of contents
     phdata
     reading
     writing
+    new_measurement_specs
     limitations
     contributing
