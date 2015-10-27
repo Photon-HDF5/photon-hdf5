@@ -7,11 +7,11 @@ Photon-HDF5 file format documentation
 ======================================
 
 :Authors: Antonino Ingargiola, Xavier Michalet, Ted Laurence
-:Contact: `Photon-HDF5 google group <https://groups.google.com/forum/#!forum/photon-hdf5>`_
+:Contact: `Photon-HDF5 Google Group <https://groups.google.com/forum/#!forum/photon-hdf5>`_
 :Format Version: 0.4
 
 
-This is the reference documentation for `Photon-HDF5<http://photon-hdf5.org/>`__,
+This is the reference documentation for `Photon-HDF5 <http://photon-hdf5.org/>`__,
 a file format for timestamp-based single-molecule spectroscopy
 experiments such as single-molecule FRET (smFRET) (with or without lifetime),
 Fluorescence Correlation Spectroscopy (FCS) and other related techniques.
