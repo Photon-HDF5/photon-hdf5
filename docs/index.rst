@@ -8,7 +8,7 @@ Photon-HDF5 file format documentation
 
 :Authors: Antonino Ingargiola, Xavier Michalet, Ted Laurence
 :Contact: `Photon-HDF5 google group <https://groups.google.com/forum/#!forum/photon-hdf5>`_
-:Version: 0.4
+:Format Version: 0.4
 
 
 This is the reference documentation for Photon-HDF5,
