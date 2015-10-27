@@ -19,12 +19,12 @@ Fluorescence Correlation Spectroscopy (FCS) and other related techniques.
 Any dataset containing photon timestamps and other per-photon data
 can be stored in Photon-HDF5 files.
 Photon-HDF5 is designed for long-term preservation and data sharing and
-can therefore store experimental details and metadata such as
+can store experimental details and metadata such as
 setup configurations, sample information, authorship and provenance.
 
 The present document contains the reference documentation for the Photon-HDF5 format.
 
-**Related resources:**
+**Other related resources:**
 
 - |example_files|, view them with |hdfview|.
 - |read_examples|
