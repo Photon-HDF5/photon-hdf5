@@ -79,7 +79,7 @@ Optional if there is only 1 detector, otherwise mandatory:
 - **detectors**: (array of integers) :ref:`detector_ids` for each timestamp.
   Typical data-type uint8.
 
-When the dataset contains nanotime information (i.e. arrival time of each
+When the dataset contains TCSPC or nanotime information (i.e. arrival time of each
 photon with respect to a laser pulse), the following
 fields must be present:
 
