@@ -6,7 +6,7 @@ Defining new measurement types
 If you need to save a type of measurement not included in the list of currently
 supported measurement types, you need to define a new "measurement_specs",
 i.e. which info to put in the :ref:`measurement_specs group <measurement_specs_group>`
-in order to make the dataset self contained.
+in order to make the dataset self-contained.
 
 What to put in measurement_specs
 --------------------------------
@@ -18,7 +18,7 @@ in `measurement_specs/measurement_type`. This string is used to differentiate
 between different measurement_specs.
 
 Beyond the name, measurement_specs group should contain all the metadata
-needed to for unambiguous dataset analysis. For example, in smFRET experiments
+needed to for unambiguous analysis of the dataset. For example, in smFRET experiments
 the measurement_specs contains the IDs of donor and acceptor detection
 channels. In Alternated Excitation (ALEX) measurements it will also contains
 definition of laser alternation (period, range for donor and acceptor, etc...).
@@ -32,7 +32,7 @@ non-polarizing beam splitter and both spectral band and polarization are
 equal, the detection channels are names `split_chX`
 (see :ref:`beam_split_ch`).
 
-If possible, new measurent_specs should used the naming conventions of
+If possible, new measurent_specs should follow naming conventions of
 other official measurement_specs.
 
 For any question please use the
