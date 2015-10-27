@@ -122,7 +122,9 @@ Furthermore, the :ref:`/identity group <identity_group>` should include
 the fields ``software_name`` and ``software_version`` to specify the name
 and the version of the software that created the file.
 
-Finally, you can verify that the generate files are compliant with the
+Finally, you can verify that generate files are compliant with the
 Photon-HDF5 specifications by using the *phconvert* function
-``phconvert.hdf5.assert_valid_photon_hdf5_tables()``. This function will
-raise errors or warnings if the input file does not follows the specs.
+`phconvert.hdf5.assert_valid_photon_hdf5_tables() <http://phconvert.readthedocs.org/en/latest/hdf5.html#phconvert.hdf5.assert_valid_photon_hdf5>`_. 
+This function will raise errors or warnings if the input file does not follows the specs.
+
+
