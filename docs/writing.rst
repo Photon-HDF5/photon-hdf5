@@ -18,8 +18,8 @@ using only a HDF5 library, we recommend taking advantage of phconvert
 to simplify the writing step and to make sure that the saved file
 conforms to the specifications. Phconvert, in fact, checks that all mandatory 
 fields are present and have correct names and types, and adds a description 
-to each field. Phconvert can be directly used in programs written in Python, 
-MATLAB or other languages that allow calling Python code (see next sections).
+to each field. Phconvert can be directly used in programs written in Python
+or other languages that allow calling Python code (see next sections).
 phconvert permissive license (MIT) allows integration with both open and 
 closed source software.
 
@@ -52,54 +52,108 @@ be provided. If you have an input file format not supported by phconvert
 please open a `new issue <https://github.com/Photon-HDF5/phconvert/issues>`__ 
 on GitHub.
 
+.. _save_photon_hdf5_script:
 
 Save Photon-HDF5 from a third party-software
 --------------------------------------------
 
 To directly save Photon-HDF5 files from within an acquisition software, 
-the amount of work will vary. For acquisition software written in Python or MATLAB, 
-phconvert functions can be reused and therefore the amount of effort to adapt 
-the acquisition software is minimized. See for example the notebook 
+there are several options. For programs written in Python, the obvious option
+is using phconvert which makes simple creating Photon-HDF5 files while
+assuring the validity of the output file. See for example the notebook 
 `Writing Photon-HDF5 files <https://github.com/Photon-HDF5/phconvert/blob/master/notebooks/Writing%20Photon-HDF5%20files.ipynb>`_
 (`view online <http://nbviewer.ipython.org/github/Photon-HDF5/phconvert/blob/master/notebooks/Writing%20Photon-HDF5%20files.ipynb>`_).
 
-For acquisition software written in LabVIEW, 
-there is currently no easy way to call phconvert functions therefore all fields 
-and metadata will have to be populated and written from scratch (using h5labview), 
-making sure that all mandatory fields are present and in the correct position. 
-We are also exploring the possibility to wrap phconvert in a pre-compiled dynamic 
-library (e.g. DLL on Microsoft Windows) to facilitate writing valid Photon-HDF5 
-from LabVIEW and other programming languages. 
+For acquisition software written in other languages(e.g. C, MATLAB or LabVIEW), 
+it is in principle possible to call python using the [Python C API](https://docs.python.org/3.4/c-api/index.html#c-api-index) 
+(see `Embedding Python in Another Application <https://docs.python.org/3.4/extending/embedding.html>`__).
+However understanding the Python C API requires a fairly good proficiency in C 
+(and probably python).
+
+In order to make it easy to create valid Photon-HDF5 in any language 
+(without duplicating the effort of creating a library like phconvert 
+in every language) we devised an alternative approach. The user can 
+save the :ref:`photon-data arrays <photon_data_group>`(timestamps, detectors, nanotimes, etc…) 
+in a plain HDF5 file. The remaining metadata is written in a simple 
+text file (`YAML <https://en.wikipedia.org/wiki/YAML>`__). Next, a script called 
+`phforge <http://photon-hdf5.github.io/phforge/>`__ reads the metadata and 
+the photon-data arrays and creates a valid Photon-HDF5 file using phconvert. 
+In this way, at the cost of a small inefficiency (writing some 
+temporary files), a user can easily and reliably generate Photon-HDF5 
+files from any language.
+The metadata file is a text-based representation of the full Photon-HDF5
+structure, excluding the photon-data arrays and some other field 
+automatically filled by phconvert. To store this metadata we use YAML markup 
+(a superset of JSON) for its simplicity and ability to describe hierarchical 
+structures. For example, a minimal metadata file describing only mandatory
+fields is the following::
+
+    description: This is a dummy dataset which mimics smFRET data.
+ 
+    setup:
+        num_pixels: 2                # using 2 detectors
+        num_spots: 1                 # a single confocal excitation
+        num_spectral_ch: 2           # donor and acceptor detection
+        num_polarization_ch: 1       # no polarization selection
+        num_split_ch: 1              # no beam splitter
+        modulated_excitation: False  # CW excitation, no modulation
+        lifetime: False              # no TCSPC in detection
+    
+    photon_data:
+        timestamps_specs:
+            timestamps_unit: !!float 10e-9  # 10 ns
+
+To save the photon-data arrays the user needs to call the HDF5 library 
+for the language of choice. For example, in MATLAB timestamps and detectors 
+arrays can be saved with the following commands:
+
+::
+    h5create()
+    h5write()
+    h5create()
+    h5write()
+
+Finally, once metadata and photon-data files have been saved, a Photon-HDF5 
+file can be created calling the phforge script as follows::
+
+    phforge metadata.yaml photon-data-arrays.h5 photon-hdf5-output.hdf5
+
+Note that the file generate with this minimal metadata, does not contain 
+the :ref:`measurement_specs group <measurement_specs_group>` which is 
+in general necessary for a user to analyze the data.  
+
+The phforge script is available at http://photon-hdf5.github.io/phforge/.
+More examples of metadata files, including non mandatory fields 
+and measurement_specs group, are available at
+https://github.com/Photon-HDF5/phforge/tree/master/example_data.
+
+Please `use the mailing list <https://groups.google.com/forum/#!forum/photon-hdf5>`__
+if you have any questions.
 
 Saving Photon-HDF5 from MATLAB
 ------------------------------
 
-You can used MATLAB for to convert existing files to Photon-HDF5
-or to save data directly from an acquisition software.
+Creating Photon-HDF5 in MATLAB is easy using the approach described in the
+previous section, i.e. calling the script `phforge <http://photon-hdf5.github.io/phforge/>`__.
 
-In both cases the easiest option is calling phconvert’s save function 
-from MATLAB itself. This approach of calling a Python function from MATLAB 
-requires a recent MATLAB version (R2014b or later, see (see
-`<http://www.mathworks.com/help/matlab/call-python-libraries.html>`__) 
-but provides all the benefits of using phconvert (simplify Photon-HDF5 
-writing, automatic file validation). 
+Complete MATLAB examples can be found at http://photon-hdf5.github.io/photon-hdf5-matlab-write/.
 
-We are exploring the possibility to create a MEX file to support older
-MATLAB versions. If you would like this functionality please contact us.
+In principle, it should be possible using a recent release of MATLAB (R2014b or later) to 
+`directly call python functions <http://www.mathworks.com/help/matlab/call-python-libraries.html>`__. 
+Therefore it should be possible to directly call phconvert.
+However, in our recent attempt, we weren't able to configure MATLAB in order 
+to load the correct dynamic libraries (i.e. the HDF5 C library) required by phconvert.
 
 .. _writing_from_scratch:
 
 Saving Photon-HDF5 from scratch using only an HDF5 library
 -----------------------------------------------------------
 
-To create Photon-HDF5 files the best option is calling the phconvert
-from your language of choice. In principle,
-you should be able to call python function at least from from C, Java, R
-and MATLAB.
-Please `use the mailing list <https://groups.google.com/forum/#!forum/photon-hdf5>`__
-if you have any questions about using phconvert from those languages.
+To create Photon-HDF5 files from languages different than python
+the easiest option, by far, is calling the phforge script
+as described in previous section :ref:`save_photon_hdf5_script`.
 
-If calling python is not possible from your language, you have to implement
+If for some reason you cannot use phforge or phconvert, you have to implement
 routines to write Photon-HDF5 files using the HDF5 library for your platform,
 taking care of following the Photon-HDF5 specification.
 In the following paragraph we provide a few suggestions on how to proceed
