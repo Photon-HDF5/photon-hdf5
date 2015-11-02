@@ -65,7 +65,7 @@ assuring the validity of the output file. See for example the notebook
 (`view online <http://nbviewer.ipython.org/github/Photon-HDF5/phconvert/blob/master/notebooks/Writing%20Photon-HDF5%20files.ipynb>`_).
 
 For acquisition software written in other languages(e.g. C, MATLAB or LabVIEW), 
-it is in principle possible to call python using the [Python C API](https://docs.python.org/3.4/c-api/index.html#c-api-index) 
+it is in principle possible to call python using the `Python C API <https://docs.python.org/3.4/c-api/index.html#c-api-index>`__
 (see `Embedding Python in Another Application <https://docs.python.org/3.4/extending/embedding.html>`__).
 However understanding the Python C API requires a fairly good proficiency in C 
 (and probably python).
@@ -73,7 +73,7 @@ However understanding the Python C API requires a fairly good proficiency in C
 In order to make it easy to create valid Photon-HDF5 in any language 
 (without duplicating the effort of creating a library like phconvert 
 in every language) we devised an alternative approach. The user can 
-save the :ref:`photon-data arrays <photon_data_group>`(timestamps, detectors, nanotimes, etc…) 
+save the :ref:`photon-data arrays <photon_data_group>` (timestamps, detectors, nanotimes, etc…) 
 in a plain HDF5 file. The remaining metadata is written in a simple 
 text file (`YAML <https://en.wikipedia.org/wiki/YAML>`__). Next, a script called 
 `phforge <http://photon-hdf5.github.io/phforge/>`__ reads the metadata and 
@@ -105,9 +105,8 @@ fields is the following::
 
 To save the photon-data arrays the user needs to call the HDF5 library 
 for the language of choice. For example, in MATLAB timestamps and detectors 
-arrays can be saved with the following commands:
+arrays can be saved with the following commands::
 
-::
     h5create()
     h5write()
     h5create()
