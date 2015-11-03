@@ -127,7 +127,7 @@ and measurement_specs group, are available at
 https://github.com/Photon-HDF5/phforge/tree/master/example_data.
 
 A complete example of creating Photon-HDF5 files in LabVIEW using phforge 
-can be found at http://photon-hdf5.github.io/photon-hdf5-labview-write/.
+can be found at https://github.com/Photon-HDF5/photon-hdf5-labview-write.
 
 Please `use the mailing list <https://groups.google.com/forum/#!forum/photon-hdf5>`__
 if you have any questions.
@@ -138,7 +138,7 @@ Saving Photon-HDF5 from MATLAB
 Creating Photon-HDF5 in MATLAB is easy using the approach described in the
 previous section, i.e. calling the script `phforge <http://photon-hdf5.github.io/phforge/>`__.
 
-Complete MATLAB examples can be found at http://photon-hdf5.github.io/photon-hdf5-matlab-write/.
+Complete MATLAB examples can be found at https://github.com/Photon-HDF5/photon-hdf5-matlab-write.
 
 In principle, it should be possible using a recent release of MATLAB (R2014b or later) to 
 `directly call python functions <http://www.mathworks.com/help/matlab/call-python-libraries.html>`__. 
