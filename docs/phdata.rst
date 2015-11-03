@@ -343,7 +343,24 @@ Identity group
 --------------
 
 The **identity/** group contains information about the specific Photon-HDF5
-file. If some information is not available the relative field may be omitted.
+file.
+
+The following fields are mandatory (and automatically added by 
+`phconvert <http://photon-hdf5.github.io/phconvert/>__):
+
+- **creation_time**: (string) the Photon-HDF5 file creation time with
+  the following format: "YYYY-MM-DD HH:MM:SS".
+- **software**: (string) name of the software used to create
+  the Photon-HDF5 file.
+- **software_version**: (string) version of the software used to create
+  the Photon-HDF5 file.
+
+- **format_name**: (string) this must always be "Photon-HDF5"
+- **format_version**: (string) the Photon-HDF5 version string (e.g. "0.4")
+- **format_url**: (string) A URL pointing to the Photon-HDF5 specification
+  document.
+
+The following fields are optional:
 
 - **author**: (string) the author of the measurement (or simulation).
 - **author_affiliation**: (string) the company or institution the *author*
@@ -368,17 +385,6 @@ file. If some information is not available the relative field may be omitted.
   saves the original file name even if the file is later on renamed on disk.
 - **filename_full**: (string) Photon-HDF5 file name (including the full path)
   at creation time.
-- **creation_time**: (string) the Photon-HDF5 file creation time with
-  the following format: "YYYY-MM-DD HH:MM:SS".
-- **software**: (string) name of the software used to create
-  the Photon-HDF5 file.
-- **software_version**: (string) version of the software used to create
-  the Photon-HDF5 file.
-
-- **format_name**: (string) this must always be "Photon-HDF5"
-- **format_version**: (string) the Photon-HDF5 version string (e.g. "0.4")
-- **format_url**: (string) A URL pointing to the Photon-HDF5 specification
-  document.
 
 
 .. _provenance_group:
