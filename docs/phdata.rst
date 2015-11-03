@@ -89,8 +89,9 @@ fields must be present:
   Typical data-type uint16.
 - **nanotimes_specs/**
     - **tcspc_unit**: (float) TAC/TDC bin size (in seconds).
-    - **tcspc_range**:(float) full-scale range of the TAC/TDC (in seconds).
     - **tcspc_num_bins**: (integer) number of TAC/TDC bins.
+    - **tcspc_range**:(float) (optional) full-scale range of the TAC/TDC (in seconds).
+      This a derived field equal to ``tcspc_unit * tcspc_num_bins``.
 
 Finally, if the data come from a simulation, ``/photon_data`` may contain:
 
