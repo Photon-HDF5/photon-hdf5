@@ -107,10 +107,10 @@ To save the photon-data arrays the user needs to call the HDF5 library
 for the language of choice. For example, in MATLAB timestamps and detectors 
 arrays can be saved with the following commands::
 
-    h5create()
-    h5write()
-    h5create()
-    h5write()
+    h5create('photon_data.h5', '/timestamps', size(timestamps), 'Datatype', 'int64')
+    h5write('photon_data.h5', '/timestamps', timestamps)
+    h5create('photon_data.h5', '/detectors', size(detectors), 'Datatype', 'uint8')
+    h5write('photon_data.h5', '/detectors', detectors)
 
 Finally, once metadata and photon-data files have been saved, a Photon-HDF5 
 file can be created calling the phforge script as follows::
@@ -125,6 +125,9 @@ The phforge script is available at http://photon-hdf5.github.io/phforge/.
 More examples of metadata files, including non mandatory fields 
 and measurement_specs group, are available at
 https://github.com/Photon-HDF5/phforge/tree/master/example_data.
+
+A complete example of creating Photon-HDF5 files in LabVIEW using phforge 
+can be found at http://photon-hdf5.github.io/photon-hdf5-labview-write/.
 
 Please `use the mailing list <https://groups.google.com/forum/#!forum/photon-hdf5>`__
 if you have any questions.
@@ -142,6 +145,7 @@ In principle, it should be possible using a recent release of MATLAB (R2014b or 
 Therefore it should be possible to directly call phconvert.
 However, in our recent attempt, we weren't able to configure MATLAB in order 
 to load the correct dynamic libraries (i.e. the HDF5 C library) required by phconvert.
+
 
 .. _writing_from_scratch:
 
