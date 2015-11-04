@@ -15,7 +15,9 @@ First and foremost, a new measurement_specs needs to have a name, i.e.
 the name associated with the type of measurement to be saved.
 The name of the measurement-type is a string stored
 in `measurement_specs/measurement_type`. This string is used to differentiate
-between different measurement_specs.
+between different measurement_specs. For example, names of already defined
+measurment types are: `smFRET`, `smFRET-usALEX`, `smFRET-usALEX-3c` and
+`smFRET-nsALEX` (see :ref:`here <measurement_specs_group>`).
 
 Beyond the name, measurement_specs group should contain all the metadata
 needed to for unambiguous analysis of the dataset. For example, in smFRET experiments
