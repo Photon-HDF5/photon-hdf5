@@ -523,7 +523,7 @@ In tipical TCSPC measurement the *start* and *stop* inputs are inverted,
 i.e. the *start* is triggered by the photon and the *stop* by the the laser sync.
 This allows to start TAC or TDC measurements only when a photon is
 detected and not at each laser sync pulse. However, due to this experimental
-condition, the resulting TCSPC histogram "looks" with an inverted time axis
+condition, the resulting raw TCSPC histogram "looks" with an inverted time axis
 direction.
 
 In Photon-HDF5 files, by convention, when a `nanotimes` time axis inversion
