@@ -33,7 +33,7 @@ Reading Photon-HDF5 in a smFRET analysis program
 
 This section describes an example of how to add support for reading
 Photon-HDF5 files to a smFRET analysis program.
-This scheme is implement in the burst analysis program
+This scheme is implemented in the burst analysis program
 `FRETBursts <http://tritemio.github.io/FRETBursts/>`_
 (see `code <https://github.com/tritemio/FRETBursts/blob/master/fretbursts/loader.py#L226>`_ for full details).
 
@@ -73,7 +73,7 @@ Read the photon-data following these steps:
    load ``nanotime_specs`` (``tcspc_unit`` and ``tcspc_num_bins``).
 
 3. Load measurements-specs. Refer to :ref:`measurement_specs_group`
-   documentation for the details. Note that ``measurement_specs`` may be not
+   documentation for details. Note that ``measurement_specs`` may not be
    present.
 
 4. If ``measurement_specs`` is present and the measurement-type starts with
@@ -81,10 +81,10 @@ Read the photon-data following these steps:
    (donor: ``measurement_specs/detectors_specs/spectral_ch1``,
    acceptor: ``measurement_specs/detectors_specs/spectral_ch2``).
 
-5. For μs-ALEX load ``alex_period`` and for ns-ALEX load 
+5. For μs-ALEX load ``alex_period``, and for ns-ALEX load 
    ``laser_repetition_rate``.
 
-6. For both μs-ALEX and ns-ALEX load the donor and acceptor
+6. For both μs-ALEX and ns-ALEX, load the donor and acceptor
    period definitions (``alex_excitation_period1`` and
    ``alex_excitation_period1``). For μs-ALEX also load
    ``alex_offset``. All these field may not be present.
