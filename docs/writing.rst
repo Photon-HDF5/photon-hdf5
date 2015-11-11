@@ -46,7 +46,7 @@ See also the notebook
 `Writing Photon-HDF5 files <https://github.com/Photon-HDF5/phconvert/blob/master/notebooks/Writing%20Photon-HDF5%20files.ipynb>`_
 (`view online <http://nbviewer.ipython.org/github/Photon-HDF5/phconvert/blob/master/notebooks/Writing%20Photon-HDF5%20files.ipynb>`_).
 
-We encourage interested users to contribute to phconvert so that 
+We encourage interested users to contribute to load functions to phconvert so that 
 out-of-the-box support for conversion of the largest number of formats can 
 be provided. If you have an input file format not supported by phconvert
 please open a `new issue <https://github.com/Photon-HDF5/phconvert/issues>`__ 
@@ -101,7 +101,7 @@ fields is the following::
     
     photon_data:
         timestamps_specs:
-            timestamps_unit: !!float 10e-9  # 10 ns
+            timestamps_unit: 10e-9   # 10 ns
 
 To save the photon-data arrays the user needs to call the HDF5 library 
 for the language of choice. For example, in MATLAB timestamps and detectors 
@@ -117,17 +117,18 @@ file can be created calling the phforge script as follows::
 
     phforge metadata.yaml photon-data-arrays.h5 photon-hdf5-output.hdf5
 
-Note that the file generate with this minimal metadata, does not contain 
+Note that the file generated with this minimal metadata, does not contain 
 the :ref:`measurement_specs group <measurement_specs_group>` which is 
 in general necessary for a user to analyze the data.  
 
 The phforge script is available at http://photon-hdf5.github.io/phforge/.
-More examples of metadata files, including non mandatory fields 
-and measurement_specs group, are available at
+Examples of complete metadata files for all the supported measurement types
+are available at
 https://github.com/Photon-HDF5/phforge/tree/master/example_data.
 
 A complete example of creating Photon-HDF5 files in LabVIEW using phforge 
-can be found at https://github.com/Photon-HDF5/photon-hdf5-labview-write.
+can be found at https://github.com/Photon-HDF5/photon-hdf5-labview-write
+(for a MATLAB see next section).
 
 Please `use the mailing list <https://groups.google.com/forum/#!forum/photon-hdf5>`__
 if you have any questions.
