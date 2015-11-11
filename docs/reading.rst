@@ -17,12 +17,13 @@ or later, which include more user-friendly functions to access HDF5 files.
 LabVIEW users need to install the HDF5 library (www.hdfgroup.org) and a third-party 
 wrapper to support HDF5 file reading or writing. 
 `h5labview <http://h5labview.sourceforge.net/>`_ 
-is currently our recommended HDF5 wrapper for LabVIEW which is also used in the 
-`reading examples <http://photon-hdf5.github.io/photon_hdf5_reading_examples/>`_.
+is currently our recommended HDF5 wrapper for LabVIEW.
 
-To facilitate the adoption of Photon-HDF5 we provide
-`examples on reading Photon-HDF5 files <http://photon-hdf5.github.io/photon_hdf5_reading_examples/>`_
-in different programming languages.
+Simple examples on reading Photon-HDF5 files can be found in the 
+`paper describing Photon-HDF5 <http://dx.doi.org/10.1101/026484>`__ (section SM.2).
+Complete code example on reading Photon-HDF5 files in different programming languages 
+(currently Python, MATLAB and LabVIEW) are provided 
+`on GitHub <http://photon-hdf5.github.io/photon_hdf5_reading_examples>`__.
 
 In the next section we discuss how to implement a generic Photon-HDF5 reader
 for a single-molecule FRET analysis program.
