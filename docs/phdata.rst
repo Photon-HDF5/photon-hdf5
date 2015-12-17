@@ -15,6 +15,8 @@ A screen-shot of a typical Photon-HDF5 file opened in HDFView is shown here:
 
 .. figure:: /images/hdfview.png
     :align: center
+    :width: 400px
+    :alt: HDView screenshot showing a Photon-HDF5 file
 
 The previous figure shows the 5 main groups contained in a Photon-HDF5 file.
 Of these, :ref:`/photon_data <photon_data_group>` and  :ref:`/setup <setup_group>`
@@ -23,12 +25,14 @@ A schematic overview is shown in the next figure:
 
 .. figure:: /images/format-diagram_first2.png
     :align: center
+    :alt: Photon-HDF5 structure: photon_data, setup
 
 The remaining 3 groups provide additional metadata not necessary for data
 analysis:
 
 .. figure:: /images/format-diagram_last3.png
     :align: center
+    :alt: Photon-HDF5 structure: sample, identity, provenance
 
 A brief description of these 3 metadata groups follows:
 
@@ -345,7 +349,7 @@ Identity group
 The **identity/** group contains information about the specific Photon-HDF5
 file.
 
-The following fields are mandatory (and automatically added by 
+The following fields are mandatory (and automatically added by
 `phconvert <http://photon-hdf5.github.io/phconvert/>__):
 
 - **creation_time**: (string) the Photon-HDF5 file creation time with
