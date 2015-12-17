@@ -47,6 +47,8 @@ A brief description of these 3 metadata groups follows:
   Description of the measured sample.
 
 
+.. _root_params:
+
 Root-level parameters
 ---------------------
 
@@ -55,8 +57,8 @@ The root node ("/") in a Photon-HDF5 file contains the following fields:
 - **/acquisition_duration**: (float) the measurement duration in seconds.
 - **/description**: (string) a user-defined measurement description.
 
-In addition, the root node has the following attributes that can be used to
-distinguish Photon-HDF5 files from other HDF5 files:
+In addition, the root node has the following attributes which
+distinguish a Photon-HDF5 file from other HDF5 files:
 
 - **format_name**: must contain the string "Photon-HDF5"
 - **format_version**: (string) the Photon-HDF5 format version.
