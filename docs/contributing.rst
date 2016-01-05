@@ -61,7 +61,9 @@ Contributions Acknowledgement
 Any contributions to this documentation will be listed in the front page, just below
 the authors.
 
-Contributions to other repository (i.e phconvert, reading examples) will be 
+Contributions to other repository (e.g. `phconvert <https://github.com/Photon-HDF5/phconvert>`__), 
+`phforge <https://github.com/Photon-HDF5/phforge>`__, `reading examples <https://github.com/Photon-HDF5/photon_hdf5_reading_examples>`__), 
+etc.) will be  
 acknowledged in the respective website and listed in their ``LICENSE`` files.
 All the code in Photon-HDF5 projects is released under the 
 `MIT license <http://opensource.org/licenses/MIT>`_.
