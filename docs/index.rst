@@ -24,7 +24,7 @@ setup configurations, sample information, authorship and provenance.
 
 The present document contains the reference documentation for the Photon-HDF5 format.
 
-**Other related resources (see also `Photon-HDF5 Homepage <http://photon-hdf5.org/>`__):**
+**Other related resources** (see also `Photon-HDF5 Homepage <http://photon-hdf5.org/>`__):
 
 - |example_files|, view them with |hdfview|.
 - |read_examples|
