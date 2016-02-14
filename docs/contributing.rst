@@ -10,12 +10,14 @@ interested users.
 How to participate?
 -------------------
 
-The Photon-HDF5 project consists of these parts:
+The Photon-HDF5 project resources include:
 
 1. `Reference Documentation <http://photon-hdf5.readthedocs.org/>`__ (i.e. this document).
 2. `Examples on reading Photon-HDF5 in multiple languages <https://github.com/Photon-HDF5/photon_hdf5_reading_examples>`__.
-3. `phconvert <http://photon-hdf5.github.io/phconvert/>`__: reference python library for writing and converting
-   Photon-HDF5 files.
+3. Software for saving/converting Photon-HDF5 files: 
+   `phconvert <http://photon-hdf5.github.io/phconvert/>`__ (reference python library);
+   `phforge <http://photon-hdf5.github.io/phforge/>`__ (script to be used from any language);
+   `Photon-HDF5 Online Converter <http://photon-hdf5.github.io/Photon-HDF5-Converter/>`__ (demostrative service).
 
 All the sources (including for the documentation) are `hosted on GitHub <https://github.com/Photon-HDF5>`__
 and we encourage to open *GitHub Issues* in the
