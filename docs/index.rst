@@ -11,7 +11,7 @@ Photon-HDF5 file format documentation
 :Format Version: 0.4
 
 
-This is the reference documentation for `Photon-HDF5 <http://photon-hdf5.org/>`__,
+This is the reference documentation for **Photon-HDF5** (`homepage <http://photon-hdf5.org/>`__),
 a file format for timestamp-based single-molecule spectroscopy
 experiments such as single-molecule FRET (smFRET) (with or without lifetime),
 Fluorescence Correlation Spectroscopy (FCS) and other related techniques.
@@ -24,12 +24,13 @@ setup configurations, sample information, authorship and provenance.
 
 The present document contains the reference documentation for the Photon-HDF5 format.
 
-**Other related resources:**
+**Other related resources (see also `Photon-HDF5 Homepage <http://photon-hdf5.org/>`__):**
 
 - |example_files|, view them with |hdfview|.
 - |read_examples|
 - |phconvert|: reference library to create and convert Photon-HDF5 files
-- |photon-hdf5_paper| (BioRxiv manuscript, *submitted for peer-review*).
+- Biophysical Journal (2016), |photon-hdf5_paper_bj| (|photon-hdf5_paper|).
+- |photon-hdf5_demo|
 
 
 .. |example_files| raw:: html
@@ -50,10 +51,18 @@ The present document contains the reference documentation for the Photon-HDF5 fo
 
 .. |photon-hdf5_paper| raw:: html
 
-   <a href="http://dx.doi.org/10.1101/026484" target="_blank">Photon-HDF5: an open file format for single-molecule fluorescence experiments using photon-counting detectors</a>
+   <a href="http://dx.doi.org/10.1101/026484" target="_blank">BioRxiv manuscript</a>
+   
+.. |photon-hdf5_paper_bj| raw:: html
+
+   <a href="http://dx.doi.org/10.1016/j.bpj.2015.11.013" target="_blank">Photon-HDF5: an open file format for timestamp-based single-molecule fluorescence experiments</a>
+
+.. |photon-hdf5_demo| raw:: html
+
+   <a href="http://photon-hdf5.github.io/Photon-HDF5-Converter" target="_blank">Photon-HDF5 Online Converter</a>
 
 
-Table of contents
+Table of Contents
 -----------------
 
 .. toctree::
