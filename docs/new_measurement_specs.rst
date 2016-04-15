@@ -34,7 +34,7 @@ non-polarizing beam splitter and both spectral band and polarization are
 equal, the detection channels are names `split_chX`
 (see :ref:`beam_split_ch`).
 
-If possible, new measurent_specs should follow naming conventions of
+If possible, new measurement_specs should follow naming conventions of
 other official measurement_specs.
 
 For any question please use the
