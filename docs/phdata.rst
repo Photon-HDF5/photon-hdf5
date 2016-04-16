@@ -525,18 +525,19 @@ saving the file.
 Nanotimes time direction
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-In tipical TCSPC measurement the *start* and *stop* inputs are inverted,
+In typical TCSPC measurement the *start* and *stop* inputs are inverted,
 i.e. the *start* is triggered by the photon and the *stop* by the the laser sync.
 This allows to start TAC or TDC measurements only when a photon is
-detected and not at each laser sync pulse. However, due to this experimental
-condition, the resulting raw TCSPC histogram "looks" with an inverted time axis
-direction.
+detected and not after each laser sync pulse. However, due to this experimental
+configuration, the resulting raw TCSPC histogram looks inverted along the time axis,
+with the nanotimes of photons emitted shortly after a laser pulse being larger than 
+the nanotimes of photons emitted much later.
 
-In Photon-HDF5 files, by convention, when a `nanotimes` time axis inversion
-is needed, it is applied before saving the array. In this way, regardless of
-the way the nanotimes are acquired, TCSPC histograms computed directly from
-`nanotimes` in Photon-HDF5 always "look" with the time axsis correctly
-oriented.
+By convention, the Photon-HDF5 format requires nanotimes to be properly oriented. In other words,
+when a `nanotimes` time axis inversion is needed, this correction needs to be performed before 
+the data is saved into a Photon-HDF5 file. As a corollary, TCSPC histograms computed directly from
+`nanotimes` from Photon-HDF5 files are always properly oriented, regardless of
+the way the nanotimes were acquired. 
 
 
 .. _multi_spot:
