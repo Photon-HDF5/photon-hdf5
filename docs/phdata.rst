@@ -229,8 +229,9 @@ For example, a 2-color smFRET measurement will have only one value in
 (acceptor). A 2-color smFRET measurement with polarization
 (4 detectors) will have 2 values in each of the ``spectral_chX`` and
 ``polarization_chX`` fields (where X=1 or 2).
-For a multispot smFRET measurement, ``spectral_chX`` will contain the list
-of donor/acceptor pixels (see :ref:`multi_spot`).
+For a multispot smFRET measurement, in each ``photon_dataN`` group,
+there will be ``spectral_chX`` fields containing the donor/acceptor 
+pixels used in that spot (see :ref:`multi_spot`).
 
 
 .. _setup_group:
@@ -556,3 +557,9 @@ groups, one for each excitation spot. The naming convention is the following::
     photon_data100
 
 Note that the enumeration starts from zero and there is no zero filling.
+Each ``photon_dataN`` group will have a complete ``measurement_specs``
+sub-group so that it can effectively treated as a single-spot measurements
+when reading the file.
+As a result, even if the ``measurement_type`` field is not expected to change
+for different spots, it will be replicated inside each ``photon_dataN``
+group.
