@@ -422,7 +422,9 @@ Detector pixel IDs
 ^^^^^^^^^^^^^^^^^^
 
 A *detector pixel ID* (or simply *pixel ID*) is the "name" of each pixels and
-is typically a single integer and pixels are numbered with a progressive index.
+is usually a single integer. Pixels are normally numbered incrementally, but not necessarily so.
+In other words, a file containing data taken with 2 single-point (pixel) detectors could have
+the first detector labeled "4" and the second detector labeled "6".
 In some cases (when using detector arrays) the pixel ID
 can be a *n*-tuple of integers. This allow to specify, for each pixel,
 the module number and the X, Y location, for example. Therefore, an
