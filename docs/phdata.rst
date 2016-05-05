@@ -353,7 +353,7 @@ The **identity/** group contains information about the specific Photon-HDF5
 file.
 
 The following fields are mandatory (and automatically added by
-`phconvert <http://photon-hdf5.github.io/phconvert/>__):
+`phconvert <http://photon-hdf5.github.io/phconvert/>`__):
 
 - **creation_time**: (string) the Photon-HDF5 file creation time with
   the following format: "YYYY-MM-DD HH:MM:SS".
