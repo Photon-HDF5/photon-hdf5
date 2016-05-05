@@ -401,7 +401,9 @@ Provenance group
 
 The **provenance/** group contains info about the original file that has
 been converted into a Photon-HDF5 file.
-If some information is not available the relative field may be omitted.
+If the file is directly saved to Photon-HDF5 there is no previous "original"
+file and in this case the provenance group may be omitted.
+Also, if some information is not available the relative field may be omitted.
 
 - **filename**: (string) File name of the original data file before conversion to Photon-HDF5.
 - **filename_full**: (string) File name (with full path) of the original data file before conversion to Photon-HDF5.
