@@ -8,7 +8,7 @@ Photon-HDF5 file format documentation
 
 :Authors: Antonino Ingargiola, Xavier Michalet, Ted Laurence
 :Contact: `Photon-HDF5 Google Group <https://groups.google.com/forum/#!forum/photon-hdf5>`_
-:Format Version: 0.4
+:Format Version: 0.5.dev
 
 
 This is the reference documentation for **Photon-HDF5** (`homepage <http://photon-hdf5.org/>`__),
@@ -52,7 +52,7 @@ The present document contains the reference documentation for the Photon-HDF5 fo
 .. |photon-hdf5_paper| raw:: html
 
    <a href="http://dx.doi.org/10.1101/026484" target="_blank">BioRxiv manuscript</a>
-   
+
 .. |photon-hdf5_paper_bj| raw:: html
 
    <a href="http://dx.doi.org/10.1016/j.bpj.2015.11.013" target="_blank">Photon-HDF5: an open file format for timestamp-based single-molecule fluorescence experiments</a>
