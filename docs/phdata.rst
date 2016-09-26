@@ -240,8 +240,8 @@ Setup group
 -----------
 
 The **/setup** group contains information about the measurement setup.
-It should always be present, unless for technical/debug or calibration
-data (a notable example is a file containing only detectors' dark counts).
+This group can be **not present** in some files, a notable example being
+a file containing only detectors' dark counts.
 When setup is present, the following 7 fields are mandatory:
 
 - **num_pixels**: (integer) total number of detector pixels. For example,
