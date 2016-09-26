@@ -45,10 +45,16 @@ This scheme is implemented in the burst analysis program
 1. Get the Photon-HDF5 version from ``format_version`` root-node attribute
    (see :ref:`root_params`). The version must be ``'0.4'`` or greater.
 
-2. Optionally load metadata from `setup`, `sample`, `provenance` and `identity`
-   groups. This is not needed for the analysis. The fields may not be present.
+2. Optionally, load metadata from `setup`, `sample`, `provenance` and
+   `identity` groups. This is not needed for the analysis. These fields
+   (i.e. the groups) may not be present. Even though complete Photon-HDF5
+   files will contain these groups, it is advisable that you write reader
+   programs to be robust against missing metadata groups. For example
+   detector dark-counts files we generated don't have a setup group as
+   it it irrelevant in this situation.
 
-3. Same as in point 2 for root fields `description` and `acquisition_duration`.
+3. Do the same as in point 2 for root fields `description` and
+   `acquisition_duration`. These two fields should always be present though.
 
 4. If there is a ``/photon_data`` group the file is single-spot. Call the
    function to load single-spot data (see next section). If there is

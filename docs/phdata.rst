@@ -230,7 +230,7 @@ For example, a 2-color smFRET measurement will have only one value in
 (4 detectors) will have 2 values in each of the ``spectral_chX`` and
 ``polarization_chX`` fields (where X=1 or 2).
 For a multispot smFRET measurement, in each ``photon_dataN`` group,
-there will be ``spectral_chX`` fields containing the donor/acceptor 
+there will be ``spectral_chX`` fields containing the donor/acceptor
 pixels used in that spot (see :ref:`multi_spot`).
 
 
@@ -240,7 +240,9 @@ Setup group
 -----------
 
 The **/setup** group contains information about the measurement setup.
-The following 7 fields are mandatory:
+It should always be present, unless for technical/debug or calibration
+data (a notable example is a file containing only detectors' dark counts).
+When setup is present, the following 7 fields are mandatory:
 
 - **num_pixels**: (integer) total number of detector pixels. For example,
   for a single-spot 2-color smFRET measurement using 2 single-pixel SPADs as
@@ -535,14 +537,14 @@ i.e. the *start* is triggered by the photon and the *stop* by the the laser sync
 This allows to start TAC or TDC measurements only when a photon is
 detected and not after each laser sync pulse. However, due to this experimental
 configuration, the resulting raw TCSPC histogram looks inverted along the time axis,
-with the nanotimes of photons emitted shortly after a laser pulse being larger than 
+with the nanotimes of photons emitted shortly after a laser pulse being larger than
 the nanotimes of photons emitted much later.
 
 By convention, the Photon-HDF5 format requires nanotimes to be properly oriented. In other words,
-when a `nanotimes` time axis inversion is needed, this correction needs to be performed before 
+when a `nanotimes` time axis inversion is needed, this correction needs to be performed before
 the data is saved into a Photon-HDF5 file. As a corollary, TCSPC histograms computed directly from
 `nanotimes` from Photon-HDF5 files are always properly oriented, regardless of
-the way the nanotimes were acquired. 
+the way the nanotimes were acquired.
 
 
 .. _multi_spot:
