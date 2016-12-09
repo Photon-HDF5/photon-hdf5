@@ -239,17 +239,8 @@ pixels used in that spot (see :ref:`multi_spot`).
 Setup group
 -----------
 
-The **/setup** group contains information about the measurement setup.
-The following 7 fields are mandatory:
-
-- **num_pixels**: (integer) total number of detector pixels. For example,
-  for a single-spot 2-color smFRET measurement using 2 single-pixel SPADs as
-  detectors this field is 2.
-
-- **num_spots**: (integer) the number of excitation (or detection)
-  "spots" in the sample. This field is 1 for all the measurements using a
-  single confocal excitation volume. When not applicable, for example under
-  wide-field illumination with 2-D imaging detectors, this field is omitted.
+The **/setup** group contains information about the configuration of measurement setup.
+The following fields are mandatory:
 
 - **num_spectral_ch**: (integer) number of distinct detection spectral
   channels. For example, in a 2-color smFRET experiment there are 2
@@ -270,19 +261,15 @@ The following 7 fields are mandatory:
   its value is 2. When no splitting
   is performed, its value is 1.
 
-- **modulated_excitation**: (boolean) *True* (or 1) if there is any form of
-  excitation modulation either in the wavelength space (as in μs-ALEX or PAX)
-  or in the polarization space. This field is also *True* for
-  pulse-interleaved excitation (PIE) or ns-ALEX measurements.
+- **num_spots**: (integer) the number of excitation (or detection)
+  "spots" in the sample. This field is 1 for all the measurements using a
+  single confocal excitation volume. When not applicable, for example under
+  wide-field illumination with 2-D imaging detectors, this field is omitted.
 
-- **lifetime**: (boolean) *True* (or 1) if the measurements includes a
-  *nanotimes* array of (usually sub-ns resolution) photon arrival times with
-  respect to a laser pulse (as in TCSPC measurements).
-
-The remaining fields are optional:
-
-- **excitation_wavelengths**: (array of floats) list of excitation wavelengths
-  (center wavelength if broad-band) in increasing order (unit: *meter*).
+- **num_pixels**: (integer) total number of detector pixels. For example,
+  for a single-spot 2-color smFRET measurement using 2 single-pixel SPADs as
+  detectors this field is 2. This field is computed by phconvert at save time.
+  If is equal to `num_spectral_ch * num_split_ch * num_polarization_ch * num_spot`.
 
 - **excitation_cw**: (array of booleans) for each excitation source,
   this field indicates whether excitation is continuous wave (CW), *True*,
@@ -290,9 +277,26 @@ The remaining fields are optional:
   The order of excitation sources is the same as that in
   ``excitation_wavelengths`` and is in increasing order of wavelengths.
 
+- **lifetime**: (boolean) *True* (or 1) if the measurements includes a
+  *nanotimes* array of (usually sub-ns resolution) photon arrival times with
+  respect to a laser pulse (as in TCSPC measurements).  
+
+- **modulated_excitation**: (boolean) *True* (or 1) if there is any form of
+  excitation modulation either in the wavelength space (as in μs-ALEX or PAX)
+  or in the polarization space. This field is also *True* for
+  pulse-interleaved excitation (PIE) or ns-ALEX measurements. *OBSOLETE*.
+
+- **excitation_alex**: (array of booleans) *New in version 0.5.* For each excitation source, 
+  this field indicates whether the excitation is alternated (True) or 
+  not alternated (False). In ALEX measurement all sources are alternated. 
+  In PAX measurements only 1 of the two sources is alternated.
+
 The following fields are optional and not necessarily relevant for
 all experiments. If the associated information is irrelevant or not available,
 these fields are omitted.
+
+- **excitation_wavelengths**: (array of floats) list of excitation wavelengths
+  (center wavelength if broad-band) in increasing order (unit: *meter*).
 
 - **excitation_polarizations**: (arrays of floats) list of polarization
   angles (in degrees) for each excitation source.
