@@ -117,13 +117,18 @@ type of measurement.
 - **measurement_type**: (string) the type of the measurements. Valid names
   are:
 
-  - "smFRET" (1 excitation color, 2 detection colors)
-  - "smFRET-usALEX" (2 excitation colors, 2 detection colors)
-  - "smFRET-usALEX-3c" (3 excitation colors, 3 detection colors)
-  - "smFRET-nsALEX" (2 excitation colors, 2 detection colors)
+  - "smFRET" (1 excitation wavelengths, 2 detection spectral bands). If
+    ``/setup/lifetime`` is True the measurement also includes TCSPC nanotimes.
+  - "smFRET-usALEX" (2 excitation wavelengths, 2 detection colors)
+  - "smFRET-usALEX-3c" (3 excitation wavelengths, 3 detection colors)
+  - "smFRET-nsALEX" (2 pulsed-laser wavelengths, 2 detection colors)
+  - "generic" a generic measurement defined by fields in ``/setup`` and ``measurement_specs``
 
-  New names can be created for different kind of measurements and we
-  encourage users to submit new name requests.
+  We encourage users to submit requests for new measurement types. The advantage
+  of a "specific" measurement type compared to a "generic" one is that
+  a "specific" measurement type can have additional fields (mandatory or
+  optional) to save specific info (e.g. ``alex_period``for
+  "smFRET-usALEX").
 
 The *measurement_type* field describes the type of measurement
 saved within the file. It is an important field allowing software
@@ -230,7 +235,7 @@ For example, a 2-color smFRET measurement will have only one value in
 (4 detectors) will have 2 values in each of the ``spectral_chX`` and
 ``polarization_chX`` fields (where X=1 or 2).
 For a multispot smFRET measurement, in each ``photon_dataN`` group,
-there will be ``spectral_chX`` fields containing the donor/acceptor 
+there will be ``spectral_chX`` fields containing the donor/acceptor
 pixels used in that spot (see :ref:`multi_spot`).
 
 
@@ -239,8 +244,8 @@ pixels used in that spot (see :ref:`multi_spot`).
 Setup group
 -----------
 
-The **/setup** group contains information about the configuration of measurement setup.
-The following fields are mandatory:
+The **/setup** group contains information about the configuration of
+the measurement setup. The following fields are mandatory:
 
 - **num_spectral_ch**: (integer) number of distinct detection spectral
   channels. For example, in a 2-color smFRET experiment there are 2
@@ -268,8 +273,11 @@ The following fields are mandatory:
 
 - **num_pixels**: (integer) total number of detector pixels. For example,
   for a single-spot 2-color smFRET measurement using 2 single-pixel SPADs as
-  detectors this field is 2. This field is computed by phconvert at save time.
-  If is equal to `num_spectral_ch * num_split_ch * num_polarization_ch * num_spot`.
+  detectors this field is 2. This field is normally equal to
+  ``num_pixels = num_spectral_ch * num_split_ch * num_polarization_ch * num_spot``.
+  This equation is not valid when the optical setup has non-symmetric branches,
+  for example if the emission path is split in two spectral bands and only
+  one of the two is further split in two polarizations.
 
 - **excitation_cw**: (array of booleans) for each excitation source,
   this field indicates whether excitation is continuous wave (CW), *True*,
@@ -279,19 +287,36 @@ The following fields are mandatory:
 
 - **lifetime**: (boolean) *True* (or 1) if the measurements includes a
   *nanotimes* array of (usually sub-ns resolution) photon arrival times with
-  respect to a laser pulse (as in TCSPC measurements).  
+  respect to a laser pulse (as in TCSPC measurements).
 
 - **modulated_excitation**: (boolean) *True* (or 1) if there is any form of
   excitation modulation either in the wavelength space (as in μs-ALEX or PAX)
   or in the polarization space. This field is also *True* for
-  pulse-interleaved excitation (PIE) or ns-ALEX measurements. *OBSOLETE*.
+  pulse-interleaved excitation (PIE) or ns-ALEX measurements.
 
-- **excitation_alex**: (array of booleans) *New in version 0.5.* For each excitation source, 
-  this field indicates whether the excitation is alternated (True) or 
-  not alternated (False). In ALEX measurement all sources are alternated. 
+- **excitation_alternated**: (array of booleans) *New in version 0.5.*
+  For each excitation source,
+  this field indicates whether the excitation is alternated (True) or
+  not alternated (False). In ALEX measurement all sources are alternated.
   In PAX measurements only 1 of the two sources is alternated.
 
-The following fields are optional and not necessarily relevant for
+-  **detectors**:  *New in version 0.5.*  This group contains a series of arrays
+   with one element per detector's pixel.
+        - **label** (array of string): *Optional.* a human-readable label for the detector
+        - **id** (array of int): number used by the acquisition hardware to identify the pixel.
+          Photon-HDF5 uses sequential integers (starting from 0) to identify the pixels.
+          This has the advantage that a detector number can be used as index for
+          the arrays in ``/setup/detectors``.
+        - **counts** (array of int): number of timestamps counted by each detector
+        - **module** (array of string): *Multispot only.* Name of the module the pixel belongs to.
+        - **position** (2-D array of int): *Multispot only.* Columns are x,y positions of each pixel in the array.
+        - **dcr** (array of float): *Optional.* Dark counting rate in Hz for the pixel.
+        - **afterpulsing** (array of float): *Optional.* Afterpulsing probability for the pixel.
+        - **spot** (array of int): *Multispot only.* The spot number this pixel is used in.
+        - **tcspc_unit:** (array of float) array of TAC/TDC bin size (in seconds). Present only if ``/setup/lifetime`` is True.
+        - **tcspc_num_bins:** (integer) array of number of TAC/TDC bins. Present only if ``/setup/lifetime`` is True.
+
+The following ``/setup`` fields are optional and not necessarily relevant for
 all experiments. If the associated information is irrelevant or not available,
 these fields are omitted.
 
@@ -539,14 +564,14 @@ i.e. the *start* is triggered by the photon and the *stop* by the the laser sync
 This allows to start TAC or TDC measurements only when a photon is
 detected and not after each laser sync pulse. However, due to this experimental
 configuration, the resulting raw TCSPC histogram looks inverted along the time axis,
-with the nanotimes of photons emitted shortly after a laser pulse being larger than 
+with the nanotimes of photons emitted shortly after a laser pulse being larger than
 the nanotimes of photons emitted much later.
 
 By convention, the Photon-HDF5 format requires nanotimes to be properly oriented. In other words,
-when a `nanotimes` time axis inversion is needed, this correction needs to be performed before 
+when a `nanotimes` time axis inversion is needed, this correction needs to be performed before
 the data is saved into a Photon-HDF5 file. As a corollary, TCSPC histograms computed directly from
 `nanotimes` from Photon-HDF5 files are always properly oriented, regardless of
-the way the nanotimes were acquired. 
+the way the nanotimes were acquired.
 
 
 .. _multi_spot:
