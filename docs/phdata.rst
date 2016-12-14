@@ -306,19 +306,27 @@ Detectors group
 *New in version 0.5.* The group **/setup/detectors** contains arrays
 with one element per detector's pixel.  The allowed fields are:
 
-    - **label** (array of string): *Optional.* a human-readable label for the detector
+    - **label** (array of string): *Optional.* A human-readable label for the detector.
     - **id** (array of int): number used by in ``/photon_data/detectors`` to
       identify the pixel.
     - **id_hardware** (array of int): detector numbers as used by the
       acquisition hardware.
-    - **counts** (array of int): number of timestamps counted by each detector
-    - **module** (array of string): *Multispot only.* Name of the module the pixel belongs to.
-    - **position** (2-D array of int): *Multispot only.* Columns are x,y positions of each pixel in the array.
+    - **counts** (array of int): number of timestamps counted by each detector.
+    - **module** (array of string): *Multispot only.* Name of the module the
+      pixel belongs to.
+    - **position** (2-D array of int): *Multispot only.* Columns are x,y
+      positions of each pixel in the array.
     - **dcr** (array of float): *Optional.* Dark counting rate in Hz for the pixel.
-    - **afterpulsing** (array of float): *Optional.* Afterpulsing probability for the pixel.
-    - **spot** (array of int): *Multispot only.* The spot number this pixel is used in.
-    - **tcspc_unit:** (array of float) array of TAC/TDC bin size (in seconds). Present only if ``/setup/lifetime`` is True.
-    - **tcspc_num_bins:** (integer) array of number of TAC/TDC bins. Present only if ``/setup/lifetime`` is True.
+    - **afterpulsing** (array of float): *Optional.* Afterpulsing probability
+      for the pixel.
+    - **spot** (array of int): *Multispot only.* The spot number this pixel is
+      used in.
+    - **tcspc_unit:** (array of float) array of TAC/TDC bin size (in seconds).
+      Present only if ``/setup/lifetime`` is True and if TCSPC info is different
+      for each pixel.
+    - **tcspc_num_bins:** (integer) array of number of TAC/TDC bins. Present
+      only if ``/setup/lifetime`` is True and if TCSPC info is different
+      for each pixel.
 
 For more info see
 :ref:`Group /setup/detectors <setup_detectors_group>`.
@@ -592,12 +600,22 @@ Group /setup/detectors
 ^^^^^^^^^^^^^^^^^^^^^^
 This group is new in version 0.5 and contains fields which are arrays, one
 element per detector. The only mandatory field is ``id`` which contains
-all the unique detectors IDs as saved by the acquisition hardware.
-IDs appear in ``/setup/id`` in increasing order. All values which appears in
+all detectors IDs as they appear in ``/photon_data/detectors``.
+Within each spot, IDs appear in ``/setup/id`` in increasing order.
+All values which appears in
 ``/photon_data/detectors`` need to be listed here. This includes non-standard
 detectors (e.g. a monitor channel to monitor the input power) or "markers"
 of any kind saved by the acquisition hardware (for example PicoQuant TCSPC
 hardware can save makers for synchronization).
+
+In TCSPC measurements where each pixel has different TCSPC bin width,
+the ``/setup/detectors`` group allows to save per-pixel TCSPC info.
+In this case the the
+``nanotimes_specs`` group is not present in ``photon_data`` and the group
+``/setup/detectors`` will contain per-pixel TCSPC info::
+
+    /setup/detectors/tcspc_units
+    /setup/detectors/tcspc_num_bins
 
 
 .. _multi_spot:

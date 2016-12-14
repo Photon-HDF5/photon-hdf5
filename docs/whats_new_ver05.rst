@@ -11,14 +11,6 @@ when only one laser is alternated).
 New group ``/setup/detectors`` containing arrays of per-pixel information.
 See :ref:`setup_detectors_group`.
 
-The ``/setup/detectors`` group allows to cover the case of TCSPC measurements
-where each pixel has different TCSPC bin width. In this case the the
-``nanotimes_specs`` group is not present in ``photon_data`` and the group
-``/setup/detectors`` will contain per-pixel TCSPC info::
-
-    /setup/detectors/tcspc_units
-    /setup/detectors/tcspc_num_bins
-
 Note that as all the fields in ``/setup/detectors`` these are arrays, with
 one value per pixel.
 
@@ -28,6 +20,10 @@ specifications are determined by the fields in ``/setup``.
 
 The "generic" measurement type
 ------------------------------
+
+For measurement types that cannot be described by any other official
+``measurement_type`` in Photon-HDF5, it is possible "generic" and
+relying on the `/setup` fields to describe the exact configuration.
 
 Here we list a few examples of measurements described with the "generic"
 measurement_type.
