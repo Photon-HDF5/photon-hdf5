@@ -66,11 +66,12 @@ Table of Contents
 -----------------
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 2
     :numbered:
 
     intro
     phdata
+    whats_new_ver05
     reading
     writing
     new_measurement_specs
