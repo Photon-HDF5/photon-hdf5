@@ -1,6 +1,6 @@
 .. _version0.5:
 
-What changed in version 0.5
+What will change in version 0.5
 ===========================
 
 New field ``/setup/excitation_alternated`` (array of booleans) that is True
@@ -23,7 +23,7 @@ The "generic" measurement type
 
 For measurement types that cannot be described by any other official
 ``measurement_type`` in Photon-HDF5, it is possible "generic" and
-relying on the `/setup` fields to describe the exact configuration.
+relying on the ``/setup`` fields to describe the exact configuration.
 
 Here we list a few examples of measurements described with the "generic"
 measurement_type.
@@ -73,14 +73,14 @@ this field will be ``[0.7, 0.3]``.
 2-Spectral channels
 ^^^^^^^^^^^^^^^^^^^
 
-This case is already covered by the "smFRET" measurement_type both for CW and
+This case is already covered by the "smFRET" ``measurement_type`` both for CW and
 TCSPC measurements (the two are distinguished with the value in
 ``/setup/lifetime``).
 
-If a measurement has two spectral detection bands and is fundamentally
-different from a smFRET measurement then the "generic" measurement_type
-can be used. In this all the other fields will be the same as in the
-"smFRET" measurement_type. In particular::
+If a measurement has two spectral detection bands but it is fundamentally
+different from a smFRET measurement, then the "generic" ``measurement_type``
+can be used. In this case the ``measurement_specs`` fields will be the same
+as in the "smFRET" ``measurement_type``. In particular::
 
     /setup/num_spectral_ch = 2
     /setup/num_split_ch = 1
