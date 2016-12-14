@@ -104,31 +104,31 @@ Finally, if the data come from a simulation, ``/photon_data`` may contain:
 -  **particles**: (array of integers) a particle ID (integer) for each
    timestamp. Typical data-type uint8.
 
-
 .. _measurement_specs_group:
 
 Measurement specs
 ^^^^^^^^^^^^^^^^^
 
-The optional **/photon_data/measurement_specs** group contains additional
+The group **/photon_data/measurement_specs** group contains additional
 information allowing unambiguous interpretation of the data for each specific
 type of measurement.
 
 - **measurement_type**: (string) the type of the measurements. Valid names
   are:
 
-  - "smFRET" (1 excitation wavelengths, 2 detection spectral bands). If
-    ``/setup/lifetime`` is True the measurement also includes TCSPC nanotimes.
-  - "smFRET-usALEX" (2 excitation wavelengths, 2 detection colors)
-  - "smFRET-usALEX-3c" (3 excitation wavelengths, 3 detection colors)
-  - "smFRET-nsALEX" (2 pulsed-laser wavelengths, 2 detection colors)
-  - "generic" a generic measurement defined by fields in ``/setup`` and ``measurement_specs``
+    - "smFRET" (1 excitation wavelengths, 2 detection spectral bands). If
+      ``/setup/lifetime`` is True the measurement also includes TCSPC nanotimes.
+    - "smFRET-usALEX" (2 excitation wavelengths, 2 detection colors)
+    - "smFRET-usALEX-3c" (3 excitation wavelengths, 3 detection colors)
+    - "smFRET-nsALEX" (2 pulsed-laser wavelengths, 2 detection colors)
+    - "generic" a generic measurement defined by fields in ``/setup``
+      and ``measurement_specs``.
 
-  We encourage users to submit requests for new measurement types. The advantage
-  of a "specific" measurement type compared to a "generic" one is that
-  a "specific" measurement type can have additional fields (mandatory or
-  optional) to save specific info (e.g. ``alex_period``for
-  "smFRET-usALEX").
+We encourage users to submit requests for new measurement types. The advantage
+of a "specific" measurement type compared to a "generic" one is that
+a "specific" measurement type can have additional fields (mandatory or
+optional) to save specific info (e.g. ``alex_period`` for
+"smFRET-usALEX").
 
 The *measurement_type* field describes the type of measurement
 saved within the file. It is an important field allowing software
@@ -222,7 +222,6 @@ records only one polarization, these fields may be omitted.
 When the detection light is split into 2 channels using a non-polarizing
 beam-splitter the fields:
 
-
 - **split_ch1**
 - **split_ch2**
 
@@ -268,8 +267,7 @@ the measurement setup. The following fields are mandatory:
 
 - **num_spots**: (integer) the number of excitation (or detection)
   "spots" in the sample. This field is 1 for all the measurements using a
-  single confocal excitation volume. When not applicable, for example under
-  wide-field illumination with 2-D imaging detectors, this field is omitted.
+  single confocal excitation volume.
 
 - **num_pixels**: (integer) total number of detector pixels. For example,
   for a single-spot 2-color smFRET measurement using 2 single-pixel SPADs as
@@ -298,27 +296,41 @@ the measurement setup. The following fields are mandatory:
   For each excitation source,
   this field indicates whether the excitation is alternated (True) or
   not alternated (False). In ALEX measurement all sources are alternated.
-  In PAX measurements only 1 of the two sources is alternated.
+  In PAX measurements only one of the two sources is alternated.
 
--  **detectors**:  *New in version 0.5.*  This group contains a series of arrays
-   with one element per detector's pixel.
-        - **label** (array of string): *Optional.* a human-readable label for the detector
-        - **id** (array of int): number used by the acquisition hardware to identify the pixel.
-          Photon-HDF5 uses sequential integers (starting from 0) to identify the pixels.
-          This has the advantage that a detector number can be used as index for
-          the arrays in ``/setup/detectors``.
-        - **counts** (array of int): number of timestamps counted by each detector
-        - **module** (array of string): *Multispot only.* Name of the module the pixel belongs to.
-        - **position** (2-D array of int): *Multispot only.* Columns are x,y positions of each pixel in the array.
-        - **dcr** (array of float): *Optional.* Dark counting rate in Hz for the pixel.
-        - **afterpulsing** (array of float): *Optional.* Afterpulsing probability for the pixel.
-        - **spot** (array of int): *Multispot only.* The spot number this pixel is used in.
-        - **tcspc_unit:** (array of float) array of TAC/TDC bin size (in seconds). Present only if ``/setup/lifetime`` is True.
-        - **tcspc_num_bins:** (integer) array of number of TAC/TDC bins. Present only if ``/setup/lifetime`` is True.
+.. _detectors_group:
+
+Detectors group
+^^^^^^^^^^^^^^^^
+
+*New in version 0.5.* The group **/setup/detectors** contains arrays
+with one element per detector's pixel.  The allowed fields are:
+
+    - **label** (array of string): *Optional.* a human-readable label for the detector
+    - **id** (array of int): number used by in ``/photon_data/detectors`` to
+      identify the pixel.
+    - **id_hardware** (array of int): detector numbers as used by the
+      acquisition hardware.
+    - **counts** (array of int): number of timestamps counted by each detector
+    - **module** (array of string): *Multispot only.* Name of the module the pixel belongs to.
+    - **position** (2-D array of int): *Multispot only.* Columns are x,y positions of each pixel in the array.
+    - **dcr** (array of float): *Optional.* Dark counting rate in Hz for the pixel.
+    - **afterpulsing** (array of float): *Optional.* Afterpulsing probability for the pixel.
+    - **spot** (array of int): *Multispot only.* The spot number this pixel is used in.
+    - **tcspc_unit:** (array of float) array of TAC/TDC bin size (in seconds). Present only if ``/setup/lifetime`` is True.
+    - **tcspc_num_bins:** (integer) array of number of TAC/TDC bins. Present only if ``/setup/lifetime`` is True.
+
+For more info see
+:ref:`Group /setup/detectors <setup_detectors_group>`.
+
+.. _optional_setup_fields:
+
+Optional /setup fields
+^^^^^^^^^^^^^^^^^^^^^^
 
 The following ``/setup`` fields are optional and not necessarily relevant for
-all experiments. If the associated information is irrelevant or not available,
-these fields are omitted.
+all experiments. These fields may be not present when the associated
+information is irrelevant or not available.
 
 - **excitation_wavelengths**: (array of floats) list of excitation wavelengths
   (center wavelength if broad-band) in increasing order (unit: *meter*).
@@ -574,6 +586,20 @@ the data is saved into a Photon-HDF5 file. As a corollary, TCSPC histograms comp
 the way the nanotimes were acquired.
 
 
+.. _setup_detectors_group:
+
+Group /setup/detectors
+^^^^^^^^^^^^^^^^^^^^^^
+This group is new in version 0.5 and contains fields which are arrays, one
+element per detector. The only mandatory field is ``id`` which contains
+all the unique detectors IDs as saved by the acquisition hardware.
+IDs appear in ``/setup/id`` in increasing order. All values which appears in
+``/photon_data/detectors`` need to be listed here. This includes non-standard
+detectors (e.g. a monitor channel to monitor the input power) or "markers"
+of any kind saved by the acquisition hardware (for example PicoQuant TCSPC
+hardware can save makers for synchronization).
+
+
 .. _multi_spot:
 
 Multi-spot measurements
@@ -596,3 +622,7 @@ when reading the file.
 As a result, even if the ``measurement_type`` field is not expected to change
 for different spots, it will be replicated inside each ``photon_dataN``
 group.
+
+In version 0.5 and above the ``/photon_dataNN/detectors`` arrays need to
+contain detectors identifier which are unique across all the spots. In version
+0.4 the same identifiers (e.g. 0 and 1) were allowed in different spots.
