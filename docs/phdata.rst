@@ -303,8 +303,8 @@ the measurement setup. The following fields are mandatory:
 Detectors group
 ^^^^^^^^^^^^^^^^
 
-*New in version 0.5.* The group **/setup/detectors** contains arrays
-with one element per detector's pixel.  The allowed fields are:
+*New in version 0.5.* The group **/setup/detectors**
+contains arrays with one element per detector's pixel.  The allowed fields are:
 
     - **label** (array of string): *Optional.* A human-readable label for the detector.
     - **id** (array of int): number used by in ``/photon_data/detectors`` to
@@ -599,7 +599,9 @@ the way the nanotimes were acquired.
 Group /setup/detectors
 ^^^^^^^^^^^^^^^^^^^^^^
 This group is new in version 0.5 and contains fields which are arrays, one
-element per detector. The only mandatory field is ``id`` which contains
+element per detector
+(see :ref:`definition <detectors_group>`).
+The only mandatory field is ``id`` which contains
 all detectors IDs as they appear in ``/photon_data/detectors``.
 Within each spot, IDs appear in ``/setup/id`` in increasing order.
 All values which appears in

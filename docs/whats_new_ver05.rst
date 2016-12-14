@@ -3,19 +3,21 @@
 What will change in version 0.5
 ===========================
 
-New field ``/setup/excitation_alternated`` (array of booleans) that is True
-for all the excitation sources that are intensity-modulated.
-This field allows to distinguish between ALEX and PAX measurements (i.e.
-when only one laser is alternated).
+- New field ``/setup/excitation_alternated`` (array of booleans) that is True
+  for all the excitation sources that are intensity-modulated.
+  This field allows to distinguish between ALEX and PAX measurements (i.e.
+  when only one laser is alternated).
 
-New group ``/setup/detectors`` containing arrays of per-pixel information.
-See :ref:`setup_detectors_group`.
+- New group ``/setup/detectors`` containing arrays of per-pixel information.
+  See :ref:`setup_detectors_group`.
 
-Note that as all the fields in ``/setup/detectors`` these are arrays, with
-one value per pixel.
+- Support for cases where the TCSPC specs change for each pixel with
+  dedicated fields in ``/setup/detectors``.
+  See :ref:`Group /setup/detectors <setup_detectors_group>`.
 
-A new measurement_type "generic" is added. In a "generic" measurement, the
-specifications are determined by the fields in ``/setup``.
+- A new measurement_type "generic" is added. In a "generic" measurement, the
+  specifications are determined by the fields in ``/setup``.
+
 
 
 The "generic" measurement type
