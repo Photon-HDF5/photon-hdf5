@@ -109,7 +109,7 @@ not TCSPC the ``/setup/excitation_cw`` contains False and
 
 This is a smFRET measurement where the donor and acceptor emission paths
 are further split in parallel and perpendicular polarization. In this case
-we have:
+we have::
 
     /setup/num_spectral_ch = 2
     /setup/num_split_ch = 1
