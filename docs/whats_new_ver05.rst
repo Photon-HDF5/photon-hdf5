@@ -132,8 +132,7 @@ In this measurement we have μs-ALEX excitation and four detectors for the
 two polarizations for donor and acceptor paths. This is the same as the previous
 example but with two CW alternating lasers.
 
-In this case
-we have:
+In this case we have::
 
     /setup/num_spectral_ch = 2
     /setup/num_split_ch = 1
