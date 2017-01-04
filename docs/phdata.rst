@@ -502,8 +502,8 @@ can be saved in the field `detection_split_ch_ratios` in the
 
 .. _wavelengths_order:
 
-Wavelengths and spectral band order
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Wavelengths and spectral-band order
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In Photon-HDF5, by convention, all the excitation wavelengths and detection
 spectral bands are ordered in increasing order: from the shortest to the
@@ -607,8 +607,10 @@ Within each spot, IDs appear in ``/setup/id`` in increasing order.
 All values which appears in
 ``/photon_data/detectors`` need to be listed here. This includes non-standard
 detectors (e.g. a monitor channel to monitor the input power) or "markers"
-of any kind saved by the acquisition hardware (for example PicoQuant TCSPC
-hardware can save makers for synchronization).
+saved by the acquisition hardware (for example PicoQuant TCSPC
+hardware can save makers for synchronization). However, special
+detector IDs used for overflow correction must be removed before
+saving a Photon-HDF5 file. 
 
 In TCSPC measurements where each pixel has different TCSPC bin width,
 the ``/setup/detectors`` group allows to save per-pixel TCSPC info.
