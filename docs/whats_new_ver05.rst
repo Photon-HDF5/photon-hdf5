@@ -1,6 +1,6 @@
 .. _version0.5:
 
-What will change in version 0.5
+What changes in version 0.5
 ===========================
 
 - New field ``/setup/excitation_alternated`` (array of booleans) that is True
