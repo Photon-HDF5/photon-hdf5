@@ -3,16 +3,22 @@
 Defining new measurement types
 ==============================
 
-If you need to save a type of measurement not included in the list of currently
-supported measurement types, you need to define a new "measurement_specs",
-i.e. which info to put in the :ref:`measurement_specs group <measurement_specs_group>`
+If you need to save a type of measurement not included in the current list 
+supported measurement types, you may want to use a 
+:doc:`"generic" measurement type <generic>` instead.
+
+If the "generic" type is for some reason unsuitable you may propose a new
+"specific" measurement type following the instruction in this page.
+
+A new "measurement_type" will define what kind of fields will be present
+in the :ref:`measurement_specs group <measurement_specs_group>`
 in order to make the dataset self-contained.
+
 
 What to put in measurement_specs
 --------------------------------
 
-First and foremost, a new measurement_specs needs to have a name, i.e.
-the name associated with the type of measurement to be saved.
+First, a new measurement_specs needs to have an official name.
 The name of the measurement-type is a string stored
 in `measurement_specs/measurement_type`. This string is used to differentiate
 between different measurement_specs. For example, names of already defined

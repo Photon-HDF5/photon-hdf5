@@ -124,16 +124,25 @@ type of measurement.
     - "generic" a generic measurement defined by fields in ``/setup``
       and ``measurement_specs``.
 
-We encourage users to submit requests for new measurement types. The advantage
-of a "specific" measurement type compared to a "generic" one is that
-a "specific" measurement type can have additional fields (mandatory or
-optional) to save specific info (e.g. ``alex_period`` for
-"smFRET-usALEX").
-
 The *measurement_type* field describes the type of measurement
-saved within the file. It is an important field allowing software
-packages reading and saving Photon-HDF5 files to perform consistency
-checks (see also :ref:`measurement_type`).
+saved within the file. A "specific" measurement type,
+can mandate the presence of certain fields in ``measurement_specs``
+(see also :ref:`measurement_type`).
+
+In Photon-HDF5 <0.5, each type of measurement required a distinct 
+``measurement_type``, which was inconvenient for supporting
+many variants of common measurements. In Photon-HDF5 0.5+
+we added a "generic" measurement type which supports a large combination
+of setup configurations. The specific configuration is specified in 
+``/setup``. In this case, values in ``/setup/`` will determine mandatory 
+``measurement_specs`` fields. For details see :doc:`generic`.
+If you feel that a new "specific" measurement type is needed 
+for your application please contact us.
+An advantage of a "specific" measurement type compared to "generic",
+is that additional fields can be made mandatory.
+
+The following ``measurement_specs`` fields are present in specific 
+measurement types. 
 
 For μs-ALEX, 2, 3 or N colors:
 
@@ -187,7 +196,6 @@ For 3 (or more) colors alternated or interleaved excitation:
     In this case the values are expressed in *nanotimes_units*.
 
     For more details see :ref:`alex_period_def`.
-
 
 .. _detectors_specs_group:
 
@@ -569,9 +577,7 @@ unambiguously interpret the data is present.
 For example, for a 2-color smFRET measurement, a software package creating
 a file should check that
 the association between detector-pixel and donor or acceptor channel
-is present. If some necessary field is absent, the software package
-should warn the user in order that this information is added before
-saving the file.
+is present. 
 
 
 .. _nanotimes_time_axis:
