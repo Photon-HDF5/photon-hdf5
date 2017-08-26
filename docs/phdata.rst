@@ -132,12 +132,12 @@ can mandate the presence of certain fields in ``measurement_specs``
 In Photon-HDF5 <0.5, each type of measurement required a distinct 
 ``measurement_type``, which was inconvenient for supporting
 many variants of common measurements. In Photon-HDF5 0.5+
-we added a "generic" measurement type which supports a large combination
-of setup configurations. The specific configuration is specified in 
-``/setup``. In this case, values in ``/setup/`` will determine mandatory 
-``measurement_specs`` fields. For details see :doc:`generic`.
+we added a :doc:`"generic" measurement type <generic>` which supports 
+a large combination of setup configurations. In this case, values in 
+``/setup/`` will determine  mandatory ``measurement_specs`` fields.
 If you feel that a new "specific" measurement type is needed 
-for your application please contact us.
+for your application we have :doc:`instructions <new_measurement_specs>` 
+to propose a new one.
 An advantage of a "specific" measurement type compared to "generic",
 is that additional fields can be made mandatory.
 
