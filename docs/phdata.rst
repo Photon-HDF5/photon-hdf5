@@ -129,20 +129,20 @@ saved within the file. A "specific" measurement type,
 can mandate the presence of certain fields in ``measurement_specs``
 (see also :ref:`measurement_type`).
 
-In Photon-HDF5 <0.5, each type of measurement required a distinct 
+In Photon-HDF5 <0.5, each type of measurement required a distinct
 ``measurement_type``, which was inconvenient for supporting
 many variants of common measurements. In Photon-HDF5 0.5+
-we added a :doc:`"generic" measurement type <generic>` which supports 
-a large combination of setup configurations. In this case, values in 
+we added a :doc:`"generic" measurement type <generic>` which supports
+a large combination of setup configurations. In this case, values in
 ``/setup/`` will determine  mandatory ``measurement_specs`` fields.
-If you feel that a new "specific" measurement type is needed 
-for your application we have :doc:`instructions <new_measurement_specs>` 
+If you feel that a new "specific" measurement type is needed
+for your application we have :doc:`instructions <new_measurement_specs>`
 to propose a new one.
 An advantage of a "specific" measurement type compared to "generic",
 is that additional fields can be made mandatory.
 
-The following ``measurement_specs`` fields are present in specific 
-measurement types. 
+The following ``measurement_specs`` fields are present in specific
+measurement types.
 
 For μs-ALEX, 2, 3 or N colors:
 
@@ -152,8 +152,8 @@ For μs-ALEX, 2, 3 or N colors:
 
 For ns-ALEX (or lifetime with no alternation):
 
-- **laser_repetition_rate**: (float) excitation laser pulse repetition rate in
-  *Hertz*.
+- **laser_repetition_rate**: (float) excitation laser pulse repetition rate
+  in *Hertz*.
 
 For 2-color (or more) μs-ALEX and ns-ALEX (optional):
 
@@ -348,21 +348,30 @@ The following ``/setup`` fields are optional and not necessarily relevant for
 all experiments. These fields may be not present when the associated
 information is irrelevant or not available.
 
+The following fields are arrays, one element per excitation source,
+in the order of increasing wavelengths:
+
 - **excitation_wavelengths**: (array of floats) list of excitation wavelengths
   (center wavelength if broad-band) in increasing order (unit: *meter*).
 
+- **laser_repetition_rates**: (array of floats)  *New in version 0.5.*
+  The laser repetition rate in Hz for each excitation source.
+  This field is mandatory only if there is at least one pulsed excitation
+  source. When there are both CW and pulsed lasers, the CW lasers will have
+  a value of 0 in this field.
+
 - **excitation_polarizations**: (arrays of floats) list of polarization
   angles (in degrees) for each excitation source.
-  The order of excitation sources is the same as in
-  ``excitation_wavelengths`` and is in increasing order of wavelengths.
 
 - **excitation_input_powers**: (array of floats) excitation power in *Watts*
   for each excitation source. This is the excitation power entering
   the optical system.
 
 - **excitation_intensity**: (array of floats) excitation intensity in the
-  sample for each excitation source (units: *Watts/meters²*).
+  sample for each excitation source (units: *W/m²*).
   In the case of confocal excitation this is the peak PSF intensity.
+
+The following fields are also arrays:
 
 - **detection_wavelengths**: (arrays of floats) reference wavelengths (in
   *meters*) for each detection spectral band.
@@ -395,8 +404,8 @@ The **/sample** group contains information related to the measured sample.
 This group is optional.
 
 - **num_dyes**: (integer) number of different dyes present in the samples.
-- **dye_names**: (string) comma-separated list of dye or fluorophore names (for example:
-  ``"ATTO550, ATTO647N"``)
+- **dye_names**: (string) comma-separated list of dye or fluorophore names
+  (for example: ``"ATTO550, ATTO647N"``)
 - **buffer_name**: (string) a user defined description for the buffer.
 - **sample_name**: (string) a user defined description for the sample.
 
@@ -577,7 +586,7 @@ unambiguously interpret the data is present.
 For example, for a 2-color smFRET measurement, a software package creating
 a file should check that
 the association between detector-pixel and donor or acceptor channel
-is present. 
+is present.
 
 
 .. _nanotimes_time_axis:
@@ -616,7 +625,7 @@ detectors (e.g. a monitor channel to monitor the input power) or "markers"
 saved by the acquisition hardware (for example PicoQuant TCSPC
 hardware can save makers for synchronization). However, special
 detector IDs used for overflow correction must be removed before
-saving a Photon-HDF5 file. 
+saving a Photon-HDF5 file.
 
 In TCSPC measurements where each pixel has different TCSPC bin width,
 the ``/setup/detectors`` group allows to save per-pixel TCSPC info.
