@@ -1,9 +1,9 @@
 The "generic" measurement type
 ==============================
 
-For measurement types which cannot be described by any other 
-``measurement_type`` supported in Photon-HDF5, it is possible to use 
-the "generic" type and use the ``/setup`` fields to describe the exact 
+For measurement types which cannot be described by any other
+``measurement_type`` supported in Photon-HDF5, it is possible to use
+the "generic" type and use the ``/setup`` fields to describe the exact
 configuration.
 
 
@@ -134,3 +134,29 @@ and, using the detector numbers of the previous example::
 
 Note that when ``/setup/excitation_alternated`` is True then
 ``/photon_data/measurement_specs/alex_period`` needs to be present.
+
+Notes on "generic" measurement_type
+-----------------------------------
+
+Here we collect a few notes on using the "generic"
+measurement_type.
+
+When at least one laser is CW and alternated
+(``/setup/excitation_cw`` and ``/setup/excitation_alternated``),
+then the ``photon_data/measurement_specs/alex_period`` is
+mandatory.
+
+When at least one laser is pulsed
+(i.e. False in ``/setup/excitation_cw``),
+then the fields
+``photon_data/measurement_specs/laser_repetition_rate`` and
+``/setup/laser_repetition_rates`` are mandatory.
+
+When ``/setup/lifetime = True``, then the file will have
+``/setup/laser_repetition_rates`` and
+``photon_data/measurement_specs/laser_repetition_rate``.
+
+If there is only one detector per spot ``photon_data/detectors``
+array may be omitted. In this case, the lack of
+``photon_data/detectors`` implies no
+``photon_data/measurement_specs/detectors_specs`` group.
