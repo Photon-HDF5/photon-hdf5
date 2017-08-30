@@ -251,8 +251,11 @@ pixels used in that spot (see :ref:`multi_spot`).
 Setup group
 -----------
 
-The **/setup** group contains information about the configuration of
-the measurement setup. The following fields are mandatory:
+The **/setup** group contains information about the measurement setup.
+This group can be **absent** in some files, an example being
+a file containing only detector dark counts, for which the following
+fields do not necessarily have a meaning.
+When setup is present, the following 9 fields are mandatory:
 
 - **num_spectral_ch**: (integer) number of distinct detection spectral
   channels. For example, in a 2-color smFRET experiment there are 2
