@@ -2,9 +2,9 @@ The "generic" measurement type
 ==============================
 
 For measurement types which cannot be described by any other
-``measurement_type`` supported in Photon-HDF5, it is possible to use
-the "generic" type and use the ``/setup`` fields to describe the exact
-configuration.
+:ref:`supported measurement_type <measurement_specs_group>`,
+it is possible to use the "generic" type and use the ``/setup``
+fields to describe the exact configuration.
 
 
 Examples

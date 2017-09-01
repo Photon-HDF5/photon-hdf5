@@ -591,6 +591,9 @@ a file should check that
 the association between detector-pixel and donor or acceptor channel
 is present.
 
+The list of supported measurement types is reported in
+:ref:`measurement_specs_group`.
+
 
 .. _nanotimes_time_axis:
 
