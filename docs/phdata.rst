@@ -308,6 +308,8 @@ When setup is present, the following 9 fields are mandatory:
   this field indicates whether the excitation is alternated (True) or
   not alternated (False). In ALEX measurement all sources are alternated.
   In PAX measurements only one of the two sources is alternated.
+  In measurements with pulsed interleaved excitation (PIE), this field 
+  should contain all False.
 
 .. _detectors_group:
 
