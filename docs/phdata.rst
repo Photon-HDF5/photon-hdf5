@@ -245,6 +245,16 @@ For a multispot smFRET measurement, in each ``photon_dataN`` group,
 there will be ``spectral_chX`` fields containing the donor/acceptor
 pixels used in that spot (see :ref:`multi_spot`).
 
+If the measurement records space-time markers (timestamps of timing signals
+rather than photons; used, for example, in FLIM), the fields (*new in version
+0.6*):
+
+- **space_time_marker1**
+- **space_time_marker2**
+- etc...
+
+specify which :ref:`detector id<detector_ids>` is used for each marker channel.
+These fields are single integer values, not arrays.
 
 .. _setup_group:
 
@@ -397,6 +407,60 @@ The following fields are also arrays:
   This field is not relevant when no polarization- and spectral-insensitive
   splitting is performed.
 
+The following fields can be used to indicate the meaning of space-time markers.
+
+- **num_space_time_markers**: (integer) *New in version 0.6.* number of
+  space-time markers. Required if space-time markers are recorded. This value
+  must match the number of space-time markers specified by
+  ``detectors_specs/space_time_marker1``,
+  ``detectors_specs/space_time_marker2``, and so on.
+
+- **space_time_markers**: (array of strings) *New in version 0.6.* for each
+  space-time marker, this field indicates a standard interpretation. The length
+  of this array must equal the value of ``num_space_time_markers``. Currently
+  defined interpretations are for indicating raster timings in laser-scanning
+  imaging (such as FLIM), and valid element values are:
+
+  - ``"pixel"`` (pixel clock; the marker indicates the beginning timestamp of
+    each raster pixel),
+  - ``"line"`` (line clock; the marker indicates the beginning timestamp of each
+    raster scanline),
+  - ``"frame"`` (frame clock; the marker indicates the beginning timestamp of
+    each raster frame), and
+  - ``""`` (empty string; indicates a marker not used for any of the above
+    standard meanings).
+
+.. _raster_group:
+
+Raster group
+^^^^^^^^^^^^
+
+*New in version 0.6.*
+
+The optional **/setup/raster** group contains information about raster scan
+measurements (typically FLIM, but could be any single-photon-counting
+raster-scan imaging method).
+
+These 3 fields are required if this group is present:
+
+- **raster_width**: (integer) width of raster scan (in pixels)
+- **raster_height**: (integer) height of raster scan (in pixels)
+- **pixel_time**: (float) the pixel period of the raster scan (in seconds)
+
+The following fields are optional:
+
+- **num_frames**: (integer) number of raster scans recorded
+- **line_time**: (float) the line period of the raster scan, if constant (in
+  seconds)
+- **frame_time**: (float) the frame period of a multi-frame scan, if constant
+  (in seconds)
+- **pixel_size_horizontal**: (float) horizontal size (at the specimen) of the
+  raster pixels (in meters)
+- **pixel_size_vertical**: (float) vertical size (at the specimen) of the raster
+  pixels, or (in other words) the spacing of scanlines (in meters)
+
+Raster scan datasets should also record space-time markers for some combination
+of pixel, line, and frame clocks (see **/setup/space_time_markers**).
 
 .. _sample_group:
 
@@ -627,7 +691,7 @@ all detectors IDs as they appear in ``/photon_data/detectors``.
 Within each spot, IDs appear in ``/setup/id`` in increasing order.
 All values which appears in
 ``/photon_data/detectors`` need to be listed here. This includes non-standard
-detectors (e.g. a monitor channel to monitor the input power) or "markers"
+detectors (e.g. a monitor channel to monitor the input power) or space-time markers
 saved by the acquisition hardware (for example PicoQuant TCSPC
 hardware can save makers for synchronization). However, special
 detector IDs used for overflow correction must be removed before
