@@ -430,6 +430,38 @@ The following fields can be used to indicate the meaning of space-time markers.
   - ``""`` (empty string; indicates a marker not used for any of the above
     standard meanings).
 
+.. _raster_group:
+
+Raster group
+^^^^^^^^^^^^
+
+*New in version 0.6.*
+
+The optional **/setup/raster** group contains information about raster scan
+measurements (typically FLIM, but could be any single-photon-counting
+raster-scan imaging method).
+
+These 3 fields are required if this group is present:
+
+- **raster_width**: (integer) width of raster scan (in pixels)
+- **raster_height**: (integer) height of raster scan (in pixels)
+- **pixel_time**: (float) the pixel period of the raster scan (in seconds)
+
+The following fields are optional:
+
+- **num_frames**: (integer) number of raster scans recorded
+- **line_time**: (float) the line period of the raster scan, if constant (in
+  seconds)
+- **frame_time**: (float) the frame period of a multi-frame scan, if constant
+  (in seconds)
+- **pixel_size_horizontal**: (float) horizontal size (at the specimen) of the
+  raster pixels (in meters)
+- **pixel_size_vertical**: (float) vertical size (at the specimen) of the raster
+  pixels, or (in other words) the spacing of scanlines (in meters)
+
+Raster scan datasets should also record space-time markers for some combination
+of pixel, line, and frame clocks (see **/setup/space_time_markers**).
+
 .. _sample_group:
 
 Sample group
