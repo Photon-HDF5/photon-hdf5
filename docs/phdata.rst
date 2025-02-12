@@ -255,8 +255,7 @@ When a measurement records more than 1 spectral band, the fields:
 
 specify which detector is employed in each spectral band. When the
 measurement records only 1 spectral band these fields may be omitted. The
-spectral bands are strictly ordered for increasing wavelengths
-(see :ref:`wavelength_order`).
+spectral bands are strictly ordered for increasing wavelengths.
 For example, for 2-color smFRET measurements
 ``spectral_ch1`` and ``spectral_ch2`` represent the
 *donor* and *acceptor* channel respectively.
@@ -311,7 +310,7 @@ and :ref:`non-photon IDs <non_photon_ids>` for ``non_photon_chX``).
 If a given experiment type does not involve a given field type, that field should
 be omitted. For example, a 2-color smFRET measurement without polarization or split
 channels (2 detectors) will have only one value in ``spectral_ch1`` (donor) and one
- value in ``spectral_ch2`` (acceptor). A 2-color smFRET measurement with polarization
+value in ``spectral_ch2`` (acceptor). A 2-color smFRET measurement with polarization
 (4 detectors) will have 2 values in each of the ``spectral_chX`` and
 ``polarization_chX`` fields (where X=1 or 2).
 For a multispot smFRET measurement, in each ``/photon_dataX/`` group,
@@ -401,7 +400,7 @@ Detectors group
 
 *New in version 0.5.* The group ``/setup/detectors/``
 contains arrays with one element per detector (detector ID).
-This group may be **absent** *if* the :ref:`/photon_data/<photon_data>` group(s) do **not** contain ``detectors`` arrays.
+This group may be **absent** *if* the :ref:`/photon_data/<photon_data_group>` group(s) do **not** contain ``detectors`` arrays.
 The allowed fields are:
 
     - **id** (integer array): *Mandatory.* Number used by in
@@ -470,7 +469,7 @@ in the order of increasing wavelengths:
   sample for each excitation source (units: *W/m²*).
   In the case of confocal excitation this is the peak PSF intensity.
 
-The following fields are also arrays:
+The following fields are also arrays, one element per detector:
 
 - **detection_wavelengths**: (float array) reference wavelengths (in
   *meters*) for each detection spectral band.
@@ -592,7 +591,7 @@ provided, most notably the :ref:`experimental_settings/ <exp_settings>` group.
 If the data is being converted from a format like .ptu from picoquant or .spc from
 Beckr&Hickl, some metadata stored in the file is not included in the official photon-HDF5
 specification. This metadata should be stored in a group named by the company manufacturing
-the original data file (i.e. ``picoquant`` for .ptu files, `b`ecker_hickl`` for .spc files).
+the original data file (i.e. ``picoquant`` for .ptu files, ``becker_hickl`` for .spc files).
 
 The ``user`` group can also be used to store results of various type of analysis.
 Such data should be stored in a sub-group named according to the software used

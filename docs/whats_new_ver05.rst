@@ -15,7 +15,7 @@ What changed in version 0.5
 - A New group: ``/setup/detectors`` containing arrays of per-pixel information, was added.
   See :ref:`setup_detectors_group`.
 
-- Introduction of limited support for markers :ref:`marker_ids`, allowing sync, markers for FLIM,
+- Introduction of limited support for markers :ref:`non_photon_ids`, allowing sync, markers for FLIM,
   sync signals etc. to be included. Currently the meaning of these ids is left to the user. In
   upcoming release of v0.6, support for basic raster-scan FLIM will be introduced, where markers
   can optionally be used to specify the beginning of pixels/lines/frames.
