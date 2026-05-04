@@ -306,7 +306,7 @@ for particular non-photon IDs.
 
 All previous fields are arrays containing one or more :ref:`detector IDs<detector_ids>`
 (Detector IDs for all ``spectral_chX``, ``polarization_ch1`` and ``split_chX``,
-and :ref:`non-photon IDs <non_photon_ids>` for ``non_photon_chX``).
+and :ref:`non-photon IDs <non_photon_ids>` for ``non_photon_idX``).
 If a given experiment type does not involve a given field type, that field should
 be omitted. For example, a 2-color smFRET measurement without polarization or split
 channels (2 detectors) will have only one value in ``spectral_ch1`` (donor) and one
@@ -409,7 +409,7 @@ The allowed fields are:
     - **id_hardware** (integer array): *Optional.* Detector numbers as used by the
       acquisition hardware if different from ``id``.
     - **spot** (integer array): *Multispot only, mandatory.* The spot number each
-      detector ID is used in. If present, must be of the same length as ``id``.
+      detector ID is used in ``id``. If present, must be of the same length as ``id``.
     - **label** (array of string): *Optional.* A human-readable label for each detector ID, including non-photon IDs.
       If present, must be of the same length as ``id``.
     - **module** (array of string): *Multispot only, optional.* Name of the module each
@@ -679,7 +679,7 @@ Detectors are normally numbered incrementally, but are not required to be.
 In other words, a file containing data taken with 2 single-point detectors could have
 the first detector labeled "4" and the second detector labeled "6".
 In some cases (when using detector arrays) the record ID
-can be a *n*-tuple of integers. This allow to specify, for each pixel,
+can be a *n*-tuple of integers. This allows specifying, for each pixel,
 the module number and the X, Y location, for example. Therefore, an
 array of record IDs can be either a 1-D column array or a 2-D array.
 In either case, each row identifies a record.
@@ -692,8 +692,8 @@ Non-Photon IDs
 If the acquisition software also records events such as sync signals or markers indicating
 a change in position of a piezo or galvo scanner, these events should also be assigned a unique
 pixel ID. These events are all considered markers. To distinguish between detector (i.e. real photons)
-and marker IDs, the record IDs of marker events must be recorded in one of the ``non_photon_ch1``,
-``non_photon_ch2`` ... groups within ``/photon_data/measurement_specs/detectors_specs`` group.
+and marker IDs, the record IDs of marker events must be recorded in one of the ``non_photon_id1``,
+``non_photon_id2`` ... groups within ``/photon_data/measurement_specs/detectors_specs`` group.
 In photon-HDF5 v0.5 no additional information is officially recorded, and thus it is recommended
 to store a description of the meaning of each type of marker ID in the ``user/experimental_settings``
 group. See :ref:`user_group` to understand how to use this group.
